@@ -57,7 +57,7 @@ public class BrowsePeerActivity extends AbstractActivity {
         if (peer.isLocalHost()) {
             textNickname.setText(R.string.me);
             ImageView icon = findView(R.id.activity_browse_peer_icon);
-            icon.setImageDrawable(getResources().getDrawable(R.drawable.library));
+            icon.setImageDrawable(getResources().getDrawable(R.drawable.library_light));
         } else {
             textNickname.setText(peer.getNickname());
         }
