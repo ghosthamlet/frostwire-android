@@ -44,7 +44,7 @@ public class DeleteFileMenuAction extends MenuAction {
     private final List<FileDescriptor> files;
 
     public DeleteFileMenuAction(Context context, FileListAdapter adapter, List<FileDescriptor> files) {
-        super(context, R.drawable.disconnect, files.size() > 1 ? R.string.delete_file_menu_action_count : R.string.delete_file_menu_action, files.size());
+        super(context, R.drawable.trash, files.size() > 1 ? R.string.delete_file_menu_action_count : R.string.delete_file_menu_action, files.size());
 
         this.adapter = adapter;
         this.files = files;
