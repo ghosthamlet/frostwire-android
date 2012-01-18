@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<resources>
+
+    <string name="application_label">FrostWire</string>
+    <string name="activity_settings_name">Configuración</string>
+    <string name="activity_browse_peer_name">Explorar</string>
+    <string name="activity_browse_peers_name">Usuarios Cercanos</string>
+    <string name="activity_chat_name">Chat</string>
+    <string name="activity_downloads_name">Descargas Activas</string>
+    <string name="activity_uploads_name">Subidas Activas</string>
+    <string name="activity_about">Acerca de</string>
+    <string name="activity_debug_name">Debug</string>
+    <string name="scanning_for_peers">Buscando usuarios…</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="all_transfers_will_stop_are_you_sure">Todas las transferencias se detendrán.\nDeseas continuar?</string>
+    <string name="connect">Conectar</string>
+    <string name="connecting">Conectando</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="disconnecting">Desconectando</string>
+    <string name="wait">Esperar</string>
+    <string name="exit">Salir</string>
+    <string name="no_wifi_want_to_fix_it_question">No estás conectado(a) a una red WiFi.\n\nCómo te quieres conectar?</string>
+    <string name="your_connection_has_dropped_stopping_services">Se cayó tu conexión WiFi. Parando servicios.</string>
+    <string name="wifi_network_changed_restarting_services">La red WiFi ha cambiado. Reiniciando servicios.</string>
+    <string name="no_network_connection">No hay conexión a la red.</string>
+    <string name="leaving_already">Ya te vas?</string>
+    <string name="search_label">Buscar</string>
+    <string name="settings_description">Preferencias de Búsqueda</string>
+    <string name="clear_finished">Limpiar Terminadas</string>
+    <string name="stop_all_transfers">Parar Descargas</string>
+    <string name="support_free_software">Apoya el Software Libre</string>
+    <string name="show_love">Te Gusta FrostWire?</string>
+    <string name="waiting">Esperando…</string>
+    <string name="use_icons_to_browse">Usa los íconos para explorar archivos.</string>
+    <string name="type_to_filter_results">Escribe para filtrar resultados.</string>
+    <string name="fetching_file_list">Obteniendo archivos compartidos</string>
+    <string name="not_sharing_files">no está compartiendo archivos.</string>
+    <string name="tip_try_the_filter">Tip: &lt;Utiliza el "filtro">.</string>
+    <string name="browse_peer">Explora Usuario</string>
+    <string name="peer">Usuario</string>
+    <string name="peers">Usuarios</string>
+    <string name="copy">Copiar</string>
+    <string name="audio">Audio</string>
+    <string name="audio_music">Audio/Música</string>
+    <string name="video">Video</string>
+    <string name="application">Aplicación</string>
+    <string name="applications">Aplicaciones</string>
+    <string name="picture">Imágen</string>
+    <string name="pictures">Imágenes</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="ringtones">Ringtones</string>
+    <string name="document">Documento</string>
+    <string name="documents">Documentos</string>
+    <string name="share">Compartir</string>
+    <string name="unshare">Descompartir</string>
+    <string name="sharing">Compartiendo</string>
+    <string name="send_pm">Envia Mensaje Privado</string>
+    <string name="me">Yo</string>
+    <string name="delete">Borrar</string>
+    <string name="rename">Renombrar</string>
+    <string name="download">Descargar</string>
+    <string name="download_selected_files">Descargar Seleccionado</string>
+    <string name="toggle_sharing_selected_files">Compartir/Descompartir</string>
+    <string name="change_manual_listening_port">Cambiar Puerto [1000–65535]</string>
+    <string name="is_not_responding">%s no está respondiendo…</string>
+    <string name="max_concurrent_uploads">Maximas Cargas Simultaneas</string>
+    <string name="search_no_keywords">Introduce términos de búsqueda</string>
+    <string name="search_select_filetype">Selecciona un tipo de archivo</string>
+    <string name="searching_for">Buscando</string>
+    <string name="search_for_type_files">Busca archivos de %s</string>
+    <string name="update_title">Hora de Actualizar!</string>
+    <string name="update_message">FrostWire ha descargado una actualización, acepta si deseas instalar la actualización ahora.</string>
+    <string name="next_time">La Próxima</string>
+    <string name="change_my_nickname">Cambiar mi nombre</string>
+    <string name="try_changing_your_nickname">Intenta cambiar tu nombre</string>
+    <string name="reconnecting">Reconectando</string>
+    <string name="go_to">Ir a</string>
+    <string name="done">Listo</string>
+    <string name="home">Inicio</string>
+    <string name="about">Acerca de</string>
+    <string name="send_to_third_party">Enviar/Subir</string>
+    <string name="send_file_using">Enviar archivo utilizando</string>
+    <string name="my_files">Mis archivos</string>
+    <string name="clear_messages">Limpiar mensajes</string>
+    <string name="chat_actions">Acciones de Chat</string>
+    <string name="preferences">Preferencias</string>
+    <string name="please_connect">Conectate para utilizar esta funcionalidad</string>
+    <string name="remove">Borrar</string>
+    <string name="try_valid_port_next_time">Intenta un puerto válido la próxima [1000 – 65500]</string>
+    <string name="still_listening_on_port">Aun escuchando en el puerto</string>
+    <string name="uh_still_listening_on_port">Que? Aun estoy escuchando en el puerto</string>
+    <string name="new_port_saved">Nuevo Puerto guardado</string>
+    <string name="now_on_port">Ahora en el puerto</string>
+    <string name="stop_all_transfers_message">Esto cancelará todas las transferencias y la data se perderá.\nDeseas continuar?</string>
+    <string name="files">archivos</string>
+    <string name="touch_filetype_icon">Toca el ícono para cambiar el tipo</string>
+    <string name="tos_title">Terminos de Uso</string>
+    <string name="tos_accept">Aceptar</string>
+    <string name="tos_refuse">Rechazar</string>
+    <string name="downloads">Descargar</string>
+    <string name="minimize_frostwire">Minimizar FrostWire</string>
+    <string name="are_you_sure_you_wanna_leave">Deseas ir al escritorio?</string>
+    <string name="set_as_ringtone">Poner como Ringtone</string>
+    <string name="set_as_wallpaper">Poner como Fondo</string>
+    <string name="failed_to_set_wallpaper">No pude ponerlo de Fondo</string>
+    <string name="tell_others_chooser">Tweet / SMS / Email</string>
+    <string name="tell_others_subject">Ya tienes FrostWire para Android?</string>
+    <string name="and_choose_what_filetypes_to_share">Revisa que quieres compartir</string>
+    <string name="before_getting_started">Antes de empezar…</string>
+    <string name="user_connecting">Usuario conectandose</string>
+    <string name="accept_connection_from">Aceptar conexión de </string>
+    <string name="please_enter_a_number">Introduce un número</string>
+    <string name="gotta_have_at_least_one_upload_slot">Debes tener al menos un slot</string>
+    <string name="only_up_to_n_uploads_at_the_same_time">Solo hasta %s cargas al mismo tiempo</string>
+    <string name="max_simultaneous_uploads_saved_n">Máximas Cargas Simultaneas Guardadas (%s)"</string>
+    <string name="unknown">Desconocido</string>
+    <string name="browse">Explorar</string>
+    <string name="files_shared_by">archivos de</string>
+    <string name="mark_your_territory">Marca tu Territorio</string>
+    <string name="get_a_frostwire_tshirt">Franelas de FrostWire</string>
+    <string name="internal_port">Puerto Interno</string>
+    <string name="external_port">Puerto Externo</string>
+    <string name="device">Dispositivo</string>
+    <string name="manufacturer">Fabricante</string>
+    <string name="name">Nombre</string>
+    <string name="product">Producto</string>
+    <string name="model">Modelo</string>
+    <string name="release">Lanzamiento</string>
+    <string name="alpha_tests_team">Equipo de Pruebas</string>
+    <string name="alpha_tests_team_thanks">Gracias a todos los voluntarios usuarios de prueba voluntarios por su paciencia y reciprocidad, agradecimientos especiales a</string>
+    <string name="pending">pendiente</string>
+    <string name="manual">manual</string>
+    <string name="disabled">deshabilitado</string>
+    <string name="open">Abrir</string>
+    <string name="connected_to">Conectado a</string>
+    <string name="sharing_preferences">Preferencias</string>
+    <string name="nickname">Nombre</string>
+    <string name="how_other_users_will_see_you">Como otros usuarios te verán</string>
+    <string name="networking_preferences">Preferencias de Red</string>
+    <string name="simultaneous_uploads">Cargas Simultaneas</string>
+    <string name="simultaneous_uploads_summary">Coloca cuantos archivos se pueden bajar de ti al mismo tiempo. Si hay mas, se encolan.</string>
+    <string name="send_my_geo_location">Envia Geo-Ubicación</string>
+    <string name="send_my_geo_location_summary">Envia tu ubicación geografica para encontrar usuarios más cercanos y tener descargas más rápidas.</string>
+    <string name="use_upnp_port_mapping">Puertos Automáticos</string>
+    <string name="use_upnp_port_mapping_summary">Presiona aquí por un rato para cambiar el puerto manual en caso de no utilizar puertos automáticos.</string>
+    <string name="multicast_discovery">Soporte Multicast</string>
+    <string name="multicast_discovery_summary">Descubre usuarios en la red Wi-Fi local con Multicast (recomendado)</string>
+    <string name="broadcast_discovery">Soporte Broadcast</string>
+    <string name="broadcast_discovery_summary">Descubre usuarios en la red Wi-Fi local con Broadcast (mas tráfico en el router Wi-Fi)</string>
+    <string name="internet_discovery">Comparte en Internet</string>
+    <string name="internet_discovery_summary">Conéctate a usuarios fuera de tu red Wi-Fi por Internet.</string>
+    <string name="meter">m</string>
+    <string name="kilometer">Km</string>
+    <string name="from">De</string>
+    <string name="wants_to_share_a_file">quiere compartir un archivo</string>
+    <string name="translators">Traductores</string>
+    <string name="tip_rename_your_files">Tip: Renombra archivos para que los encuentren</string>
+    <string name="other_settings">Otros Ajustes</string>
+    <string name="vibrate_on_finished_download">Vibra cuando termine una descarga</string>
+    <string name="use_mobile_data">Utilizar 3G/4G</string>
+    <string name="use_mobile_data_summary">Cargos por sobreuso de datos pueden aplicar.</string>
+    <string name="connected_using_dataplan">Conectado utilizando Plan de Datos</string>
+    <string name="send_to_chat">Enviar al Chat</string>
+    <string name="sent_file_to_chat">Un archivo fue enviado al Chat</string>
+    <string name="sent_files_to_chat">%d archivos fueron enviados al Chat</string>
+    <string name="choose_wifi_network">Seleccionar una red Wi-Fi</string>
+    <string name="please_update_to_v">Por favor actualiza a v. %s</string>
+    <string name="cant_open_file">Lo siento, no pude abrir ese archivo.</string>
+    <string name="downloading_from_desktop">Descargando archivos del escritorio…</string>
+    <string name="share_indication_dialog_title">Cómo compartir</string>
+    <string name="dialog_share_indicator_text_text">Comparte multiples archivos utilizando los checkboxes.</string>
+    <string name="dialog_share_indicator_check_text">Muestra esta ayuda la próxima vez</string>
+    <string name="show_share_indication">Mostrar Cómo compartir</string>
+    <string name="download_added_to_queue">1 archivo esta iniciando su descarga</string>
+    <string name="downloads_added_to_queue">%s archivos iniciarán su descarga</string>
+    <string name="activity_downloads_title_text">Descargas</string>
+    <string name="activity_uploads_title_text">Subidas</string>
+    <string name="updating">Actualizando</string>
+    <string name="loading_all">Cargando Todos</string>
+    <string name="sharing_num_files">Compartiendo %1$s archivo de tipo %2$s</string>
+    <string name="share_selected_files">Compartir archivos seleccionados</string>
+    <string name="unshare_selected_files">Descompartir archivos seleccionados</string>
+    <string name="long_press_for_batch_actions">Presiona cualquier archivo seleccionado para más acciones</string>
+    <string name="files_shared">archivos compartidos</string>
+    <string name="share_finished_downloads">Comparte descargas terminadas</string>
+    <string name="share_finished_downloads_summary">Finished downloads will be available to other FrostWire users on your WiFi network.</string>
+    <string name="are_you_sure_delete_files">Estas seguro de que quierer borrar los archivos seleccionados?</string>
+
+</resources>

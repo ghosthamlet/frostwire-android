@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<resources>
+
+    <color name="frostwire_dark_blue">#ff2c7fb0</color>
+    <color name="frostwire_light_blue">#ff7adafa</color>
+    <color name="frostwire_lighter_blue">#ffc4eefe</color>
+    <color name="frostwire_orange">#ffe9a54c</color>
+    <color name="tab_text_view">#ff5a7e9c</color>
+    <color name="frostwire_gray_explanation_text">#ff99aabb</color>
+    <color name="frostwire_quickaction_separator">#ff839fb3</color>
+
+    <!-- colors for tab gradients, start is bottom, end is top (90 degrees) -->
+    <color name="tab_gradient_start_on">#ffd3e5ed</color>
+    <color name="tab_gradient_end_on">#ffffffff</color>
+    <color name="tab_gradient_start_off">#ff264c6b</color>
+    <color name="tab_gradient_end_off">#ff1b3e5a</color>
+    <color name="tab_background_on">#ffd3e5ed</color>
+    <color name="tab_background_off">#ff264c6b</color>
+
+</resources>

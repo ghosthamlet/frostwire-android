@@ -1,0 +1,10 @@
+bin/*
+gen/*
+*.class
+*.log
+.settings/org.eclipse.jdt.core.prefs
+tools/local.properties
+tools/emulator.properties
+.DS_Store
+*~
+

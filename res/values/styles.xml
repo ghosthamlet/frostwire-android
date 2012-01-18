@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<resources>
+
+    <!-- List Adapter styles -->
+    <style name="list_item_title">
+        <item name="android:textColor">#ff2a3d50</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="list_item_text" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#ff627c95</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Tab">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center|center_vertical</item>
+        <item name="android:layout_gravity">center|center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/tab_background_selector</item>
+    </style>
+
+    <style name="Tab.TextCommon">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:gravity">center|center_vertical</item>
+        <item name="android:padding">2sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textColor">@color/tab_text_view</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@android:color/white</item>
+        <item name="android:shadowDy">-0.2</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">2dp</item>
+    </style>
+
+    <style name="Tab.TextCommon.Normal" parent="Tab.TextCommon">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Tab.TextCommon.Big" parent="Tab.TextCommon">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Tab.Text" parent="Tab.TextCommon.Normal"></style>
+
+    <!-- styles for elements -->
+    <style name="TransferIndicator">
+        <item name="android:layout_width">32sp</item>
+        <item name="android:layout_height">32sp</item>
+        <item name="android:layout_gravity">left|bottom</item>
+        <item name="android:layout_marginBottom">2sp</item>
+        <item name="android:layout_marginRight">10px</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="BrowseFileTypeButtonCommon" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:textColor">#ff4e6172</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center|center_vertical</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+
+    <style name="BrowseFileTypeButtonCommon.Normal" parent="BrowseFileTypeButtonCommon">
+        <item name="android:textSize">8dp</item>
+    </style>
+
+    <style name="BrowseFileTypeButtonCommon.Big" parent="BrowseFileTypeButtonCommon">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="BrowseFileTypeButton" parent="BrowseFileTypeButtonCommon.Normal"></style>
+
+    <style name="BrowsePeerHeaderIconCommon" parent="android:Widget.ImageButton">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_margin">3sp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="BrowsePeerHeaderIconCommon.Normal" parent="BrowsePeerHeaderIconCommon">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+    </style>
+
+    <style name="BrowsePeerHeaderIconCommon.Big" parent="BrowsePeerHeaderIconCommon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+    </style>
+
+    <style name="BrowsePeerHeaderIcon" parent="BrowsePeerHeaderIconCommon.Normal"></style>
+
+    <style name="BrowsePeerHeaderTextCommon" parent="android:Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">left|top</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">4.0</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BrowsePeerHeaderTextCommon.Normal" parent="BrowsePeerHeaderTextCommon">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
+    <style name="BrowsePeerHeaderTextCommon.Big" parent="BrowsePeerHeaderTextCommon">
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    </style>
+
+    <style name="BrowsePeerHeaderText" parent="BrowsePeerHeaderTextCommon.Normal"></style>
+
+    <style name="Widget" parent="android:Widget"></style>
+
+    <style name="Widget.CompoundButton" parent="android:Widget.CompoundButton"></style>
+
+    <style name="Animations" />
+
+    <!-- PopDownMenu -->
+    <style name="Animations.PopDownMenu" />
+
+    <style name="Animations.PopDownMenu.Center">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_top</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottom</item>
+    </style>
+
+    <style name="Animations.PopDownMenu.Left">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_topleft_to_bottomright</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottomright_to_topleft</item>
+    </style>
+
+    <style name="Animations.PopDownMenu.Right">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_topright_to_bottomleft</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_bottomleft_to_topright</item>
+    </style>
+
+    <style name="Animations.PopDownMenu.Reflect">
+        <item name="@android:windowEnterAnimation">@anim/pump_top</item>
+        <item name="@android:windowExitAnimation">@anim/quickaction_disappear</item>
+    </style>
+
+    <!-- PopUpMenu -->
+    <style name="Animations.PopUpMenu" />
+
+    <style name="Animations.PopUpMenu.Center">
+        <item name="@android:windowEnterAnimation">@anim/quickaction_grow_from_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_top</item>
+    </style>
+
+    <style name="Animations.PopUpMenu.Left">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_bottomleft_to_topright</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_topright_to_bottomleft</item>
+    </style>
+
+    <style name="Animations.PopUpMenu.Right">
+        <item name="@android:windowEnterAnimation">@anim/grow_from_bottomright_to_topleft</item>
+        <item name="@android:windowExitAnimation">@anim/shrink_from_topleft_to_bottomright</item>
+    </style>
+
+    <style name="Animations.PopUpMenu.Reflect">
+        <item name="@android:windowEnterAnimation">@anim/pump_bottom</item>
+        <item name="@android:windowExitAnimation">@anim/quickaction_disappear</item>
+    </style>
+
+    <style name="TransparentListView" parent="@android:style/Widget.ListView">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+    </style>
+
+    <style name="TransparentExpandableListView" parent="@android:style/Widget.ExpandableListView">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:footerDividersEnabled">false</item>
+        <item name="android:headerDividersEnabled">false</item>
+    </style>
+
+    <style name="QuickAction"></style>
+
+    <style name="QuickAction.Item"></style>
+
+    <style name="QuickAction.Item.Horizontal"></style>
+
+    <style name="QuickAction.Item.Horizontal.Image">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_margin">2sp</item>
+    </style>
+
+    <style name="QuickAction.Item.Horizontal.TextCommon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="QuickAction.Item.Horizontal.TextCommon.Visible">
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="QuickAction.Item.Horizontal.TextCommon.Gone">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="QuickAction.Item.Horizontal.Text" parent="QuickAction.Item.Horizontal.TextCommon.Gone"></style>
+
+    <style name="QuickAction.Item.Vertical"></style>
+
+    <style name="QuickAction.Item.Vertical.ImageCommon">
+        <item name="android:layout_margin">2sp</item>
+    </style>
+
+    <style name="QuickAction.Item.Vertical.ImageCommon.Normal">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="QuickAction.Item.Vertical.ImageCommon.Big">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+
+    <style name="QuickAction.Item.Vertical.Image" parent="QuickAction.Item.Vertical.ImageCommon.Normal"></style>
+
+    <style name="Preferences"></style>
+
+</resources>

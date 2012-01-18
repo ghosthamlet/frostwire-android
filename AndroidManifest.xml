@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.frostwire.android"
+    android:versionCode="62"
+    android:versionName="0.7.0" >
+
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:name=".gui.MainApplication"
+        android:debuggable="true"
+        android:icon="@drawable/application_icon"
+        android:label="@string/application_label"
+        android:theme="@style/FrostWireTheme" >
+        <activity
+            android:name=".gui.activities.LaunchActivity"
+            android:label="@string/application_label" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gui.activities.MainActivity"
+            android:label="@string/application_label" />
+        <activity
+            android:name=".gui.activities.WizardActivity"
+            android:label="@string/application_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gui.activities.PreferencesActivity"
+            android:label="@string/activity_preferences_name"
+            android:theme="@style/Preferences" />
+        <activity
+            android:name=".gui.activities.BrowsePeerActivity"
+            android:label="@string/activity_browse_peer_name" />
+        <activity
+            android:name=".gui.activities.MediaPlayerActivity"
+            android:label="@string/activity_media_player_name" />
+        <activity
+            android:name=".gui.activities.AboutActivity"
+            android:label="@string/activity_about" />
+
+        <provider
+            android:name=".core.providers.DocumentsProvider"
+            android:authorities="com.frostwire.android.core.providers.Documents" />
+        <provider
+            android:name=".core.providers.SharingProvider"
+            android:authorities="com.frostwire.android.core.providers.Sharing" />
+        <provider
+            android:name=".core.providers.ApplicationsProvider"
+            android:authorities="com.frostwire.android.core.providers.Applications" />
+        <provider
+            android:name=".core.providers.TorrentsProvider"
+            android:authorities="com.frostwire.android.core.providers.Torrents" />
+
+        <service
+            android:name=".gui.services.EngineService"
+            android:exported="false" />
+
+        <receiver android:name=".gui.services.EngineBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48dp"
+    android:background="@drawable/shape_untabbed_header_background"
+    android:orientation="horizontal" >
+
+    <!-- Dummy item to prevent EditText from receiving focus at startup -->
+
+    <LinearLayout
+        android:id="@+id/view_search_input_linearlayout_dummy"
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="3sp"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/view_search_button_options"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="3sp"
+            android:layout_marginRight="3sp"
+            android:layout_marginBottom="2sp"
+            android:background="@drawable/search_button"
+            android:padding="2sp"
+            android:textColor="#FFFFFFFF" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="7dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/dummy_content_description"
+            android:src="@drawable/downward_white_triangle" />
+    </LinearLayout>
+
+    <com.frostwire.android.gui.views.ClearableEditTextView
+        android:id="@+id/view_search_text_input"
+        android:layout_width="0dip"
+        android:layout_height="38sp"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="3sp"
+        android:layout_marginRight="3sp"
+        android:layout_weight="1.0"
+        android:background="@drawable/shape_search_box"
+        android:nextFocusLeft="@id/view_search_text_input"
+        android:nextFocusUp="@id/view_search_text_input"
+        android:padding="3sp" />
+
+    <Button
+        android:id="@+id/view_search_button_search"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="3sp"
+        android:background="@drawable/search_button"
+        android:padding="2sp"
+        android:textColor="#FFFFFFFF" />
+
+</LinearLayout>

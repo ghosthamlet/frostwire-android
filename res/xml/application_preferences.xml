@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:frostwire="http://schemas.android.com/apk/res/com.frostwire.android" >
+
+    <PreferenceCategory android:title="@string/sharing_preferences" >
+        <EditTextPreference
+            android:key="frostwire.prefs.gui.nickname"
+            android:summary="@string/how_other_users_will_see_you"
+            android:title="@string/nickname" />
+
+        <CheckBoxPreference
+            android:key="frostwire.prefs.torrent.seed_finished_torrents"
+            android:summary="@string/seed_finished_torrents_summary"
+            android:title="@string/seed_finished_torrents" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.torrent.seed_finished_torrents_wifi_only"
+            android:summary="@string/seed_finished_torrents_wifi_only_summary"
+            android:title="@string/seed_finished_torrents_wifi_only" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.transfer.share_finished_downloads"
+            android:summary="@string/share_finished_downloads_summary"
+            android:title="@string/share_finished_downloads" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/networking_preferences" >
+        <CheckBoxPreference
+            android:key="frostwire.prefs.network.use_mobile_data"
+            android:summary="@string/use_mobile_data"
+            android:title="@string/use_mobile_data" />
+
+        <com.frostwire.android.gui.views.preference.NumberSpinnerPreference
+            android:key="frostwire.prefs.network.max_concurrent_uploads"
+            frostwire:spinner_defaultValue="3"
+            frostwire:spinner_endRange="6"
+            frostwire:spinner_startRange="1"
+            android:summary="@string/simultaneous_uploads_summary"
+            android:title="@string/simultaneous_uploads" />
+
+        <CheckBoxPreference
+            android:key="froswire.prefs.network.use_multicast"
+            android:summary="@string/multicast_discovery_summary"
+            android:title="@string/multicast_discovery" />
+        <CheckBoxPreference
+            android:key="froswire.prefs.network.use_broadcast"
+            android:summary="@string/broadcast_discovery_summary"
+            android:title="@string/broadcast_discovery" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/search_settings" >
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_btjunkie"
+            android:summary="@string/use_btjunkie"
+            android:title="@string/use_btjunkie" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_clearbits"
+            android:summary="@string/use_clearbits"
+            android:title="@string/use_clearbits" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_extratorrent"
+            android:summary="@string/use_extratorrent"
+            android:title="@string/use_extratorrent" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_isohunt"
+            android:summary="@string/use_isohunt"
+            android:title="@string/use_isohunt" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_mininova"
+            android:summary="@string/use_mininova"
+            android:title="@string/use_mininova" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_tpb"
+            android:summary="@string/use_tpb"
+            android:title="@string/use_tpb" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_vertor"
+            android:summary="@string/use_vertor"
+            android:title="@string/use_vertor" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/other_settings" >
+        <CheckBoxPreference
+            android:key="frostwire.prefs.gui.vibrate_on_finished_download"
+            android:title="@string/vibrate_on_finished_download" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.gui.show_share_indication"
+            android:title="@string/show_share_indication" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.gui.show_transfers_on_download_start"
+            android:title="@string/show_transers_on_download_start" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.gui.show_new_transfer_dialog"
+            android:title="@string/show_new_transfer_dialog" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/torrent_settings" >
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_download_speed"
+            frostwire:picker_defaultValue="0"
+            frostwire:picker_endRange="102400"
+            frostwire:picker_startRange="0"
+            android:summary="@string/torrent_max_download_speed_summary"
+            android:title="@string/torrent_max_download_speed" />
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_upload_speed"
+            frostwire:picker_defaultValue="0"
+            frostwire:picker_endRange="102400"
+            frostwire:picker_startRange="0"
+            android:summary="@string/torrent_max_upload_speed_summary"
+            android:title="@string/torrent_max_upload_speed" />
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_downloads"
+            frostwire:picker_defaultValue="4"
+            frostwire:picker_endRange="10"
+            frostwire:picker_startRange="1"
+            android:summary="@string/torrent_max_downloads_summary"
+            android:title="@string/torrent_max_downloads" />
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_uploads"
+            frostwire:picker_defaultValue="4"
+            frostwire:picker_endRange="10"
+            frostwire:picker_startRange="1"
+            android:summary="@string/torrent_max_uploads_summary"
+            android:title="@string/torrent_max_uploads" />
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_total_connections"
+            frostwire:picker_defaultValue="250"
+            frostwire:picker_endRange="250"
+            frostwire:picker_startRange="10"
+            android:summary="@string/torrent_max_total_connections_summary"
+            android:title="@string/torrent_max_total_connections" />
+        <com.frostwire.android.gui.views.preference.NumberPickerPreference
+            android:key="frostwire.prefs.torrent.max_torrent_connections"
+            frostwire:picker_defaultValue="50"
+            frostwire:picker_endRange="100"
+            frostwire:picker_startRange="10"
+            android:summary="@string/torrent_max_torrent_connection_summary"
+            android:title="@string/torrent_max_torrent_connection" />
+
+        <com.frostwire.android.gui.views.preference.SimpleActionPreference
+            frostwire:button_text="@string/clear"
+            android:key="frostwire.prefs.internal.clear_index"
+            android:summary="@string/clear_torrent_index_summary"
+            android:title="@string/clear_torrent_index" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

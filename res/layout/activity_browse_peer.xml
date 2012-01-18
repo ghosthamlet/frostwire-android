@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Created by Angel Leon (@gubatron), Alden Torres (aldenml)
+ * Copyright (c) 2011, 2012, FrostWire(TM). All rights reserved.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_untabbed_header_background"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingTop="7dp" >
+
+        <ImageButton
+            android:id="@+id/activity_browse_peer_icon"
+            style="@style/BrowsePeerHeaderIcon"
+            android:contentDescription="@null"
+            android:src="@drawable/wifi_dark" />
+
+        <TextView
+            android:id="@+id/activity_browse_peer_text_nickname"
+            style="@style/BrowsePeerHeaderText"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/activity_browse_peer_icon"
+            android:text="@string/dummy_nickname" />
+    </RelativeLayout>
+
+    <fragment
+        android:id="@+id/activity_browse_peer_fragment"
+        android:name="com.frostwire.android.gui.fragments.BrowsePeerFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
