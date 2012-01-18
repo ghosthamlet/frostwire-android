@@ -199,7 +199,7 @@
     <string name="unshare_selected_files">Unshare selected files</string>
     <string name="long_press_for_batch_actions">Touch any file title for batch actions</string>
     <string name="files_shared">files shared</string>
-    <string name="share_finished_downloads">Make finished downloads public on local WiFi network</string>
+    <string name="share_finished_downloads">Share finished downloads on WiFi</string>
     <string name="share_finished_downloads_summary">Finished downloads will be available to other FrostWire users on your WiFi network.</string>
     <string name="are_you_sure_delete_files">Are you sure you want to delete the selected files?</string>
     <string name="searchable_activity_label">Searchable Activity</string>
@@ -347,7 +347,7 @@
     <string name="let_apos_s_set_you_up_before_we_begin_">Let\'s set you up before we begin.</string>
     <string name="how_others_see_you_on_the_local_network_wifi_">How others see you on the local network (WiFi)</string>
     <string name="seeding_settings">Seeding Settings</string>
-    <string name="seeding_settings_explanation">Share pieces of files downloaded from BitTorrent with other users on the Internet. Give and ye shall receive.</string>
+    <string name="seeding_settings_explanation">BitTorrent users on the internet will be able to download file chunks of the data your torrents seed.</string>
     <string name="seeding_wifi_settings_explanation">Seed only when using a WiFi connection. Avoid extra charges from your carrier.</string>
     <string name="intent_text">FrostWire is a peer-to-peer program for sharing authorized files only. Installing and using the program does not constitute a license for obtaining or distributing unauthorized content.</string>
     <string name="accept_intent">I will not use FrostWire for copyright infringement</string>
