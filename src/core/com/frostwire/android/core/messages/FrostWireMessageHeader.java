@@ -241,7 +241,7 @@ public class FrostWireMessageHeader {
      * @return
      */
     public int getPayloadSize() {
-        return ByteUtils.byteArrayToSmallInt(this.payloadSize);
+        return ByteUtils.byteArrayToSmallInt(this.payloadSize, 0);
     }
 
     /**
