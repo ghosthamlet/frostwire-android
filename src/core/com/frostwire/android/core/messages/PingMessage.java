@@ -25,10 +25,10 @@ import com.frostwire.android.core.Constants;
 import com.frostwire.android.util.ByteUtils;
 
 /**
- * PingMessages are sent via Multicast and Broadcast periodically.
+ * PingMessages are sent via Multicast and/or Broadcast periodically.
  * 
  * The ping message has the following structure:
- * - UDP Generic Port (2 bytes)
+ * - Listening Port (2 bytes)
  * - Number of files shared (3 bytes)
  * - Nickname (16 bytes)
  * - bye (1 byte) - If !=0 that peer is disconnecting.
@@ -97,7 +97,7 @@ public final class PingMessage extends FrostWireMessage {
         // is saying good bye
         bye = buffer.get() != (byte) 0;
 
-        getHeader().setPayloadSize(38); // 2+3+16+8+8+1);
+        getHeader().setPayloadSize(38); // 2+3+16+8+8+1;
     }
 
     /**
