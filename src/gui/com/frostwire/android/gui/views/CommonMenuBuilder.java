@@ -153,7 +153,7 @@ public class CommonMenuBuilder implements OptionsMenuBuilder {
             
             @Override
             protected void onPostExecute(Void result) {
-                UIUtils.showShortMessage(context, R.string.toast_on_disconnect);
+                UIUtils.showShortMessage(context, R.string.toast_on_connect);
             }
         };
         
