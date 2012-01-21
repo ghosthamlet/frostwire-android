@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,6 +33,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -61,9 +63,9 @@ public class MainActivity extends AbstractActivity {
 
     private static final String TAG = "FW.MainActivity";
 
-    private static final String TAB_SEARCH_KEY = "search";
-    private static final String TAB_TRANSFERS_KEY = "transfers";
-    private static final String TAB_PEERS_KEY = "peers";
+    private static final String TAB_SEARCH_KEY = "tab_search";
+    private static final String TAB_TRANSFERS_KEY = "tab_transfers";
+    private static final String TAB_PEERS_KEY = "tab_peers";
 
     private TabHost tabHost;
     private ViewPager viewPager;
@@ -74,13 +76,30 @@ public class MainActivity extends AbstractActivity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            trackDialog(UIUtils.showYesNoDialog(this, R.string.are_you_sure_you_wanna_leave, R.string.minimize_frostwire, new OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    moveTaskToBack(true);
+                }
+            }));
+        } else if (keyCode == KeyEvent.KEYCODE_SEARCH) {
+            tabHost.setCurrentTabByTag(TAB_SEARCH_KEY);
+        } else {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        tabHost = (TabHost) findViewById(android.R.id.tabhost);
+        tabHost = findView(android.R.id.tabhost);
         tabHost.setup();
 
-        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = findView(R.id.pager);
 
         tabsAdapter = new TabsAdapter(this, tabHost, viewPager);
 
@@ -159,7 +178,8 @@ public class MainActivity extends AbstractActivity {
         });
     }
 
-    // From an android example
+    // from an android example:
+    // http://developer.android.com/resources/samples/Support4Demos/src/com/example/android/supportv4/app/FragmentTabsPager.html
     private class TabsAdapter extends FragmentPagerAdapter implements OnTabChangeListener, OnPageChangeListener {
 
         private final Context context;
@@ -212,6 +232,11 @@ public class MainActivity extends AbstractActivity {
 
         @Override
         public void onPageSelected(int position) {
+            // Unfortunately when TabHost changes the current tab, it kindly
+            // also takes care of putting focus on it when not in touch mode.
+            // The jerk.
+            // This hack tries to prevent this from pulling focus out of our
+            // ViewPager.
             TabWidget widget = tabHost.getTabWidget();
             int oldFocusability = widget.getDescendantFocusability();
             widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);

@@ -18,6 +18,7 @@
 
 package com.frostwire.android.gui.httpserver;
 
+import java.io.Closeable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -103,19 +104,30 @@ class DownloadHandler implements HttpHandler {
             }
 
         } catch (IOException e) {
-            Log.e(TAG, "Error uploading file type=" + type + ", id=" + id, e);
+            Log.e(TAG, "Error uploading file type=" + type + ", id=" + id);
             throw e;
         } finally {
-            if (os != null) {
-                os.close();
+            close(os);
+            close(fis);
+
+            try {
+                exchange.close();
+            } catch (Throwable e) {
+                // ignore
             }
-            if (fis != null) {
-                fis.close();
-            }
-            exchange.close();
 
             if (upload != null) {
                 upload.complete();
+            }
+        }
+    }
+
+    private void close(Closeable c) {
+        if (c != null) {
+            try {
+                c.close();
+            } catch (Throwable e) {
+                // ignore
             }
         }
     }

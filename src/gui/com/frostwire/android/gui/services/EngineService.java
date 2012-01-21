@@ -156,11 +156,11 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
     @Override
     public void stopMedia() {
         if (mediaPlayer != null) {
-            releaseMediaPlayer();
-            ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).cancel(Constants.NOTIFICATION_MEDIA_PLAYING_ID);
             stopForeground(true);
         }
 
+        releaseMediaPlayer();
+        ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).cancel(Constants.NOTIFICATION_MEDIA_PLAYING_ID);
         sendBroadcast(new Intent(Constants.ACTION_MEDIA_PLAYER_STOPPED));
     }
 
@@ -307,9 +307,10 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
-            mediaPlayer = null;
-            mediaFD = null;
         }
+
+        mediaPlayer = null;
+        mediaFD = null;
     }
 
     private void registerPreferencesChangeListener() {
