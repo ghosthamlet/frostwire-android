@@ -1,3 +1,11 @@
+FrostWire 0.9.1:
+ - Fixed issues with local file sharing on the receiving end.
+ - Adjustments on list adapter layouts.
+ - New icons for "Library" and "padlocks".
+ - Added infographic to explain local file sharing.
+ - Made source code publicly available on GitHub.
+ - FrostClick promos are now hidden as soon as a search is started.
+
 FrostWire 0.9.0:
  - Core-upgrades: BitTorrent support. Metafrost protocol dropped.
  - Chat dropped.
