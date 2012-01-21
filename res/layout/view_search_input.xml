@@ -42,10 +42,8 @@
 
         <Button
             android:id="@+id/view_search_button_options"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginLeft="3sp"
-            android:layout_marginRight="3sp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginBottom="2sp"
             android:background="@drawable/search_button"
             android:padding="2sp"
@@ -74,8 +72,8 @@
 
     <Button
         android:id="@+id/view_search_button_search"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="center_vertical"
         android:layout_marginRight="3sp"
         android:background="@drawable/search_button"

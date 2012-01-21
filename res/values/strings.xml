@@ -359,7 +359,7 @@
     <string name="size_unknown">size unknown</string>
     <string name="playing">Playing</string>
     <string name="back">Back</string>
-    <string name="input_text_hint">Type here</string>
+    <string name="input_text_hint">What are you looking for? (hints by Google)</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="stop_all_transfers">This will stop all transfers</string>
     <string name="clear_complete_transfers">This will clear out all the finished transfers</string>
