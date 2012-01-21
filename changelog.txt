@@ -1,3 +1,12 @@
+FrostWire 0.9.2:
+ - Fixed logic for back button press in Main activity.
+ - Added search button press logic to Main activity.
+ - Fixed logic error in http download handler.
+ - Minor refactor in stop media logic in engine service.
+ - Updated android-support-v4 library to revision 6.
+ - Adjustments in the button layout of the Transfer toolbar buttons.
+ - Fixed toast messages when connecting and disconnecting. Thanks untaimed18
+
 FrostWire 0.9.1:
  - Fixed issues with local file sharing on the receiving end.
  - Adjustments on list adapter layouts.
