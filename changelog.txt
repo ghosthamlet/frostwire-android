@@ -1,4 +1,6 @@
 FrostWire 0.9.2:
+ - FrostWire will now start downloading torrents if the user clicks 
+   on a torrent URL or tries to open a .torrent file with other app.
  - Fixed logic for back button press in Main activity.
  - Added search button press logic to Main activity.
  - Fixed logic error in http download handler.
