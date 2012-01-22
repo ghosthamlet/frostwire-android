@@ -273,7 +273,6 @@ public final class TransferManager {
         boolean isFile = torrentURI.getScheme().equalsIgnoreCase("file");
 
         try {
-            //TODO,
             TransferManager.instance().download(
                     isFile ? new BittorrentIntentFileResult(intent)
                             : new BittorrentIntentHttpResult(intent));
