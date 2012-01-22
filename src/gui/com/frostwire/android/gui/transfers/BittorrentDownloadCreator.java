@@ -19,6 +19,8 @@
 package com.frostwire.android.gui.transfers;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.gudy.azureus2.core3.disk.DiskManagerFileInfo;
@@ -28,6 +30,7 @@ import org.gudy.azureus2.core3.download.impl.DownloadManagerAdapter;
 import org.gudy.azureus2.core3.global.GlobalManager;
 import org.gudy.azureus2.core3.torrent.TOTorrent;
 import org.gudy.azureus2.core3.torrent.TOTorrentException;
+import org.gudy.azureus2.core3.torrent.TOTorrentFactory;
 import org.gudy.azureus2.core3.util.HashWrapper;
 import org.gudy.azureus2.core3.util.TorrentUtils;
 
@@ -37,6 +40,8 @@ import com.frostwire.android.R;
 import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
 import com.frostwire.android.gui.Librarian;
+import com.frostwire.android.gui.search.BittorrentIntentFileResult;
+import com.frostwire.android.gui.search.BittorrentIntentHttpResult;
 import com.frostwire.android.gui.search.BittorrentSearchResult;
 import com.frostwire.android.gui.search.BittorrentWebSearchResult;
 import com.frostwire.android.gui.services.Engine;
@@ -65,7 +70,9 @@ final class BittorrentDownloadCreator {
         } catch (Throwable e) {
             // ignore
         }
-        if (sr instanceof BittorrentWebSearchResult || sr instanceof BittorrentPromotionSearchResult) {
+        if (sr instanceof BittorrentWebSearchResult || 
+            sr instanceof BittorrentPromotionSearchResult ||
+            sr instanceof BittorrentIntentHttpResult) {
             return create(manager, torrentFile, hash, null);
         } else {
             return create(manager, torrentFile, hash, sr.getFileName());
@@ -75,7 +82,12 @@ final class BittorrentDownloadCreator {
     public static BittorrentDownload create(TransferManager manager, BittorrentSearchResult sr) throws TOTorrentException {
         GlobalManager gm = AzureusManager.instance().getGlobalManager();
 
-        if (StringUtils.isNullOrEmpty(sr.getHash())) {
+        if (sr instanceof BittorrentIntentFileResult) {
+            BittorrentIntentFileResult bifr = (BittorrentIntentFileResult) sr;
+            TOTorrent torrent = TorrentUtils.readFromFile(new File(sr.getFileName()), false);
+            return create(manager, bifr.getFileName(), torrent.getHash(), null);
+        }
+        else if (StringUtils.isNullOrEmpty(sr.getHash())) {
             return new TorrentFetcherDownload(manager, sr);
         } else {
             Log.d(TAG, "About to create download for hash: " + sr.getHash());
@@ -99,7 +111,16 @@ final class BittorrentDownloadCreator {
         return new AzureusBittorrentDownload(manager, dm);
     }
 
-    private static BittorrentDownload create(TransferManager manager, String torrentFile, byte[] hash, String relativePath) throws TOTorrentException {
+    /**
+     * 
+     * @param manager
+     * @param torrentFile
+     * @param hash
+     * @param relativePartialPath - In case you want to download some files.
+     * @return
+     * @throws TOTorrentException
+     */
+    private static BittorrentDownload create(TransferManager manager, String torrentFile, byte[] hash, String relativePartialPath) throws TOTorrentException {
         GlobalManager gm = AzureusManager.instance().getGlobalManager();
         TOTorrent torrent = null;
         DownloadManager dm = null;
@@ -115,20 +136,20 @@ final class BittorrentDownloadCreator {
 
         if (dm == null) {
             boolean[] fileSelection = null;
-            if (relativePath != null) {
+            if (relativePartialPath != null) {
                 if (torrent == null) {
                     torrent = TorrentUtils.readFromFile(new File(torrentFile), false);
                 }
-                fileSelection = buildFileSelection(torrent, relativePath);
+                fileSelection = buildFileSelection(torrent, relativePartialPath);
             }
             dm = createDownloadManager(manager, torrentFile, fileSelection);
         } else { //the download manager was there...
 
             boolean[] fileSelection = null;
 
-            if (relativePath != null) { //I want to download partial files.
+            if (relativePartialPath != null) { //I want to download partial files.
 
-                fileSelection = buildFileSelection(dm, relativePath);
+                fileSelection = buildFileSelection(dm, relativePartialPath);
                 boolean[] prevSelection = getFileSelection(dm);
 
                 //he was already downloading the whole torrent, you'll get the file eventually when it finishes.

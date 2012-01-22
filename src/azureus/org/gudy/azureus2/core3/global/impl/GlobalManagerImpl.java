@@ -1101,6 +1101,7 @@ public class GlobalManagerImpl
     try {
       return getDownloadManager(torrent.getHashWrapper());
     } catch (TOTorrentException e) {
+        e.printStackTrace();
       return null;
     }
   }

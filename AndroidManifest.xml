@@ -55,7 +55,33 @@
         </activity>
         <activity
             android:name=".gui.activities.MainActivity"
-            android:label="@string/application_label" />
+            android:label="@string/application_label" >
+
+            <!-- handle .torrent urls -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!-- with mime and classic url pattern -->
+                <data android:scheme="http" />
+                <!-- maybe it has to be one or the other, I'll comment files for a sec. -->
+                <data android:mimeType="application/x-bittorrent" />
+                <data android:host="*" />
+            </intent-filter>
+
+            <!-- handle .torrent files -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- with mime and classic url pattern -->
+                <data android:scheme="file" />
+                
+                <!-- maybe it has to be one or the other, I'll comment files for a sec. -->
+                <data android:pathPattern=".*\\.torrent" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".gui.activities.WizardActivity"
             android:label="@string/application_label"

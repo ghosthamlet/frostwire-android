@@ -26,6 +26,8 @@ import org.gudy.azureus2.core3.download.DownloadManager;
 import org.gudy.azureus2.core3.global.GlobalManager;
 import org.gudy.azureus2.core3.torrent.TOTorrentException;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
 import com.frostwire.android.core.ConfigurationManager;
@@ -33,6 +35,8 @@ import com.frostwire.android.core.Constants;
 import com.frostwire.android.core.FileDescriptor;
 import com.frostwire.android.gui.NetworkManager;
 import com.frostwire.android.gui.Peer;
+import com.frostwire.android.gui.search.BittorrentIntentFileResult;
+import com.frostwire.android.gui.search.BittorrentIntentHttpResult;
 import com.frostwire.android.gui.search.BittorrentSearchResult;
 import com.frostwire.android.gui.search.SearchResult;
 import com.frostwire.android.util.ByteUtils;
@@ -259,6 +263,22 @@ public final class TransferManager {
     public void pauseTorrents() {
         for (BittorrentDownload d : bittorrenDownloads) {
             d.pause();
+        }
+    }
+
+    /** Start a torrent download from an intent */
+    public void download(Intent intent) {
+        Uri torrentURI = intent.getData();
+
+        boolean isFile = torrentURI.getScheme().equalsIgnoreCase("file");
+
+        try {
+            //TODO,
+            TransferManager.instance().download(
+                    isFile ? new BittorrentIntentFileResult(intent)
+                            : new BittorrentIntentHttpResult(intent));
+        } catch (Throwable e) {
+            Log.e(TAG,e.getMessage(),e);
         }
     }
 }

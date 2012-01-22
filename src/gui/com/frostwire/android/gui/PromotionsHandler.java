@@ -65,7 +65,7 @@ public class PromotionsHandler {
     private void startTransfer(final Slide slide) {
         final BittorrentPromotionSearchResult bittorrentSearchResult = new BittorrentPromotionSearchResult(slide);
         
-        NewTransferDialog dlg = new NewTransferDialog(context,bittorrentSearchResult, new OnYesNoListener() {
+        NewTransferDialog dlg = new NewTransferDialog(context,bittorrentSearchResult, false, new OnYesNoListener() {
             public void onYes(NewTransferDialog dialog) {
                 try {
                     DownloadTransfer download = TransferManager.instance().download(bittorrentSearchResult);

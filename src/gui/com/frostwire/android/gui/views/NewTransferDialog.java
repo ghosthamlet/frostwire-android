@@ -48,17 +48,24 @@ public class NewTransferDialog extends Dialog {
 
     private final OnYesNoListener listener;
     private final SearchResult searchResult;
+    
+    /** When opening .torrent files from outside you don't want to
+     * give the user the option of not showing this dialog again,
+     * and the question should be asked everytime to avoid starting
+     * big transfers by mistake. */
+    private boolean hideShowNextTimeOption;
 
-    public NewTransferDialog(Context context, SearchResult searchResult, OnYesNoListener listener) {
+    public NewTransferDialog(Context context, SearchResult searchResult, boolean hideShowNextTimeOption,  OnYesNoListener listener) {
         super(context);
         this.listener = listener;
         this.searchResult = searchResult;
+        this.hideShowNextTimeOption = hideShowNextTimeOption;
         initComponents();
     }
 
     @Override
     public void show() {
-        if (getPreferences().getBoolean(Constants.PREF_KEY_GUI_SHOW_NEW_TRANSFER_DIALOG, true)) {
+        if (hideShowNextTimeOption || getPreferences().getBoolean(Constants.PREF_KEY_GUI_SHOW_NEW_TRANSFER_DIALOG, true)) {
             super.show();
         } else {
             if (listener != null) {
@@ -111,6 +118,10 @@ public class NewTransferDialog extends Dialog {
                 getPreferences().edit().putBoolean(Constants.PREF_KEY_GUI_SHOW_NEW_TRANSFER_DIALOG, checkShow.isChecked()).commit();
             }
         });
+        
+        if (hideShowNextTimeOption) {
+            checkShow.setVisibility(View.GONE);
+        }
     }
 
     private SharedPreferences getPreferences() {

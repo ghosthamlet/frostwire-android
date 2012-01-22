@@ -150,7 +150,7 @@ public class SearchResultListAdapter extends AbstractListAdapter<SearchResult> {
     }
 
     private void startTransfer(final BittorrentSearchResult sr) {
-        NewTransferDialog dlg = new NewTransferDialog(getContext(), sr, new OnYesNoListener() {
+        NewTransferDialog dlg = new NewTransferDialog(getContext(), sr, false, new OnYesNoListener() {
             public void onYes(NewTransferDialog dialog) {
                 try {
                     DownloadTransfer transfer = TransferManager.instance().download(sr);

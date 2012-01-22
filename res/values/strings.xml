@@ -366,4 +366,5 @@
     <string name="dummy_media_controller_time">00:00</string>
     <string name="playing_song_name">Playing %s</string>
     <string name="dummy_nickname">[Nickname]</string>
+    <string name="invalid_torrent_file">Invalid Torrent File</string>
 </resources>
