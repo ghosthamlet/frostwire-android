@@ -30,7 +30,7 @@ public final class Constants {
     private Constants() {
     }
 
-    public static final byte[] FROSTWIRE_VERSION = { (byte) 0, (byte) 9, (byte) 1 };
+    public static final byte[] FROSTWIRE_VERSION = { (byte) 0, (byte) 9, (byte) 2 };
 
     public static final byte[] CLIENT_IDENTIFIER = { (byte) 0x46, (byte) 0x57 };
 
