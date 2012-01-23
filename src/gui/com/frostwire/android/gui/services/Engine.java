@@ -35,7 +35,6 @@ import android.os.IBinder;
 import com.frostwire.android.core.CoreRuntimeException;
 import com.frostwire.android.core.FileDescriptor;
 import com.frostwire.android.core.messages.FrostWireMessage;
-import com.frostwire.android.gui.SoftwareUpdater;
 import com.frostwire.android.gui.services.EngineService.EngineServiceBinder;
 import com.frostwire.android.util.concurrent.ThreadPool;
 
@@ -166,9 +165,6 @@ public final class Engine implements IEngineService {
                 Engine.this.service = ((EngineServiceBinder) service).getService();
 
                 registerStatusReceiver(context);
-
-                // perform the update only when the service is already connected (a safe place)
-                SoftwareUpdater.instance().checkForUpdate();
             }
         }, Context.BIND_AUTO_CREATE);
     }

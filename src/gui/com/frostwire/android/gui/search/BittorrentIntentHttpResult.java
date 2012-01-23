@@ -18,7 +18,6 @@
 package com.frostwire.android.gui.search;
 
 import android.content.Intent;
-import android.net.Uri;
 
 /**
  * 
@@ -32,10 +31,8 @@ import android.net.Uri;
 public class BittorrentIntentHttpResult extends AbstractBittorrentIntentResult {
 
     private String uri;
-    private Intent intent;
-    
+
     public BittorrentIntentHttpResult(Intent intent) {
-        this.intent = intent;
         uri = intent.getDataString();
     }
 

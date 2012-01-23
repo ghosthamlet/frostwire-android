@@ -63,7 +63,9 @@
             android:summary="@string/broadcast_discovery_summary"
             android:title="@string/broadcast_discovery" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/search_settings" >
+    <PreferenceCategory
+        android:key="frostwire.prefs.search.preference_category"
+        android:title="@string/search_settings" >
         <CheckBoxPreference
             android:key="frostwire.prefs.search.use_btjunkie"
             android:summary="@string/use_btjunkie"

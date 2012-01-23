@@ -32,6 +32,12 @@ import com.frostwire.android.bittorrent.websearch.mininova.MininovaWebSearchPerf
 import com.frostwire.android.bittorrent.websearch.tpb.TPBWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.vertor.VertorWebSearchPerformer;
 
+/**
+ * 
+ * @author gubatron
+ * @author aldenml
+ *
+ */
 public final class SearchEngine {
 
     public static final int CLEARBITS_ID = 0;
@@ -46,7 +52,9 @@ public final class SearchEngine {
     private final int id;
     private final String name;
     private final WebSearchPerformer performer;
-    private final String settingKey;
+    private final String preferenceKey;
+
+    private boolean active;
 
     public static final SearchEngine BTJUNKIE = new SearchEngine(BTJUNKIE_ID, "BTJunkie", new BTJunkieWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_BTJUNKIE);
     public static final SearchEngine CLEARBITS = new SearchEngine(CLEARBITS_ID, "ClearBits", new ClearBitsWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_CLEARBITS);
@@ -56,11 +64,12 @@ public final class SearchEngine {
     public static final SearchEngine TPB = new SearchEngine(TPB_ID, "TPB", new TPBWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_TPB);
     public static final SearchEngine VERTOR = new SearchEngine(VERTOR_ID, "Vertor", new VertorWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_VERTOR);
 
-    private SearchEngine(int id, String name, WebSearchPerformer performer, String settingKey) {
+    private SearchEngine(int id, String name, WebSearchPerformer performer, String preferenceKey) {
         this.id = id;
         this.name = name;
         this.performer = performer;
-        this.settingKey = settingKey;
+        this.preferenceKey = preferenceKey;
+        this.active = true;
     }
 
     public int getId() {
@@ -71,12 +80,24 @@ public final class SearchEngine {
         return name;
     }
 
-    public boolean isEnabled() {
-        return ConfigurationManager.instance().getBoolean(settingKey);
-    }
-
     public WebSearchPerformer getPerformer() {
         return performer;
+    }
+
+    public String getPreferenceKey() {
+        return preferenceKey;
+    }
+
+    public boolean isEnabled() {
+        return isActive() && ConfigurationManager.instance().getBoolean(preferenceKey);
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
@@ -93,11 +114,19 @@ public final class SearchEngine {
         return Arrays.asList(CLEARBITS, MININOVA, ISOHUNT, BTJUNKIE, EXTRATORRENT, VERTOR, TPB);
     }
 
-    public static SearchEngine getSearchEngineById(int searchEngineID) {
-        List<SearchEngine> searchEngines = getSearchEngines();
+    public static SearchEngine getSearchEngine(int id) {
+        for (SearchEngine engine : getSearchEngines()) {
+            if (engine.getId() == id) {
+                return engine;
+            }
+        }
 
-        for (SearchEngine engine : searchEngines) {
-            if (engine.getId() == searchEngineID) {
+        return null;
+    }
+
+    public static SearchEngine getSearchEngine(String name) {
+        for (SearchEngine engine : getSearchEngines()) {
+            if (engine.getName().equals(name)) {
                 return engine;
             }
         }
@@ -106,12 +135,12 @@ public final class SearchEngine {
     }
 
     public static Map<Integer, SearchEngine> getSearchEngineMap() {
-        HashMap<Integer, SearchEngine> m = new HashMap<Integer, SearchEngine>();
-        List<SearchEngine> searchEngines = getSearchEngines();
+        HashMap<Integer, SearchEngine> map = new HashMap<Integer, SearchEngine>();
 
-        for (SearchEngine engine : searchEngines) {
-            m.put(engine.getId(), engine);
+        for (SearchEngine engine : getSearchEngines()) {
+            map.put(engine.getId(), engine);
         }
-        return m;
+
+        return map;
     }
 }

@@ -19,8 +19,6 @@
 package com.frostwire.android.gui.transfers;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.gudy.azureus2.core3.disk.DiskManagerFileInfo;
@@ -30,7 +28,6 @@ import org.gudy.azureus2.core3.download.impl.DownloadManagerAdapter;
 import org.gudy.azureus2.core3.global.GlobalManager;
 import org.gudy.azureus2.core3.torrent.TOTorrent;
 import org.gudy.azureus2.core3.torrent.TOTorrentException;
-import org.gudy.azureus2.core3.torrent.TOTorrentFactory;
 import org.gudy.azureus2.core3.util.HashWrapper;
 import org.gudy.azureus2.core3.util.TorrentUtils;
 

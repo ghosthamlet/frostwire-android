@@ -40,7 +40,6 @@ public class MainApplication extends Application {
         ConfigurationManager.create(this);
         NetworkManager.create(this);
         Librarian.create(this);
-        SoftwareUpdater.create(this);
         AzureusManager.create(this);
         Engine.create(this);
 

@@ -24,12 +24,14 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.frostwire.android.R;
 import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
+import com.frostwire.android.core.SearchEngine;
 import com.frostwire.android.gui.NetworkManager;
 import com.frostwire.android.gui.search.BittorrentSearchEngine;
 import com.frostwire.android.gui.transfers.TransferManager;
@@ -55,6 +57,7 @@ public class PreferencesActivity extends PreferenceActivity {
         setupSeedingOptions();
         setupNickname();
         setupClearIndex();
+        setupSearchEngines();
     }
 
     private void setupSeedingOptions() {
@@ -107,6 +110,16 @@ public class PreferencesActivity extends PreferenceActivity {
                 updateIndexSummary(preference);
             }
         });
+    }
+
+    private void setupSearchEngines() {
+        PreferenceCategory category = (PreferenceCategory) findPreference(Constants.PREF_KEY_SEARCH_PREFERENCE_CATEGORY);
+        for (SearchEngine engine : SearchEngine.getSearchEngines()) {
+            CheckBoxPreference preference = (CheckBoxPreference) findPreference(engine.getPreferenceKey());
+            if (!engine.isActive()) {
+                category.removePreference(preference);
+            }
+        }
     }
 
     private void updateIndexSummary(SimpleActionPreference preference) {

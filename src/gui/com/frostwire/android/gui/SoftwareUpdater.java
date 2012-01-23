@@ -25,19 +25,23 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Locale;
+import java.util.Map;
 
-import android.app.Application;
-import android.content.Intent;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
-import android.os.SystemClock;
 import android.util.Log;
 
+import com.frostwire.android.R;
 import com.frostwire.android.core.Constants;
-import com.frostwire.android.core.CoreRuntimeException;
 import com.frostwire.android.core.HttpFetcher;
-import com.frostwire.android.gui.activities.MainActivity;
+import com.frostwire.android.core.SearchEngine;
+import com.frostwire.android.gui.services.Engine;
 import com.frostwire.android.gui.util.SystemUtils;
+import com.frostwire.android.gui.util.UIUtils;
 import com.frostwire.android.util.JsonUtils;
+import com.frostwire.android.util.StringUtils;
 
 /**
  * 
@@ -49,31 +53,26 @@ public final class SoftwareUpdater {
 
     private static final String TAG = "FW.SoftwareUpdater";
 
-    private final Application context;
+    private static final long UPDATE_MESSAGE_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+    private static final String DEFAULT_UPDATE_MESSAGE = "FrostWire has Downloaded a new update for you, please go ahead and touch the OK button if you want to install it now.";
 
     private boolean oldVersion;
     private String latestVersion;
     private String updateMessage;
 
-    private static SoftwareUpdater instance;
+    private long updateTimestamp;
+    private AsyncTask<Void, Void, Boolean> updateTask;
 
-    public synchronized static void create(Application context) {
-        if (instance != null) {
-            return;
-        }
-        instance = new SoftwareUpdater(context);
-    }
+    private static SoftwareUpdater instance;
 
     public static SoftwareUpdater instance() {
         if (instance == null) {
-            throw new CoreRuntimeException("SoftwareUpdater not created");
+            instance = new SoftwareUpdater();
         }
         return instance;
     }
 
-    private SoftwareUpdater(Application context) {
-        this.context = context;
-
+    private SoftwareUpdater() {
         this.oldVersion = false;
         this.latestVersion = Constants.FROSTWIRE_VERSION_STRING;
         this.updateMessage = null;
@@ -91,13 +90,18 @@ public final class SoftwareUpdater {
         return updateMessage;
     }
 
-    public void checkForUpdate() {
-        new AsyncTask<Void, Void, Boolean>() {
+    public void checkForUpdate(final Context context) {
+        long now = System.currentTimeMillis();
+
+        if (now - updateTimestamp < UPDATE_MESSAGE_TIMEOUT) {
+            return;
+        }
+
+        updateTimestamp = now;
+        updateTask = new AsyncTask<Void, Void, Boolean>() {
             @Override
             protected Boolean doInBackground(Void... params) {
                 try {
-                    SystemClock.sleep(2000);
-
                     byte[] jsonBytes = new HttpFetcher(Constants.SERVER_UPDATE_URL).fetch();
                     Update update = JsonUtils.toObject(new String(jsonBytes), Update.class);
 
@@ -111,6 +115,11 @@ public final class SoftwareUpdater {
                     byte[] mv = Constants.FROSTWIRE_VERSION;
 
                     oldVersion = isFrostWireOld(mv, lv);
+
+                    updateMessage = update.updateMessages.get(Locale.getDefault().getLanguage());
+                    if (StringUtils.isNullOrEmpty(updateMessage, true)) {
+                        updateMessage = DEFAULT_UPDATE_MESSAGE;
+                    }
 
                     updateConfiguration(update);
 
@@ -130,29 +139,40 @@ public final class SoftwareUpdater {
                     }
 
                 } catch (Throwable e) {
-                    Log.e(TAG, "Failed to check or retrieve the update information", e);
+                    Log.e(TAG, "Failed to check/retrieve/update the update information", e);
                 }
+
                 return false;
             }
 
             @Override
             protected void onPostExecute(Boolean result) {
-                if (result) {
-                    notifyUpdate();
+                if (result && !isCancelled()) {
+                    notifyUpdate(context);
                 }
             }
         };
+
+        updateTask.execute();
     }
 
-    private void notifyUpdate() {
+    private void notifyUpdate(final Context context) {
         try {
-            Intent i = new Intent(context, MainActivity.class);
+            if (!SystemUtils.getUpdateInstallerPath().exists()) {
+                return;
+            }
 
-            i.setAction(Constants.ACTION_ADVICE_UPDATE);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            String message = SoftwareUpdater.instance().getUpdateMessage();
+            if (StringUtils.isNullOrEmpty(message, true)) {
+                message = context.getString(R.string.update_message);
+            }
 
-            context.startActivity(i);
+            UIUtils.showYesNoDialog(context, R.drawable.application_icon, message, R.string.update_title, new OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Engine.instance().stopServices(false);
+                    UIUtils.openFile(context, SystemUtils.getUpdateInstallerPath().getAbsolutePath(), Constants.MIME_TYPE_ANDROID_PACKAGE_ARCHIVE);
+                }
+            });
         } catch (Throwable e) {
             Log.e(TAG, "Failed to notify update", e);
         }
@@ -248,13 +268,9 @@ public final class SoftwareUpdater {
             return;
         }
 
-        if (update.config.updateMessageLanguages != null && update.config.updateMessages != null) {
-            String language = Locale.getDefault().getLanguage();
-            for (int i = 0; i < update.config.updateMessageLanguages.length; i++) {
-                if (update.config.updateMessageLanguages[i].equals(language)) {
-                    updateMessage = update.config.updateMessages[i];
-                }
-            }
+        for (String name : update.config.activeSearchEngines.keySet()) {
+            SearchEngine engine = SearchEngine.getSearchEngine(name);
+            engine.setActive(update.config.activeSearchEngines.get(name));
         }
     }
 
@@ -262,11 +278,11 @@ public final class SoftwareUpdater {
         public String v;
         public String u;
         public String md5;
+        public Map<String, String> updateMessages;
         public Config config;
     }
 
     private static class Config {
-        public String[] updateMessageLanguages;
-        public String[] updateMessages;
+        public Map<String, Boolean> activeSearchEngines;
     }
 }

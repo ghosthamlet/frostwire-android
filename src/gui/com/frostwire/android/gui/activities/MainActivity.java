@@ -49,11 +49,8 @@ import com.frostwire.android.gui.fragments.SearchFragment;
 import com.frostwire.android.gui.fragments.TransfersFragment;
 import com.frostwire.android.gui.services.Engine;
 import com.frostwire.android.gui.transfers.TransferManager;
-import com.frostwire.android.gui.util.SystemUtils;
 import com.frostwire.android.gui.util.UIUtils;
 import com.frostwire.android.gui.views.AbstractActivity;
-import com.frostwire.android.gui.views.NewTransferDialog;
-import com.frostwire.android.util.StringUtils;
 
 /**
  * @author gubatron
@@ -135,9 +132,7 @@ public class MainActivity extends AbstractActivity {
     protected void onNewIntent(Intent intent) {
         String action = intent.getAction();
 
-        if (action != null && action.equals(Constants.ACTION_ADVICE_UPDATE)) {
-            notifyUserToUpdate();
-        } else if (action != null
+        if (action != null
                 && action.equals(Constants.ACTION_SHOW_TRANSFERS)) {
             tabHost.setCurrentTabByTag(TAB_TRANSFERS_KEY);
         } else if (action != null
@@ -197,6 +192,7 @@ public class MainActivity extends AbstractActivity {
         super.onResume();
 
         Engine.instance().startServices(); // it's necessary for the first time after wizard
+        SoftwareUpdater.instance().checkForUpdate(this);
     }
 
     @Override
@@ -204,27 +200,6 @@ public class MainActivity extends AbstractActivity {
         super.onSaveInstanceState(outState);
 
         outState.putString("tab", tabHost.getCurrentTabTag());
-    }
-
-    private void notifyUserToUpdate() {
-        if (!SystemUtils.getUpdateInstallerPath().exists()) {
-            return;
-        }
-
-        String message = SoftwareUpdater.instance().getUpdateMessage();
-        if (StringUtils.isNullOrEmpty(message, true)) {
-            message = getString(R.string.update_message);
-        }
-
-        UIUtils.showYesNoDialog(this, R.drawable.application_icon, message,
-                R.string.update_title, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Engine.instance().stopServices(false);
-                        UIUtils.openFile(MainActivity.this, SystemUtils
-                                .getUpdateInstallerPath().getAbsolutePath(),
-                                Constants.MIME_TYPE_ANDROID_PACKAGE_ARCHIVE);
-                    }
-                });
     }
 
     // from an android example:
