@@ -20,8 +20,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frostwire.android"
-    android:versionCode="64"
-    android:versionName="0.9.2" >
+    android:versionCode="66"
+    android:versionName="0.9.4" >
 
     <uses-sdk android:minSdkVersion="7" />
 
