@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.gudy.azureus2.core3.download.DownloadManager;
 import org.gudy.azureus2.core3.global.GlobalManager;
-import org.gudy.azureus2.core3.torrent.TOTorrentException;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -223,11 +222,14 @@ public final class TransferManager {
         List<DownloadManager> downloads = new ArrayList<DownloadManager>();
         for (Object obj : downloadManagers) {
             if (obj instanceof DownloadManager) {
-                downloads.add((DownloadManager) obj);
                 try {
-                    Log.d(TAG, "Loading torrent with hash: " + ByteUtils.encodeHex(((DownloadManager) obj).getTorrent().getHash()));
-                } catch (TOTorrentException e) {
+                    if (((DownloadManager) obj).getTorrent()!=null && ((DownloadManager) obj).getTorrent().getHash()!=null) {
+                        Log.d(TAG, "Loading torrent with hash: " + ByteUtils.encodeHex(((DownloadManager) obj).getTorrent().getHash()));
+                        downloads.add((DownloadManager) obj);
+                    }
+                } catch (Throwable e) {
                     // ignore
+                    Log.d(TAG, "error loading torrent (not the end of the world, keep going)");
                 }
             }
         }

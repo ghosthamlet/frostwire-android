@@ -176,7 +176,7 @@ public class TransferListAdapter extends BaseExpandableListAdapter {
             convertView.setTag(item);
             populateGroupView(convertView, item);
         } catch (Throwable e) {
-            Log.e(TAG, "Fatal error getting the group view: " + e.getMessage());
+            Log.e(TAG, "Fatal error getting the group view: " + e.getMessage(),e);            
         }
 
         return convertView;
@@ -301,8 +301,10 @@ public class TransferListAdapter extends BaseExpandableListAdapter {
                 String extension = null;
 
                 if (item instanceof BittorrentDownload) {
-                    BittorrentDownloadItem transferItem = (BittorrentDownloadItem) item.getItems().get(0);
-                    extension = FilenameUtils.getExtension(transferItem.getSavePath().getAbsolutePath());
+                    if (item.getItems().size() > 0) {
+                        BittorrentDownloadItem transferItem = (BittorrentDownloadItem) item.getItems().get(0);
+                        extension = FilenameUtils.getExtension(transferItem.getSavePath().getAbsolutePath());
+                    }
                 } else if (item instanceof PeerHttpDownload) {
                     PeerHttpDownload transferItem = (PeerHttpDownload) item;
                     extension = FilenameUtils.getExtension(transferItem.getSavePath().getAbsolutePath());

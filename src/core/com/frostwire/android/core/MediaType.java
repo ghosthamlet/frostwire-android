@@ -244,6 +244,10 @@ public class MediaType implements Serializable {
      * Retrieves the media type for the specified extension.
      */
     public static MediaType getMediaTypeForExtension(String ext) {
+        if (ext == null) {
+            return null;
+        }
+        
         for (int i = ALL_MEDIA_TYPES.length; --i >= 0;)
             if (ALL_MEDIA_TYPES[i].exts.contains(ext))
                 return ALL_MEDIA_TYPES[i];
