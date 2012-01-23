@@ -30,7 +30,7 @@ public final class Constants {
     private Constants() {
     }
 
-    public static final byte[] FROSTWIRE_VERSION = { (byte) 0, (byte) 9, (byte) 1 };
+    public static final byte[] FROSTWIRE_VERSION = { (byte) 0, (byte) 9, (byte) 3 };
 
     public static final byte[] CLIENT_IDENTIFIER = { (byte) 0x46, (byte) 0x57 };
 
@@ -90,8 +90,8 @@ public final class Constants {
     public static final String PREF_KEY_SEARCH_USE_MININOVA = "frostwire.prefs.search.use_mininova";
     public static final String PREF_KEY_SEARCH_USE_TPB = "frostwire.prefs.search.use_tpb";
     public static final String PREF_KEY_SEARCH_USE_VERTOR = "frostwire.prefs.search.use_vertor";
-    
-    public static final String PREF_KEY_SEARCH_PREFERENCE_CATEGORY= "frostwire.prefs.search.preference_category";
+
+    public static final String PREF_KEY_SEARCH_PREFERENCE_CATEGORY = "frostwire.prefs.search.preference_category";
 
     public static final String PREF_KEY_GUI_NICKNAME = "frostwire.prefs.gui.nickname";
     public static final String PREF_KEY_GUI_VIBRATE_ON_FINISHED_DOWNLOAD = "frostwire.prefs.gui.vibrate_on_finished_download";
@@ -136,7 +136,7 @@ public final class Constants {
     /**
      * URL where FrostWIre checks for software updates
      */
-    public static final String SERVER_UPDATE_URL = "http://update.frostwire.com/android.test.php";
+    public static final String SERVER_UPDATE_URL = "http://update.frostwire.com/android";
 
     public static final String SERVER_PROMOTIONS_URL = "http://update.frostwire.com/android.promos.php";
 
