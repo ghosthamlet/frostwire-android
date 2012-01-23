@@ -29,7 +29,7 @@ import android.net.Uri;
  * @author aldenml
  *
  */
-public class BittorrentIntentHttpResult implements BittorrentSearchResult {
+public class BittorrentIntentHttpResult extends AbstractBittorrentIntentResult {
 
     private String uri;
     private Intent intent;
@@ -38,63 +38,9 @@ public class BittorrentIntentHttpResult implements BittorrentSearchResult {
         this.intent = intent;
         uri = intent.getDataString();
     }
-    
-    @Override
-    public String getTitle() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public long getSize() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public String getFileName() {
-        return null;
-    }
-
-    @Override
-    public int getSeeds() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public long getCreationTime() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public String getHash() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public int getSearchEngineId() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public String getTorrentDetailsURL() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public String getTorrentURI() {
         return uri;
     }
-
-    @Override
-    public String getVendor() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

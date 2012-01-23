@@ -29,7 +29,7 @@ import android.net.Uri;
  * @author aldenml
  *
  */
-public class BittorrentIntentFileResult implements BittorrentSearchResult {
+public class BittorrentIntentFileResult extends AbstractBittorrentIntentResult {
 
     private String fileName;
 
@@ -39,53 +39,7 @@ public class BittorrentIntentFileResult implements BittorrentSearchResult {
     }
 
     @Override
-    public String getTitle() {
-        return null;
-    }
-
-    @Override
-    public long getSize() {
-        return 0;
-    }
-
-    @Override
     public String getFileName() {
         return fileName;
     }
-
-    @Override
-    public int getSeeds() {
-        return 0;
-    }
-
-    @Override
-    public long getCreationTime() {
-        return 0;
-    }
-
-    @Override
-    public String getHash() {
-        return null;
-    }
-
-    @Override
-    public int getSearchEngineId() {
-        return 0;
-    }
-
-    @Override
-    public String getTorrentDetailsURL() {
-        return null;
-    }
-
-    @Override
-    public String getTorrentURI() {
-        return null;
-    }
-
-    @Override
-    public String getVendor() {
-        return null;
-    }
-
 }
