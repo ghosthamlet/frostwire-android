@@ -1,5 +1,7 @@
 FrostWire for Android.
 
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=frostwire&url=https://github.com/frostwire/frostwire-android&title=frostwire-android&language=&tags=github&category=software)
+
 ABOUT
 A file sharing client for your Android devices.
 
