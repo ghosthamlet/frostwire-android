@@ -94,7 +94,7 @@ public final class TableFetchers {
             String year = cur.getString(yearCol);
             int size = cur.getInt(sizeCol);
 
-            return new FileDescriptor(Integer.valueOf(id), artist, title, album, year, path, Constants.FILE_TYPE_AUDIO, mime, 0, size, true);
+            return new FileDescriptor(Integer.valueOf(id), artist, title, album, year, path, Constants.FILE_TYPE_AUDIO, mime, size, true);
         }
 
         public byte getFileType() {
@@ -108,7 +108,6 @@ public final class TableFetchers {
         private int titleCol;
         private int pathCol;
         private int mimeCol;
-        private int thumbnailCol;
         private int sizeCol;
 
         public FileDescriptor fetch(Cursor cur) {
@@ -116,10 +115,9 @@ public final class TableFetchers {
             String path = cur.getString(pathCol);
             String mime = cur.getString(mimeCol);
             String title = cur.getString(titleCol);
-            int thumbnailId = cur.getInt(thumbnailCol);
             int size = cur.getInt(sizeCol);
 
-            return new FileDescriptor(Integer.valueOf(id), null, title, null, null, path, Constants.FILE_TYPE_PICTURES, mime, thumbnailId, size, true);
+            return new FileDescriptor(Integer.valueOf(id), null, title, null, null, path, Constants.FILE_TYPE_PICTURES, mime, size, true);
         }
 
         public String[] getColumns() {
@@ -143,7 +141,6 @@ public final class TableFetchers {
             titleCol = cur.getColumnIndex(ImageColumns.TITLE);
             pathCol = cur.getColumnIndex(ImageColumns.DATA);
             mimeCol = cur.getColumnIndex(ImageColumns.MIME_TYPE);
-            thumbnailCol = cur.getColumnIndex(ImageColumns.MINI_THUMB_MAGIC);
             sizeCol = cur.getColumnIndex(ImageColumns.SIZE);
         }
     }
@@ -156,7 +153,6 @@ public final class TableFetchers {
         private int artistCol;
         private int titleCol;
         private int albumCol;
-        private int thumbnailCol;
         private int sizeCol;
 
         public FileDescriptor fetch(Cursor cur) {
@@ -166,10 +162,9 @@ public final class TableFetchers {
             String artist = cur.getString(artistCol);
             String title = cur.getString(titleCol);
             String album = cur.getString(albumCol);
-            int thumbnailId = cur.getInt(thumbnailCol);
             int size = cur.getInt(sizeCol);
 
-            return new FileDescriptor(id, artist, title, album, null, path, Constants.FILE_TYPE_VIDEOS, mime, thumbnailId, size, true);
+            return new FileDescriptor(id, artist, title, album, null, path, Constants.FILE_TYPE_VIDEOS, mime, size, true);
         }
 
         public String[] getColumns() {
@@ -195,7 +190,6 @@ public final class TableFetchers {
             artistCol = cur.getColumnIndex(VideoColumns.ARTIST);
             titleCol = cur.getColumnIndex(VideoColumns.TITLE);
             albumCol = cur.getColumnIndex(VideoColumns.ALBUM);
-            thumbnailCol = cur.getColumnIndex(VideoColumns.MINI_THUMB_MAGIC);
             sizeCol = cur.getColumnIndex(VideoColumns.SIZE);
         }
     }
@@ -215,7 +209,7 @@ public final class TableFetchers {
             String title = cur.getString(titleCol);
             int size = cur.getInt(sizeCol);
 
-            return new FileDescriptor(Integer.valueOf(id), null, title, null, null, path, Constants.FILE_TYPE_DOCUMENTS, mime, 0, size, true);
+            return new FileDescriptor(Integer.valueOf(id), null, title, null, null, path, Constants.FILE_TYPE_DOCUMENTS, mime, size, true);
         }
 
         public String[] getColumns() {
@@ -260,7 +254,7 @@ public final class TableFetchers {
             String path = cur.getString(pathCol);
             int size = Integer.valueOf(cur.getString(sizeCol));
 
-            return new FileDescriptor(id, ver, title, packageName, null, path, Constants.FILE_TYPE_APPLICATIONS, Constants.MIME_TYPE_ANDROID_PACKAGE_ARCHIVE, 0, size, true);
+            return new FileDescriptor(id, ver, title, packageName, null, path, Constants.FILE_TYPE_APPLICATIONS, Constants.MIME_TYPE_ANDROID_PACKAGE_ARCHIVE, size, true);
         }
 
         public String[] getColumns() {
@@ -310,7 +304,7 @@ public final class TableFetchers {
             String year = cur.getString(yearCol);
             int size = cur.getInt(sizeCol);
 
-            return new FileDescriptor(Integer.valueOf(id), artist, title, album, year, path, Constants.FILE_TYPE_RINGTONES, mime, 0, size, true);
+            return new FileDescriptor(Integer.valueOf(id), artist, title, album, year, path, Constants.FILE_TYPE_RINGTONES, mime, size, true);
         }
 
         public String[] getColumns() {

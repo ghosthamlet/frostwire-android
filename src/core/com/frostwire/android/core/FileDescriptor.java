@@ -38,7 +38,6 @@ public class FileDescriptor implements Cloneable {
     public String artist;
     public String album;
     public String year;
-    public int thumbnailId;
 
     /**
      * Empty constructor.
@@ -46,7 +45,7 @@ public class FileDescriptor implements Cloneable {
     public FileDescriptor() {
     }
 
-    public FileDescriptor(int id, String artist, String title, String album, String year, String path, byte fileType, String mime, int thumbnailId, long fileSize, boolean isShared) {
+    public FileDescriptor(int id, String artist, String title, String album, String year, String path, byte fileType, String mime, long fileSize, boolean isShared) {
         this.id = id;
         this.artist = artist;
         this.title = title;
@@ -55,7 +54,6 @@ public class FileDescriptor implements Cloneable {
         this.filePath = path;
         this.fileType = fileType;
         this.mime = mime;
-        this.thumbnailId = thumbnailId;
         this.fileSize = fileSize;
         this.shared = isShared;
     }
@@ -78,6 +76,6 @@ public class FileDescriptor implements Cloneable {
 
     @Override
     public FileDescriptor clone() {
-        return new FileDescriptor(id, artist, title, album, year, filePath, fileType, mime, thumbnailId, fileSize, shared);
+        return new FileDescriptor(id, artist, title, album, year, filePath, fileType, mime, fileSize, shared);
     }
 }

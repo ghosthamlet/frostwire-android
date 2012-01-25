@@ -242,7 +242,7 @@ public class FileListAdapter extends AbstractListAdapter<FileDescriptor> {
 
             if (fd.fileType == Constants.FILE_TYPE_PICTURES) {
                 bmp = Images.Thumbnails.getThumbnail(cr, fd.id, Images.Thumbnails.MICRO_KIND, null);
-            } else {
+            } else if (fd.fileType == Constants.FILE_TYPE_VIDEOS) {
                 bmp = Video.Thumbnails.getThumbnail(cr, fd.id, Video.Thumbnails.MICRO_KIND, null);
             }
         } catch (Throwable e) {
