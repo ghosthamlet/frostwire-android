@@ -34,3 +34,5 @@ HACKING GUIDELINES
 Becoming a collaborator will only happen after we have received lots of great patches and we get to know you better.
 
 Happy Hacking.
+
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=frostwire&url=https://github.com/frostwire/frostwire-android&title=frostwire-android&language=&tags=github&category=software)]
