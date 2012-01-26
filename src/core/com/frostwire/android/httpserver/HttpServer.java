@@ -504,13 +504,13 @@ public class HttpServer {
                 uc.doFilter(_tx);
 
             } catch (IOException e1) {
-                Log.e(TAG, "ServerImpl.Exchange (1)", e1);
+                Log.e(TAG, "ServerImpl.Exchange (1), e: " + e1.getMessage());
                 _connection.close();
             } catch (NumberFormatException e3) {
                 reject(Code.HTTP_BAD_REQUEST, requestLine, "NumberFormatException thrown");
             } catch (URISyntaxException e) {
                 reject(Code.HTTP_BAD_REQUEST, requestLine, "URISyntaxException thrown");
-            } catch (Exception e4) {
+            } catch (Throwable e4) {
                 Log.e(TAG, "ServerImpl.Exchange (2)", e4);
                 _connection.close();
             }

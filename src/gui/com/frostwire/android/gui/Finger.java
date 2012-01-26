@@ -106,7 +106,7 @@ public class Finger {
         StringBuilder sb = new StringBuilder();
 
         sb.append("(");
-        sb.append(nickname + ", " + totalShared + ", ");
+        sb.append(nickname + ", " + totalShared + ", " + " sc:" + deviceScreen.widthPixels + "x" + deviceScreen.heightPixels);
         sb.append("[");
         sb.append("aud:" + numSharedAudioFiles + "/" + numTotalAudioFiles + ", ");
         sb.append("vid:" + numSharedVideoFiles + "/" + numTotalVideoFiles + ", ");
