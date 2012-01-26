@@ -38,17 +38,40 @@ public class Finger {
 
     // device data
 
+    /**
+     * The user-visible version string.
+     */
     public String deviceVersion;
 
+    /**
+     * The end-user-visible name for the end product.
+     */
     public String deviceModel;
 
+    /**
+     * The name of the overall product.
+     */
     public String deviceProduct;
 
+    /**
+     * The name of the industrial design.
+     */
     public String deviceName;
 
+    /**
+     * The manufacturer of the product/hardware.
+     */
     public String deviceManufacturer;
 
+    /**
+     * The brand (e.g., carrier) the software is customized for.
+     */
     public String deviceBrand;
+
+    /**
+     * Screen metrics that describe the size and density of this screen.
+     */
+    public ScreenMetrics deviceScreen;
 
     // shared data
 

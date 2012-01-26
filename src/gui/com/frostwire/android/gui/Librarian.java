@@ -33,6 +33,7 @@ import org.xmlpull.v1.XmlPullParser;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.res.XmlResourceParser;
@@ -41,8 +42,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.MediaColumns;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
+import android.view.WindowManager;
 
 import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
@@ -288,6 +291,14 @@ public final class Librarian {
         finger.deviceName = Build.DEVICE;
         finger.deviceManufacturer = Build.MANUFACTURER;
         finger.deviceBrand = Build.BRAND;
+        finger.deviceScreen = readScreenMetrics();
+
+        finger.numSharedAudioFiles = getNumFiles(Constants.FILE_TYPE_AUDIO, true);
+        finger.numSharedVideoFiles = getNumFiles(Constants.FILE_TYPE_VIDEOS, true);
+        finger.numSharedPictureFiles = getNumFiles(Constants.FILE_TYPE_PICTURES, true);
+        finger.numSharedDocumentFiles = getNumFiles(Constants.FILE_TYPE_DOCUMENTS, true);
+        finger.numSharedApplicationFiles = getNumFiles(Constants.FILE_TYPE_APPLICATIONS, true);
+        finger.numSharedRingtoneFiles = getNumFiles(Constants.FILE_TYPE_RINGTONES, true);
 
         if (local) {
             finger.numTotalAudioFiles = getNumFiles(Constants.FILE_TYPE_AUDIO, false);
@@ -296,14 +307,14 @@ public final class Librarian {
             finger.numTotalDocumentFiles = getNumFiles(Constants.FILE_TYPE_DOCUMENTS, false);
             finger.numTotalApplicationFiles = getNumFiles(Constants.FILE_TYPE_APPLICATIONS, false);
             finger.numTotalRingtoneFiles = getNumFiles(Constants.FILE_TYPE_RINGTONES, false);
+        } else {
+            finger.numTotalAudioFiles = finger.numSharedAudioFiles;
+            finger.numTotalVideoFiles = finger.numSharedVideoFiles;
+            finger.numTotalPictureFiles = finger.numSharedPictureFiles;
+            finger.numTotalDocumentFiles = finger.numSharedDocumentFiles;
+            finger.numTotalApplicationFiles = finger.numSharedApplicationFiles;
+            finger.numTotalRingtoneFiles = finger.numSharedRingtoneFiles;
         }
-
-        finger.numSharedAudioFiles = getNumFiles(Constants.FILE_TYPE_AUDIO, true);
-        finger.numSharedVideoFiles = getNumFiles(Constants.FILE_TYPE_VIDEOS, true);
-        finger.numSharedPictureFiles = getNumFiles(Constants.FILE_TYPE_PICTURES, true);
-        finger.numSharedDocumentFiles = getNumFiles(Constants.FILE_TYPE_DOCUMENTS, true);
-        finger.numSharedApplicationFiles = getNumFiles(Constants.FILE_TYPE_APPLICATIONS, true);
-        finger.numSharedRingtoneFiles = getNumFiles(Constants.FILE_TYPE_RINGTONES, true);
 
         return finger;
     }
@@ -756,6 +767,27 @@ public final class Librarian {
         } else if (file.isFile()) {
             new UniversalScanner(context).scan(file.getAbsolutePath());
         }
+    }
+
+    private ScreenMetrics readScreenMetrics() {
+        ScreenMetrics sm = new ScreenMetrics();
+
+        try {
+            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            context.getResources().getDisplayMetrics();
+            DisplayMetrics dm = new DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(dm);
+
+            sm.densityDpi = dm.densityDpi;
+            sm.heightPixels = dm.heightPixels;
+            sm.widthPixels = dm.widthPixels;
+            sm.xdpi = dm.xdpi;
+            sm.ydpi = dm.ydpi;
+        } catch (Throwable e) {
+            Log.e(TAG, "Unable to get the device display dimensions", e);
+        }
+
+        return sm;
     }
 
     private static class FileCountCache {
