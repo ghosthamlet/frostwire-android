@@ -19,6 +19,7 @@
  */
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:frostwire="http://schemas.android.com/apk/res/com.frostwire.android"
     android:layout_width="fill_parent"
     android:layout_height="48dp"
     android:background="@drawable/shape_untabbed_header_background"
@@ -66,6 +67,7 @@
         android:layout_marginRight="3sp"
         android:layout_weight="1.0"
         android:background="@drawable/shape_search_box"
+        frostwire:clearable_hint="@string/hints_by_google"
         android:nextFocusLeft="@id/view_search_text_input"
         android:nextFocusUp="@id/view_search_text_input"
         android:padding="3sp" />

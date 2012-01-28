@@ -33,14 +33,30 @@ public class FileDescriptor implements Cloneable {
     public String mime; //MIME Type
     public boolean shared;
 
+    /**
+     * The title of the content.
+     */
     public String title;
+
     // only if audio/video media
+
+    /**
+     * The artist who created the media file, if any.
+     */
     public String artist;
+
+    /**
+     * The album the media file is from, if any.
+     */
     public String album;
+
+    /**
+     * The year the media file was recorded, if any
+     */
     public String year;
 
     /**
-     * Empty constructor.
+     * Empty constructor. Needed for in the JSON (and Gson) serialization process.
      */
     public FileDescriptor() {
     }
@@ -72,6 +88,11 @@ public class FileDescriptor implements Cloneable {
         FileDescriptor fd = (FileDescriptor) o;
 
         return this.id == fd.id && this.fileType == fd.fileType;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.id * 1000 + this.fileType;
     }
 
     @Override

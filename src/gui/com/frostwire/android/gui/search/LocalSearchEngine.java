@@ -80,7 +80,7 @@ final class LocalSearchEngine {
         this.context = context;
         this.task = task;
         this.displayer = displayer;
-        this.query = query;
+        this.query = sanitize(query);
 
         ConfigurationManager configuration = ConfigurationManager.instance();
 

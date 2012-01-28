@@ -35,5 +35,8 @@
         <attr name="spinner_endRange" format="integer" />
         <attr name="spinner_defaultValue" format="integer" />
     </declare-styleable>
+    <declare-styleable name="ClearableEditTextView">
+        <attr name="clearable_hint" format="string" />
+    </declare-styleable>
 
 </resources>

@@ -19,6 +19,7 @@
 package com.frostwire.android.gui.views;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ReplacementTransformationMethod;
@@ -43,9 +44,13 @@ public class ClearableEditTextView extends RelativeLayout {
     private Button buttonClear;
 
     private OnActionListener listener;
+    private String hint;
 
     public ClearableEditTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray arr = context.obtainStyledAttributes(attrs, R.styleable.ClearableEditTextView);
+        hint = arr.getString(R.styleable.ClearableEditTextView_clearable_hint);
     }
 
     public OnActionListener getOnActionListener() {
@@ -102,6 +107,7 @@ public class ClearableEditTextView extends RelativeLayout {
         View.inflate(getContext(), R.layout.view_clearable_edit_text, this);
 
         input = (AutoCompleteTextView) findViewById(R.id.view_clearable_edit_text_input);
+        input.setHint(hint);
         input.setTransformationMethod(new SingleLineTransformationMethod());
         input.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {

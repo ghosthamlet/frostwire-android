@@ -30,9 +30,8 @@
         android:layout_centerVertical="true"
         android:background="@android:color/transparent"
         android:dropDownVerticalOffset="11dp"
-        android:hint="@string/input_text_hint"
+        android:hint="@null"
         android:lines="1"
-        android:textSize="12dp"
         android:textColor="@android:color/black" />
 
     <Button
