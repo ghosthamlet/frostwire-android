@@ -97,7 +97,7 @@ public final class PingMessage extends FrostWireMessage {
         // is saying good bye
         bye = buffer.get() != (byte) 0;
 
-        getHeader().setPayloadSize(38); // 2+3+16+8+8+1;
+        getHeader().setPayloadSize(22); // 2+3+16+1;
     }
 
     /**

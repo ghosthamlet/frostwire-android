@@ -39,6 +39,7 @@ import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
 import com.frostwire.android.core.FileDescriptor;
 import com.frostwire.android.core.messages.FrostWireMessage;
+import com.frostwire.android.core.messages.PingMessage;
 import com.frostwire.android.gui.NetworkManager;
 import com.frostwire.android.gui.PeerManager;
 import com.frostwire.android.gui.activities.MainActivity;
@@ -223,6 +224,8 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
 
         state = STATE_STOPPING;
 
+        sendGoodByes();
+
         peerDiscoveryAnnouncer.stop();
 
         messageCourier.stopProcessing();
@@ -359,6 +362,19 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
         long longPause = 180;
 
         return new long[] { 0, shortVibration, longPause, shortVibration, shortPause, shortVibration, shortPause, shortVibration, mediumPause, mediumVibration };
+    }
+
+    /**
+     * Send Ping-GoodBye messages to Local network (broadcast || multicast)
+     */
+    private void sendGoodByes() {
+        PingMessage ping = PeerDiscoveryAnnouncer.createPingMessage(NetworkManager.instance().getListeningPort(), true, ConfigurationManager.instance().getUUID());
+        try {
+            Log.d(TAG, "Sending good-byes");
+            messageCourier.processElement(ping);
+        } catch (Throwable e) {
+            Log.e(TAG, "Unable to send good-byes");
+        }
     }
 
     public class EngineServiceBinder extends Binder {

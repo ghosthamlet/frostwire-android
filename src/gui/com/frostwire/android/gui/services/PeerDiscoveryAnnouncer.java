@@ -34,18 +34,16 @@ import com.frostwire.android.util.concurrent.ThreadPool;
  * @author aldenml
  * 
  */
-public class PeerDiscoveryAnnouncer implements ExtendedRunnable {
+class PeerDiscoveryAnnouncer implements ExtendedRunnable {
 
     @SuppressWarnings("unused")
     private static final String TAG = "FW.PeerDiscoveryAnnouncer";
 
-    private final byte[] uuid;
     private final ThreadPool threadPool;
 
     private boolean running;
 
     public PeerDiscoveryAnnouncer(ThreadPool threadPool) {
-        this.uuid = ConfigurationManager.instance().getUUID();
         this.threadPool = threadPool;
     }
 
@@ -54,10 +52,13 @@ public class PeerDiscoveryAnnouncer implements ExtendedRunnable {
     }
 
     public void run() {
+        byte[] uuid = ConfigurationManager.instance().getUUID();
         int pingsInterval = ConfigurationManager.instance().getInt(Constants.PREF_KEY_NETWORK_PINGS_INTERVAL);
 
         while (running) {
-            sendLocalBroadcastPingMessage(false);
+            PingMessage message = createPingMessage(NetworkManager.instance().getListeningPort(), false, uuid);
+            Engine.instance().sendMessage(message);
+
             sleep(pingsInterval);
         }
     }
@@ -70,30 +71,16 @@ public class PeerDiscoveryAnnouncer implements ExtendedRunnable {
     public synchronized void stop() {
         running = false;
         notify();
-        sayGoodByes();
     }
 
-    private void sendLocalBroadcastPingMessage(boolean bye) {
-        PingMessage message = createPingMessage(NetworkManager.instance().getListeningPort(), bye, uuid);
-        Engine.instance().sendMessage(message);
-    }
-
-    private PingMessage createPingMessage(int listeningPort, boolean bye, byte[] uuid) {
-        String nickname = ConfigurationManager.instance().getNickname();
+    static PingMessage createPingMessage(int listeningPort, boolean bye, byte[] uuid) {
         int numSharedFiles = Librarian.instance().getNumFiles();
+        String nickname = ConfigurationManager.instance().getNickname();
 
-        PingMessage message = new PingMessage(listeningPort, numSharedFiles, nickname, bye);
-        message.getHeader().setUUID(uuid);
+        PingMessage ping = new PingMessage(listeningPort, numSharedFiles, nickname, bye);
+        ping.getHeader().setUUID(uuid);
 
-        return message;
-    }
-
-    /**
-     * Send Ping-GoodBye messages to Local network (broadcast || multicast)
-     */
-    private void sayGoodByes() {
-        // say good bye on local network
-        sendLocalBroadcastPingMessage(true);
+        return ping;
     }
 
     private synchronized void sleep(long delay) {
