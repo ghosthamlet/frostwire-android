@@ -368,12 +368,13 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
      * Send Ping-GoodBye messages to Local network (broadcast || multicast)
      */
     private void sendGoodByes() {
-        PingMessage ping = PeerDiscoveryAnnouncer.createPingMessage(NetworkManager.instance().getListeningPort(), true, ConfigurationManager.instance().getUUID());
-        try {
-            Log.d(TAG, "Sending good-byes");
-            messageCourier.processElement(ping);
-        } catch (Throwable e) {
-            Log.e(TAG, "Unable to send good-byes");
+        if (messageCourier.isProcessing() && NetworkManager.instance().isDataWIFIUp()) {
+            PingMessage ping = PeerDiscoveryAnnouncer.createPingMessage(NetworkManager.instance().getListeningPort(), true, ConfigurationManager.instance().getUUID());
+            try {
+                messageCourier.processElement(ping);
+            } catch (Throwable e) {
+                Log.e(TAG, "Unable to send good-byes");
+            }
         }
     }
 

@@ -91,7 +91,7 @@ public final class MessageCourier extends QueueProcessor<FrostWireMessage> {
                 initializeMulticasting();
             }
         } catch (Throwable e) {
-            Log.e(TAG, "Error processing message", e);
+            Log.e(TAG, "Error initializing sockets", e);
         }
     }
 

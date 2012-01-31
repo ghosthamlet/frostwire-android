@@ -36,9 +36,6 @@ import com.frostwire.android.util.concurrent.ThreadPool;
  */
 class PeerDiscoveryAnnouncer implements ExtendedRunnable {
 
-    @SuppressWarnings("unused")
-    private static final String TAG = "FW.PeerDiscoveryAnnouncer";
-
     private final ThreadPool threadPool;
 
     private boolean running;
@@ -64,6 +61,10 @@ class PeerDiscoveryAnnouncer implements ExtendedRunnable {
     }
 
     public void start() {
+        if (!NetworkManager.instance().isDataWIFIUp()) {
+            return;
+        }
+
         running = true;
         threadPool.execute(this);
     }

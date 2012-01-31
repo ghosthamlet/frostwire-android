@@ -179,7 +179,8 @@ public final class NetworkManager {
     }
 
     public boolean isDataUp() {
-        return isDataWIFIUp() || isDataMobileUp() || isDataWiMAXUp();
+        // boolean logic trick, since sometimes android reports WIFI and MOBILE up at the same time
+        return (isDataWIFIUp() != isDataMobileUp()) || isDataWiMAXUp();
     }
 
     public boolean isDataMobileUp() {

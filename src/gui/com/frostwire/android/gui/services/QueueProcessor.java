@@ -91,7 +91,7 @@ public abstract class QueueProcessor<E> extends AbstractRunnable {
         return state == STATE_STOPPED;
     }
 
-    public abstract void processElement(E elem) throws Exception;
+    public abstract void processElement(E element) throws Exception;
 
     protected ThreadPool getThreadPool() {
         return threadPool;
@@ -107,8 +107,10 @@ public abstract class QueueProcessor<E> extends AbstractRunnable {
     private void processQueue() throws Exception {
         E element = null;
 
+        queue.clear();
+
         while (isProcessing()) {
-            element = (E) queue.take(); //this will wait if queue is empty
+            element = (E) queue.take(); // this will wait if queue is empty
 
             if (element instanceof End) {
                 return;
