@@ -37,7 +37,7 @@
     <string name="disconnecting">Disconnecting</string>
     <string name="wait">Wait</string>
     <string name="exit">Exit</string>
-    <string name="no_wifi_want_to_fix_it_question">You\'re not connected to a Wi>Fi network.\n\nHow do you want to connect?</string>
+    <string name="no_wifi_want_to_fix_it_question">You\'re not connected to a WiFi network.\n\nHow do you want to connect?</string>
     <string name="your_connection_has_dropped_stopping_services">Your WiFi connection has dropped. Stopping services.</string>
     <string name="wifi_network_changed_restarting_services">The WiFi network has changed. Restarting Services.</string>
     <string name="no_network_connection">No Network Connection</string>
@@ -332,7 +332,7 @@
     <string name="dialog_new_transfer_title">Start this Download?</string>
     <string name="dialog_new_transfer_text_text">Are you sure you want to download %1$s (%2$s)</string>
     <string name="dialog_new_transfer_check_text">Show this next time</string>
-    <string name="show_new_transfer_dialog">Show New Tranfer dialog</string>
+    <string name="show_new_transfer_dialog">Show New Transfer dialog</string>
     <string name="dummy_action">[Action]</string>
     <string name="clear_torrent_index">Clear Torrent Index</string>
     <string name="clear_torrent_index_summary">Clear Torrent Index</string>
@@ -352,7 +352,7 @@
     <string name="intent_text">FrostWire is a peer-to-peer program for sharing authorized files only. Installing and using the program does not constitute a license for obtaining or distributing unauthorized content.</string>
     <string name="accept_intent">I will not use FrostWire for copyright infringement</string>
     <string name="toast_on_disconnect">Disconnected from BitTorrent. All BitTorrent transfers have stopped.</string>
-    <string name="toast_on_connect">BitCorrent core started.</string>
+    <string name="toast_on_connect">BitTorrent core started.</string>
     <string name="seeds">Seeds</string>
     <string name="seeds_n">Seeds: %s</string>
     <string name="peers_n">Peers: %s</string>
