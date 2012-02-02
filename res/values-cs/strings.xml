@@ -37,7 +37,7 @@
     <string name="disconnecting">Probíhá Odpojení</string>
     <string name="wait">Počkejte</string>
     <string name="exit">Východ</string>
-    <string name="no_wifi_want_to_fix_it_question">Nejste připojeni k sítí Wi>Fi.\n\nJak se chcete připojit?</string>
+    <string name="no_wifi_want_to_fix_it_question">Nejste připojeni k sítí WiFi.\n\nJak se chcete připojit?</string>
     <string name="your_connection_has_dropped_stopping_services">Klesly Wi-Fi Síťová připojení. Zastavení služeb.</string>
     <string name="wifi_network_changed_restarting_services">WiFi sítě se změnilo. Restartování služeb.</string>
     <string name="no_network_connection">Žádné připojení k síti</string>
@@ -352,7 +352,7 @@
     <string name="intent_text">FrostWire je to program peer-to-peer pouze pro sdílení povolene souborů. Instalace a používání programu nepředstavuje pro získání licence nebo rozšiřování neoprávněného obsahu.</string>
     <string name="accept_intent">Nebudu používat FrostWire pro porušení autorského práva</string>
     <string name="toast_on_disconnect">Odpojen od BitTorrent. Všechny transfery BitTorrent se zastavily.</string>
-    <string name="toast_on_connect">BitCorrent jádro začalo.</string>
+    <string name="toast_on_connect">BitTorrent jádro začalo.</string>
     <string name="seeds">Seeds</string>
     <string name="seeds_n">Seeds: %s</string>
     <string name="peers_n">Peers: %s</string>

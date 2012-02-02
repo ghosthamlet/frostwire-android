@@ -37,7 +37,7 @@
     <string name="disconnecting">Uitschakelen</string>
     <string name="wait">Wacht</string>
     <string name="exit">Exit</string>
-    <string name="no_wifi_want_to_fix_it_question">Je bent niet verbonden met een Wi>Fi netwerk.\n\nHoe wil je verbinding maken?</string>
+    <string name="no_wifi_want_to_fix_it_question">Je bent niet verbonden met een WiFi netwerk.\n\nHoe wil je verbinding maken?</string>
     <string name="your_connection_has_dropped_stopping_services">Je WiFi verbinding is weggevallen. Diensten worden gestopt.</string>
     <string name="wifi_network_changed_restarting_services">Het WiFi netwerk is veranderd. Diensten opnieuw aan het starten.</string>
     <string name="no_network_connection">Geen Netwerk Verbinding</string>
@@ -352,7 +352,7 @@
     <string name="intent_text">FrostWire is een peer-to-peer programma, enkel voor het delen van geautoriseerde files. Het installeren en gebruiken van het programma komt niet met een licentie voor het verkrijgen of distribueren van niet-geautoriseerde inhoud.</string>
     <string name="accept_intent">Ik zal FrostWire niet gebruiken om het copyright te overtreden</string>
     <string name="toast_on_disconnect">Niet verbonden met BitTorrent. Alle BitTorrent transfers zijn gestopt.</string>
-    <string name="toast_on_connect">BitCorrent core gestart.</string>
+    <string name="toast_on_connect">BitTorrent core gestart.</string>
     <string name="seeds">Seeds</string>
     <string name="seeds_n">Seeds: %s</string>
     <string name="peers_n">Peers: %s</string>

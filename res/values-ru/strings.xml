@@ -352,7 +352,7 @@
     <string name="intent_text">FrostWire - это пиринговая программа для обмена только разрешенными файлами. Установка и использование программы не дает право на получение или распространение несанкционированного контента.</string>
     <string name="accept_intent">Я не буду использовать FrostWire с целью нарушения авторских прав</string>
     <string name="toast_on_disconnect">Разъединено от BitTorrent. Все передачи на BitTorrent были остановлены.</string>
-    <string name="toast_on_connect">Ядро BitCorrent запущено.</string>
+    <string name="toast_on_connect">Ядро BitTorrent запущено.</string>
     <string name="seeds">Сиды</string>
     <string name="seeds_n">Сиды: %</string>
     <string name="peers_n">Пиры: %</string>
