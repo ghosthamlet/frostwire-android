@@ -20,7 +20,7 @@
 -->
 <resources>
 
-    <string name="application_label">冰线</string>
+    <string name="application_label">FrostWire</string>
     <string name="activity_preferences_name">设置</string>
     <string name="activity_browse_peer_name">浏览主机</string>
     <string name="activity_browse_peers_name">附近人群</string>
@@ -46,7 +46,7 @@
     <string name="settings_description">搜索设置</string>
     <string name="clear_finished">清除完成</string>
     <string name="support_free_software">支持免费软件</string>
-    <string name="show_love">喜爱冰线?</string>
+    <string name="show_love">喜爱FrostWire?</string>
     <string name="waiting">等待?</string>
     <string name="use_icons_to_browse">使用图标浏览文件</string>
     <string name="type_to_filter_results">打字过滤结果</string>
@@ -86,7 +86,7 @@
     <string name="searching_for">搜索</string>
     <string name="search_for_type_files">搜索文件</string>
     <string name="update_title">更新时间!</string>
-    <string name="update_message">冰线已为您下载新的绩效考核包，如想现在安装，请按OK键。</string>
+    <string name="update_message">FrostWire已为您下载新的绩效考核包，如想现在安装，请按OK键。</string>
     <string name="next_time">下一次</string>
     <string name="change_my_nickname">修改昵称</string>
     <string name="try_changing_your_nickname">输入昵称</string>
@@ -115,14 +115,14 @@
     <string name="tos_accept">接受</string>
     <string name="tos_refuse">拒绝</string>
     <string name="downloads">下载</string>
-    <string name="minimize_frostwire">冰线最小化</string>
+    <string name="minimize_frostwire">FrostWire最小化</string>
     <string name="are_you_sure_you_wanna_leave">确定想回到主页界面?</string>
     <string name="set_as_ringtone">设为铃声</string>
     <string name="set_as_wallpaper">设为墙纸</string>
     <string name="failed_to_set_wallpaper">无法设为墙纸</string>
     <string name="tell_others_chooser">推文 / 短信/ 邮箱</string>
-    <string name="tell_others_subject">还没用安卓上冰线?</string>
-    <string name="and_choose_what_filetypes_to_share">在冰线移动网络和附近能收到无线网络的台式机上，查看你想共享的文件类型。</string>
+    <string name="tell_others_subject">还没用安卓上FrostWire?</string>
+    <string name="and_choose_what_filetypes_to_share">在FrostWire移动网络和附近能收到无线网络的台式机上，查看你想共享的文件类型。</string>
     <string name="before_getting_started">启动前</string>
     <string name="user_connecting">用户连接中</string>
     <string name="accept_connection_from">接受连接</string>
@@ -134,7 +134,7 @@
     <string name="browse">浏览</string>
     <string name="files_shared_by">文件共享</string>
     <string name="mark_your_territory">划定你的范围</string>
-    <string name="get_a_frostwire_tshirt">领取冰线T恤衫</string>
+    <string name="get_a_frostwire_tshirt">领取FrostWireT恤衫</string>
     <string name="internal_port">内部端口</string>
     <string name="external_port">外部端口</string>
     <string name="device">装置</string>
@@ -200,7 +200,7 @@
     <string name="long_press_for_batch_actions">触摸批次处理的任何文件标题</string>
     <string name="files_shared">文件共享</string>
     <string name="share_finished_downloads">在无线网络上共享下载的文件</string>
-    <string name="share_finished_downloads_summary">下载到您的无线网络上的文件，可被其他冰线用户使用.</string>
+    <string name="share_finished_downloads_summary">下载到您的无线网络上的文件，可被其他FrostWire用户使用.</string>
     <string name="are_you_sure_delete_files">确定想要删除选定文件?</string>
     <string name="searchable_activity_label">可搜索活动</string>
     <string name="search_hint">搜索内容</string>
@@ -296,7 +296,7 @@
     <string name="download_finished">下载完成</string>
     <string name="clear_complete">清除完成</string>
     <string name="downloading_promotion">下载 %</string>
-    <string name="activity_about_droidwire_description">适用安卓的冰线</string>
+    <string name="activity_about_droidwire_description">适用安卓的FrostWire</string>
     <string name="dummy_hint">[线索]</string>
     <string name="dummy_peer_file_count">[节点/文件计数器]</string>
     <string name="download_type_not_supported">不支持下载类型</string>
@@ -343,14 +343,14 @@
     <string name="wizard_next">其次</string>
     <string name="wizard_finish">完成</string>
     <string name="dummy_content_description"></string>
-    <string name="welcome_to_frostwire">欢迎来到冰线</string>
+    <string name="welcome_to_frostwire">欢迎来到FrostWire</string>
     <string name="let_apos_s_set_you_up_before_we_begin_">开始之前先认识一下.</string>
     <string name="how_others_see_you_on_the_local_network_wifi_">在本地无线网络中，其他人如何看到你</string>
     <string name="seeding_settings">播种设置</string>
     <string name="seeding_settings_explanation">互联网的比特流用户可以下载你的种子的大量数据。</string>
     <string name="seeding_wifi_settings_explanation">只有在使用无线连接时播种。避免载波的额外费用。</string>
-    <string name="intent_text">冰线是一个点对点的程序，只能共享授权文件。安装和使用程序无权获取或散布未经授权的内容。</string>
-    <string name="accept_intent">我不会侵犯版权使用冰线。</string>
+    <string name="intent_text">FrostWire是一个点对点的程序，只能共享授权文件。安装和使用程序无权获取或散布未经授权的内容。</string>
+    <string name="accept_intent">我不会侵犯版权使用FrostWire。</string>
     <string name="toast_on_disconnect">与比特流断开。所有比特流传输中断。</string>
     <string name="toast_on_connect">比特流核心启动.</string>
     <string name="seeds">播种</string>
