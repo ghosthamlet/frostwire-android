@@ -52,7 +52,6 @@
     <string name="type_to_filter_results">Type to filter results.</string>
     <string name="fetching_file_list">Fetching list of shared</string>
     <string name="not_sharing_files">is not sharing any files.</string>
-    <string name="tip_try_the_filter">Tip: &lt;Try using the "filter" at the bottom>.</string>
     <string name="browse_peer">Browse Peer</string>
     <string name="peer">Peer</string>
     <string name="peers">Peers</string>
