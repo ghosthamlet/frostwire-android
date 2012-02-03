@@ -194,7 +194,7 @@
     <string name="activity_uploads_title_text">上传文件</string>
     <string name="updating">上传中</string>
     <string name="loading_all">加载所有</string>
-    <string name="sharing_num_files">共享%类型%文件</string>
+    <string name="sharing_num_files">Sharing %1$s files of type %2$s</string>
     <string name="share_selected_files">共享选定文件</string>
     <string name="unshare_selected_files">不共享选定文件</string>
     <string name="long_press_for_batch_actions">触摸批次处理的任何文件标题</string>
@@ -248,7 +248,7 @@
     <string name="dummy_seeds">[种子]</string>
     <string name="dummy_peers">[节点]</string>
     <string name="view_transfer_item_list_item_icon">文件类型图标</string>
-    <string name="nickname_sharing_count_files">%1 - 共享 %2 文件</string>
+    <string name="nickname_sharing_count_files">%1$s - Sharing %2$d files</string>
     <string name="play_image_description">播放</string>
     <string name="view_transfer_list_item_button_action_description">开始</string>
     <string name="yes_no_cancel_transfer_question">确定要停止下载，并从列表中移除（数据不会被删除)?</string>
@@ -290,8 +290,8 @@
     <string name="peer_http_upload_status_error">错误</string>
     <string name="peer_http_upload_status_cancelled">已取消</string>
     <string name="peer_http_upload_status_unknown">未知</string>
-    <string name="loading_indeterminate">上传中?/string>
-    <string name="searching_indeterminate">搜索中?/string>
+    <string name="loading_indeterminate">上传中?</string>
+    <string name="searching_indeterminate">搜索中?</string>
     <string name="show_exit_button">显示退出按钮</string>
     <string name="download_finished">下载完成</string>
     <string name="clear_complete">清除完成</string>
