@@ -129,7 +129,7 @@
     <string name="please_enter_a_number">Please enter a number</string>
     <string name="gotta_have_at_least_one_upload_slot">Gotta have at least one upload slot</string>
     <string name="only_up_to_n_uploads_at_the_same_time">Only up to %s uploads at the same time</string>
-    <string name="max_simultaneous_uploads_saved_n">Max Simultaneous Uploads Saved (%s)"</string>
+    <string name="max_simultaneous_uploads_saved_n">Max Simultaneous Uploads Saved (%s)</string>
     <string name="unknown">Unknown</string>
     <string name="browse">Browse</string>
     <string name="files_shared_by">files shared by</string>

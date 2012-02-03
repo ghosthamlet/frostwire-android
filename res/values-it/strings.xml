@@ -58,14 +58,14 @@
 	<string name="download">Download</string>
 	<string name="download_selected_files">Download Selezionato</string>
 	<string name="toggle_sharing_selected_files">Attiva condivisione</string>
-	<string name="change_manual_listening_port">Imposta Porta d'ascolto 1000 e 65535</string>
+	<string name="change_manual_listening_port">Imposta Porta d\'ascolto 1000 e 65535</string>
 	<string name="is_not_responding">%s non risponde</string>
 	<string name="max_concurrent_uploads">Massimo di upload in contemporanea</string>
 	<string name="search_no_keywords">Inserisci parole chiave</string>
 	<string name="search_select_filetype">Seleziona un tipo di file</string>
 	<string name="searching_for">Ricerca in corso</string>
 	<string name="search_for_type_files">Cerca file %s</string>
-	<string name="update_title">E' ora di aggiornare!</string>
+	<string name="update_title">E\' ora di aggiornare!</string>
 	<string name="update_message">FrostWire ha scaricato un nuovo AGGIORNAMENTO per te, tocca il pulsante OK se vuoi installarlo ora</string>
 	<string name="next_time">Prossima volta</string>
 	<string name="change_my_nickname">Cambia nickname</string>
@@ -90,7 +90,7 @@
 	<string name="now_on_port">Connesso alla porta</string>
 	<string name="stop_all_transfers_message">Stai per cancellare tutti i download in coda o in attesa da tempo. Tutti i dati trasferiti verranno persi. Sei sicuro?</string>
 	<string name="files">file</string>
-	<string name="touch_filetype_icon">Tocca l'icona per cambiare tipo di file</string>
+	<string name="touch_filetype_icon">Tocca l\'icona per cambiare tipo di file</string>
 	<string name="tos_title">Condizioni di utilizzo</string>
 	<string name="tos_accept">Accetta</string>
 	<string name="tos_refuse">Rifiuta</string>
@@ -165,9 +165,9 @@
 	<string name="cant_open_file">Siamo spiacenti ma il file non può essere aperto</string>
 	<string name="downloading_from_desktop">Scaricamento file dal computer</string>
 	<string name="share_indication_dialog_title">Come condividere/smettere di condividere file</string>
-	<string name="dialog_share_indicator_text_text">Condividi, o interrompi la condivisione di file spuntando le caselle vicino ai file \n\nUsa l'icona con il lucchetto per condividere, o smettere di condividere, file singoli</string>
+	<string name="dialog_share_indicator_text_text">Condividi, o interrompi la condivisione di file spuntando le caselle vicino ai file \n\nUsa l\'icona con il lucchetto per condividere, o smettere di condividere, file singoli</string>
 	<string name="dialog_share_indicator_check_text">Mostra la prossima volta</string>
-	<string name="show_share_indication">Mostra l'Aiuto Sharing</string>
+	<string name="show_share_indication">Mostra l\'Aiuto Sharing</string>
 	<string name="download_added_to_queue">1 file sta per essere scaricato</string>
 	<string name="downloads_added_to_queue">%s file stanno per essere scaricati</string>
 	<string name="activity_downloads_title_text">Download</string>
@@ -308,7 +308,7 @@
 	<string name="dummy_uploads_indicator">0 @ 0 KB/s</string>
 	<string name="seeding_has_been_turned_off">Seeding disattivato </string>
 	<string name="nickname_hint">Nickname</string>
-	<string name="show_transers_on_download_start">Mostra trasferimenti all'inizio del download</string>
+	<string name="show_transers_on_download_start">Mostra trasferimenti all\'inizio del download</string>
 	<string name="dialog_new_transfer_title">Procedere con il download?</string>
 	<string name="dialog_new_transfer_text_text">Sei sicuro di voler scaricare %1$s (%2$s)</string>
 	<string name="dialog_new_transfer_check_text">Mostra anchela prossima volta</string>
@@ -318,7 +318,7 @@
 	<string name="clear_torrent_index_summary">Cancella indice dei Torrent</string>
 	<string name="clear">Cancella</string>
 	<string name="delete_n_torrents_indexed">%d torrent in indice cancellati</string>
-	<string name="there_is_n_torrents_indexed">Ci sono %d torrent nell'indice</string>
+	<string name="there_is_n_torrents_indexed">Ci sono %d torrent nell\'indice</string>
 	<string name="wizard_previous">Precedente</string>
 	<string name="wizard_next">Successivo</string>
 	<string name="wizard_finish">Fine</string>
