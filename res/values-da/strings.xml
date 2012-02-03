@@ -37,7 +37,7 @@
     <string name="disconnecting">Frakobling</string>
     <string name="wait">Vent venligst</string>
     <string name="exit">Afslut</string>
-    <string name="no_wifi_want_to_fix_it_question">Du\er ikke forbundet til et Wi>Fi netværk.\n\nHvordan vil du forbinde?</string>
+    <string name="no_wifi_want_to_fix_it_question">Du er ikke forbundet til et Wi-Fi netværk.\n\nHvordan vil du forbinde?</string>
     <string name="your_connection_has_dropped_stopping_services">Din WiFi-forbindelse er faldet. Stopper service.</string>
     <string name="wifi_network_changed_restarting_services">WiFi-netværket har ændret. Genstarter service.</string>
     <string name="no_network_connection">Ingen netværksforbindelse</string>
@@ -47,12 +47,11 @@
     <string name="clear_finished">Slet færdig emne</string>
     <string name="support_free_software">Støt gratis software</string>
     <string name="show_love">Kan lide FrostWire?</string>
-    <string name="waiting">Venter…</string>
+    <string name="waiting">Venter...</string>
     <string name="use_icons_to_browse">Brug ikoner til gennemse filerne.</string>
     <string name="type_to_filter_results">Skriv for at filtrere resultater.</string>
     <string name="fetching_file_list">Henter liste med delt</string>
     <string name="not_sharing_files">deler ikke nogen filer.</string>
-    <string name="tip_try_the_filter">Tip: &lt;Prøv at bruge "filter" i bunden>.</string>
     <string name="browse_peer">Se Peer</string>
     <string name="peer">Peer</string>
     <string name="peers">Peers</string>
@@ -189,7 +188,7 @@
     <string name="dialog_share_indicator_check_text">Vis denne hjælpetekst næste gang</string>
     <string name="show_share_indication">Vis deling hjælp</string>
     <string name="download_added_to_queue">1 fil vil begynde at downloade</string>
-    <string name="downloads_added_to_queue">%s filer vi begynde at downloade/string>
+    <string name="downloads_added_to_queue">s filer vi begynde at downloade</string>
     <string name="activity_downloads_title_text">Downloads</string>
     <string name="activity_uploads_title_text">Uploads</string>
     <string name="updating">Opdatering</string>
@@ -328,46 +327,7 @@
     <string name="dummy_uploads_indicator">0 @ 0 KB/s</string>
     <string name="seeding_has_been_turned_off">Føring er blevet slukket</string>
     <string name="nickname_hint">Brugernavn</string>
-    <string name="show_transers_on_download_start">Vis overførsler på begyndelsen af download/string>
-    <string name="dialog_new_transfer_title">Begynd denne download?</string>
-    <string name="dialog_new_transfer_text_text">Er du sikker at downloade %1$s (%2$s)</string>
-    <string name="dialog_new_transfer_check_text">Vis dette næste gang</string>
-    <string name="show_new_transfer_dialog">Vis ny overførsel dialogen</string>
-    <string name="dummy_action">[Handling]</string>
-    <string name="clear_torrent_index">Ryd Torrent Indeks</string>
-    <string name="clear_torrent_index_summary">Ryd Torrent Indeks</string>
-    <string name="clear">Ryd</string>
-    <string name="delete_n_torrents_indexed">Slettede %d indekseret torrents</string>
-    <string name="there_is_n_torrents_indexed">Der er %d indekseret torrents</string>
-    <string name="wizard_previous">Sidste</string>
-    <string name="wizard_next">Næste</string>
-    <string name="wizard_finish">Afslut</string>
-    <string name="dummy_content_description"></string>
-    <string name="welcome_to_frostwire">Velkommen til FrostWire</string>
-    <string name="let_apos_s_set_you_up_before_we_begin_">Lad os sætte dig op, før vi begynder.</string>
-    <string name="how_others_see_you_on_the_local_network_wifi_">Hvordan mennesker ser dig på det lokale netværk (WiFi)</string>
-    <string name="seeding_settings">Frø indstillinger</string>
-    <string name="seeding_settings_explanation">BitTorrent-brugere på internettet vil være i stand til at downloade filer stykker af data dine torrents frø.</string>
-    <string name="seeding_wifi_settings_explanation">Frø kun ved brug af en WiFi-forbindelse. Undgå ekstra gebyrer fra din udbyder.</string>
-    <string name="intent_text">FrostWire er et peer-to-peer program til at dele godkendte filer. Installation og brug af programmet udgør ikke tilladelse til at opnå eller distribution af uautoriseret indhold.</string>
-    <string name="accept_intent">Jeg vil ikke bruge FrostWire for krænkelse af ophavsretten</string>
-    <string name="toast_on_disconnect">Frakoblet fra BitTorrent. Alle BitTorrent overførsler er stoppet.</string>
-    <string name="toast_on_connect">BitCorrent core startede.</string>
-    <string name="seeds">Frø</string>
-    <string name="seeds_n">Frø: %s</string>
-    <string name="peers_n">Peers: %s</string>
-    <string name="size_unknown">Ukendt størrelse</string>
-    <string name="playing">Spiller</string>
-    <string name="back">Tilbage</string>
-    <string name="input_text_hint">Hvad søger du efter? (råd af Google)</string>
-    <string name="are_you_sure">Er du sikker?</string>
-    <string name="stop_all_transfers">Dette vil stoppe alle overførsler</string>
-    <string name="clear_complete_transfers">Dette vil fjerne alle de færdige overførsler</string>
-    <string name="dummy_media_controller_time">00:00</string>
-    <string name="playing_song_name">Spiller %s</string>
-    <string name="dummy_nickname">[Brugernavn]</string>
-    <string name="invalid_torrent_file">Ugyldig Torrent Fil</string>
-    <string name="type_here_to_filter">Skriv her til filtrere</string>
-    <string name="type_here_to_search">Skriv her til søge</string>
-    <string name="hints_by_google">Råd af Google</string>
+    <string name="show_transers_on_download_start">is overførsler på begyndelsen af download/string><string name="dialog_new_transfer_title">Begynd denne download?</string><string name="dialog_new_transfer_text_text">Er du sikker at downloade %1$s (%2$s)</string><string name="dialog_new_transfer_check_text">Vis dette næste gang</string><string name="show_new_transfer_dialog">Vis ny overførsel dialogen</string><string name="dummy_action">[Handling]</string><string name="clear_torrent_index">Ryd Torrent Indeks</string><string name="clear_torrent_index_summary">Ryd Torrent Indeks</string><string name="clear">Ryd</string><string name="delete_n_torrents_indexed">Slettede %d indekseret torrents</string><string name="there_is_n_torrents_indexed">Der er %d indekseret torrents</string><string name="wizard_previous">Sidste</string><string name="wizard_next">Næste</string><string name="wizard_finish">Afslut</string><string name="dummy_content_description"></string><string name="welcome_to_frostwire">Velkommen til FrostWire</string><string name="let_apos_s_set_you_up_before_we_begin_">Lad os sætte dig op, før vi begynder.</string><string name="how_others_see_you_on_the_local_network_wifi_">Hvordan mennesker ser dig på det lokale netværk (WiFi)</string><string name="seeding_settings">Frø indstillinger</string><string name="seeding_settings_explanation">BitTorrent-brugere på internettet vil være i stand til at downloade filer stykker af data dine torrents frø.</string><string name="seeding_wifi_settings_explanation">Frø kun ved brug af en WiFi-forbindelse. Undgå ekstra gebyrer fra din udbyder.</string><string name="intent_text">FrostWire er et peer-to-peer program til at dele godkendte filer. Installation og brug af programmet udgør ikke tilladelse til at opnå eller distribution af uautoriseret indhold.</string><string name="accept_intent">Jeg vil ikke bruge FrostWire for krænkelse af ophavsretten</string><string name="toast_on_disconnect">Frakoblet fra BitTorrent. Alle BitTorrent overførsler er stoppet.</string><string name="toast_on_connect">BitTorrent core startede.</string><string name="seeds">Frø</string><string name="seeds_n">Frø: %s</string><string name="peers_n">Peers: %s</string><string name="size_unknown">Ukendt størrelse</string><string name="playing">Spiller</string><string name="back">Tilbage</string><string name="input_text_hint">Hvad søger du efter? (råd af Google)</string><string name="are_you_sure">Er du sikker?</string><string name="stop_all_transfers">Dette vil stoppe alle overførsler</string><string name="clear_complete_transfers">Dette vil fjerne alle de færdige overførsler</string><string name="dummy_media_controller_time">00:00</string><string name="playing_song_name">Spiller %s</string><string name="dummy_nickname">[Brugernavn]</string><string name="invalid_torrent_file">Ugyldig Torrent Fil</string><string name="type_here_to_filter">Skriv her til filtrere</string><string name="type_here_to_search">Skriv her til søge</string><string name="hints_by_google">Råd af Google</string></string>
+    <string></string>
+
 </resources>
