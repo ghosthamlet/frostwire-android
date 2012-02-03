@@ -9,9 +9,9 @@
  * uma Fundação de Software Gratuito, ou na versão 3 da licença ou
  * (sua opção) ou versão mais recente.
  *
- * Este programa éistribuido na esperança de ser útil,
- * mas sem NENHUMA GARANTIA; sem nem mesmo a garantia implícita de COMERCIALIZAÇÃO ou ADEQUAÇÃO PARA UM PROPÓSITO PESSOAL. Veja a
- * GNU General Public License para mais detalhes.
+ * Este programa é distribuido na esperança de ser útil,
+ * mas sem NENHUMA GARANTIA; sem nem mesmo a garantia implícita de COMERCIALIZAÇÃO ou ADEQUAÇÃO PARA UM PROPÓSITO PESSOAL. Para maiores detalhes veja a
+ * GNU General Public License.
  *
  * Junto com o programa, você deve ter recebido uma cópia de GNU General Public License. Caso contrário, veja o link<http://www.gnu.org/licenses/>.
  */
@@ -38,11 +38,11 @@
     <string name="no_wifi_want_to_fix_it_question">Você não está conectado a uma rede Wi Fi. Como você deseja conectar?</string>
     <string name="your_connection_has_dropped_stopping_services">Sua conexão caiu. Parando os serviços.</string>
     <string name="wifi_network_changed_restarting_services">A rede WiFi mudou. Reiniciando Serviços.</string>
-    <string name="no_network_connection">Sem conexâo de rede</string>
+    <string name="no_network_connection">Sem conexão de rede</string>
     <string name="leaving_already">Já está indo embora??</string>
     <string name="search_label">Pesquisar</string>
     <string name="settings_description">Pesquisar Configurações</string>
-    <string name="clear_finished">Limpar Término</string>
+    <string name="clear_finished">Limpar os que Terminaram</string>
     <string name="support_free_software">Software com Suporte Gratuito</string>
     <string name="show_love">Ama FrostWire?</string>
     <string name="waiting">Esperando…</string>
@@ -84,10 +84,10 @@
     <string name="searching_for">Procurando por</string>
     <string name="search_for_type_files">Procure por %s arquivos</string>
     <string name="update_title">Atualizar Hora!</string>
-    <string name="update_message">FrostWire Baixou uma nova ATUALIZAÇÃO de DESEMPENHO para você, por favor, clique no botão OK se você deseja instalar.</string>
+    <string name="update_message">FrostWire baixou uma nova ATUALIZAÇÃO DE DESEMPENHO para você, por favor, clique no botão OK se você deseja instalar.</string>
     <string name="next_time">Próxima Vez</string>
     <string name="change_my_nickname">Mude meu Apelido</string>
-    <string name="try_changing_your_nickname">Entre seu apelido</string>
+    <string name="try_changing_your_nickname">Digite seu apelido</string>
     <string name="reconnecting">Reconecatando</string>
     <string name="go_to">Ir Para</string>
     <string name="done">Pronto</string>
@@ -104,14 +104,14 @@
     <string name="try_valid_port_next_time">Na próxima vez tente uma porta válida 1000 e 65500</string>
     <string name="still_listening_on_port">Ainda escutando na porta</string>
     <string name="uh_still_listening_on_port">Uh? Eu ainda estou escutando na porta</string>
-    <string name="new_port_saved">Porta Nova salva</string>
+    <string name="new_port_saved">Nova Porta salva</string>
     <string name="now_on_port">Agora na porta</string>
     <string name="stop_all_transfers_message">Isso irá cancelar todos os downloads em andamento e em espera. Todos os dados de tranferência serão perdidos. Você tem certeza?</string>
     <string name="files">arquivos</string>
-    <string name="touch_filetype_icon">Toque no ícone para mudra o tipo de arquivo</string>
+    <string name="touch_filetype_icon">Toque no ícone para mudar o tipo de arquivo</string>
     <string name="tos_title">Termos de Uso</string>
-    <string name="tos_accept">Aceito</string>
-    <string name="tos_refuse">Declino</string>
+    <string name="tos_accept">Aceitar</string>
+    <string name="tos_refuse">Declinar</string>
     <string name="downloads">Downloads</string>
     <string name="minimize_frostwire">Minimizar FrostWire</string>
     <string name="are_you_sure_you_wanna_leave">Você tem certeza que deseja voltar para a tela de ínicio?</string>
@@ -126,12 +126,12 @@
     <string name="accept_connection_from">Aceitar conexão de</string>
     <string name="please_enter_a_number">Por favor entre um número</string>
     <string name="gotta_have_at_least_one_upload_slot">Tem que ter pelo menos um slot para fazer upload</string>
-    <string name="only_up_to_n_uploads_at_the_same_time">Somente até %s uploads simultâneamente</string>
+    <string name="only_up_to_n_uploads_at_the_same_time">Somente até %s uploads ao mesmo tempo</string>
     <string name="max_simultaneous_uploads_saved_n">Máx. de Uploads Simultãneos Salvos (%s)"</string>
     <string name="unknown">Desconhecido</string>
     <string name="browse">Procurar</string>
     <string name="files_shared_by">arquivos compartilhados por</string>
-    <string name="mark_your_territory">marque seu Território</string>
+    <string name="mark_your_territory">marque seu território</string>
     <string name="get_a_frostwire_tshirt">Obtenha uma camisa FrostWire</string>
     <string name="internal_port">Porta Interna</string>
     <string name="external_port">Porta Externa</string>
@@ -153,7 +153,7 @@
     <string name="how_other_users_will_see_you">Como outros usuários irão te ver</string>
     <string name="networking_preferences">Preferências de Networking</string>
     <string name="simultaneous_uploads">Uploads Simulnâneos</string>
-    <string name="simultaneous_uploads_summary">Defona quantos uploads você irá permitir ao mesmo tempo.</string>
+    <string name="simultaneous_uploads_summary">Defina quantos uploads você irá permitir ao mesmo tempo.</string>
     <string name="send_my_geo_location">Envie minha Geo-Location</string>
     <string name="send_my_geo_location_summary">Pings irá enviar a localização aproximada e procurar o colega mais perto.</string>
     <string name="use_upnp_port_mapping">Utilize mapeamento de Porta auto~ático(UPnP)</string>
@@ -163,7 +163,7 @@
     <string name="broadcast_discovery">Descoberta do Broadcast</string>
     <string name="broadcast_discovery_summary">Conecte com colegas locais por Wi-Fi via broadcast (mais tráfego no roteador)</string>
     <string name="internet_discovery">Descoberta da Internet</string>
-    <string name="internet_discovery_summary">Conectar-se a colegas remotos na Internet.</string>
+    <string name="internet_discovery_summary">Conecte com colegas remotos na Internet.</string>
     <string name="meter">m</string>
     <string name="kilometer">Km</string>
     <string name="from">De</string>
@@ -178,7 +178,7 @@
     <string name="send_to_chat">Envie para o Bate-papo</string>
     <string name="sent_file_to_chat">Envie arquivo para o Bate-papo</string>
     <string name="sent_files_to_chat">Envie %d arquivos para o Bate-papo</string>
-    <string name="choose_wifi_network">Escolaha a rede Wi-Fi</string>
+    <string name="choose_wifi_network">Escolha a rede Wi-Fi</string>
     <string name="please_update_to_v">Por favor atualize para v. %s</string>
     <string name="cant_open_file">Desculpe, não sei como abrir esse arquivo.</string>
     <string name="downloading_from_desktop">Baixando o(s) arquivo(s) da área de trabalho</string>
@@ -221,7 +221,7 @@
     <string name="torrent_fetcher_download_status_error">Erro</string>
     <string name="torrent_fetcher_download_status_canceled">Cancelado</string>
     <string name="failed_to_add_download">Falha ao adicionar download</string>
-    <string name="file_is_already_downloading">Arquivos já está fazendo download</string>
+    <string name="file_is_already_downloading">Arquivo já está baixando</string>
     <string name="not_connected">Não Conectado</string>
     <string name="mobile_data">Dado Móvel</string>
     <string name="media_player_failed">Media player falhou</string>
@@ -234,7 +234,7 @@
     <string name="use_mininova">Utilize Mininova.org</string>
     <string name="use_tpb">Utilize ThePirateBay.org</string>
     <string name="use_vertor">Utilize Vertor.com</string>
-    <string name="activity_media_player_image_description">Imagen Media</string>
+    <string name="activity_media_player_image_description">Imagem Media</string>
     <string name="ringtone_set">Definir Toque</string>
     <string name="search">Pesquisar</string>
     <string name="transfers">Tranferências</string>
@@ -249,7 +249,7 @@
     <string name="nickname_sharing_count_files">%1$s - Compartilhando %2$d arquivos</string>
     <string name="play_image_description">Tocar</string>
     <string name="view_transfer_list_item_button_action_description">Ação</string>
-    <string name="yes_no_cancel_transfer_question">Você tem certeza que quer parar e deletar este download da lista (Nenhum dado será apagado)?</string>
+    <string name="yes_no_cancel_transfer_question">Você tem certeza que qdeseja parar e deletar este download da lista (Nenhum dado será apagado)?</string>
     <string name="yes_no_cancel_delete_transfer_question">Você tem certeza que quer cancelar este download (Dados de downloaded serão apagados)?</string>
     <string name="cancel_transfer">Cancelar Transferência</string>
     <string name="view_transfer_list_item_group_indicator_description">Mais/Menos informação</string>
@@ -263,8 +263,8 @@
     <string name="azureus_manager_item_allocating">Alocando</string>
     <string name="azureus_manager_item_checking">Verificando</string>
     <string name="azureus_manager_item_finishing">Terminando</string>
-    <string name="azureus_manager_item_ready">Esperando na fila para outro(s) torrent(s)</string>
-    <string name="azureus_manager_item_downloading">Downloading</string>
+    <string name="azureus_manager_item_ready">Esperando outro(s) torrent(s) na fila</string>
+    <string name="azureus_manager_item_downloading">Baixando</string>
     <string name="azureus_manager_item_seeding">Sementeando</string>
     <string name="azureus_manager_item_superseeding">Super sementeando</string>
     <string name="azureus_manager_item_stopping">Parando</string>
@@ -313,7 +313,7 @@
     <string name="torrent_max_total_connections">Máximo Total de Conexões</string>
     <string name="torrent_max_torrent_connection_summary">Máximo de Conexões Torrent</string>
     <string name="torrent_max_torrent_connection">Máximo de Conexões Torrent</string>
-    <string name="dummy_summary">[Summário]</string>
+    <string name="dummy_summary">[Sumário]</string>
     <string name="dummy_version">[Versão]</string>
     <string name="dummy_engine">[Mecanismo]</string>
     <string name="dummy_sources">[Fontes]</string>
@@ -329,7 +329,7 @@
     <string name="show_transers_on_download_start">Mostre as Transferências no Início do Download</string>
     <string name="dialog_new_transfer_title">Inicíe este Download?</string>
     <string name="dialog_new_transfer_text_text">Você tem certeza que deseja baixar %1$s (%2$s)</string>
-    <string name="dialog_new_transfer_check_text">Mostre isto na próxima vez</string>
+    <string name="dialog_new_transfer_check_text">Mostre isso na próxima vez</string>
     <string name="show_new_transfer_dialog">Mostre o diálogo da Nova Tranferência</string>
     <string name="dummy_action">[Ação]</string>
     <string name="clear_torrent_index">Limpar Índice Torrent</string>
@@ -348,8 +348,8 @@
     <string name="seeding_settings_explanation">Usuários BitTorrent online poderão baixar pedaços de arquivos dos dados da sua semente torrents.</string>
     <string name="intent_text">FrostWire é um programa amigável somente para compartilhar arquivos autorizados. Instalar e utilizar o programa não constitui uma licença para a obtenção ou distribuição de conteúdo não autorizado.</string>
     <string name="accept_intent">Eu não irei usar o FrostWire para violar os direitos autorais</string>
-    <string name="seeding_wifi_settings_explanation">Sementei somente quando usando uma conexão WiFi. Evite tarifas extas.</string>
-    <string name="toast_on_disconnect">Desconecatado do BitTorrent. Todas as transferências BitTorrent pararam.</string>
+    <string name="seeding_wifi_settings_explanation">Sementei somente quando usando uma conexão WiFi. Evite tarifas extras.</string>
+    <string name="toast_on_disconnect">Desconecatado do BitTorrent. Todas as transferências BitTorrent irão parar.</string>
     <string name="toast_on_connect">BitCorrent começou.</string>
     <string name="seeds">Sementes</string>
     <string name="seeds_n">Sementes: %s</string>
