@@ -30,14 +30,14 @@
     <string name="activity_about">Giới thiệu</string>
     <string name="activity_debug_name">Debug</string>
     <string name="disconnected">Ngắt kết nối</string>
-    <string name="all_transfers_will_stop_are_you_sure">Tất cả quá trình chia sẻ sẽ dừng lại.\nBạn chắc chứ??</string>
+    <string name="all_transfers_will_stop_are_you_sure">Tất cả quá trình chia sẻ sẽ dừng lại.\nBạn chắc chứ?</string>
     <string name="connect">Kết nối</string>
     <string name="connecting">Đang kết nối</string>
     <string name="disconnect">Ngắt kết nối</string>
     <string name="disconnecting">Đang ngắt kết nối</string>
     <string name="wait">Chờ</string>
     <string name="exit">Thoát</string>
-    <string name="no_wifi_want_to_fix_it_question">Bạn đang không kết nối đến mạng wifi nào cả.\n\nHow do you want to connect?</string>
+    <string name="no_wifi_want_to_fix_it_question">Bạn đang không kết nối đến mạng wifi nào cả.\n\nBn phi làm th nào kt ni?</string>
     <string name="your_connection_has_dropped_stopping_services">Kết nối Wifi của bạn đã bị ngắt. Đang dừng dịch vụ.</string>
     <string name="wifi_network_changed_restarting_services">Mạng WiFi đã thay đổi. Đang khởi động lại dịch vụ.</string>
     <string name="no_network_connection">Không có kết nối</string>

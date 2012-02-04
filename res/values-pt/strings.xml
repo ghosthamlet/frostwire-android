@@ -350,7 +350,7 @@
     <string name="accept_intent">Eu não irei usar o FrostWire para violar os direitos autorais</string>
     <string name="seeding_wifi_settings_explanation">Sementei somente quando usando uma conexão WiFi. Evite tarifas extras.</string>
     <string name="toast_on_disconnect">Desconecatado do BitTorrent. Todas as transferências BitTorrent irão parar.</string>
-    <string name="toast_on_connect">BitCorrent começou.</string>
+    <string name="toast_on_connect">BitTorrent começou.</string>
     <string name="seeds">Sementes</string>
     <string name="seeds_n">Sementes: %s</string>
     <string name="peers_n">Colegas: %s</string>
