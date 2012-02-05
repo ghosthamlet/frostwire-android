@@ -30,7 +30,7 @@
     <string name="activity_about">Über</string>
     <string name="activity_debug_name">Fehlersuche</string>
     <string name="disconnected">Unterbrochen</string>
-    <string name="all_transfers_will_stop_are_you_sure">All Übertragungen werden gestoppt\nBist du sicher?</string>
+    <string name="all_transfers_will_stop_are_you_sure">Alle Übertragungen werden gestoppt\nBist du sicher?</string>
     <string name="connect">Verbinden</string>
     <string name="connecting">Verbindung wird hergestellt</string>
     <string name="disconnect">Verbindung trennen</string>
