@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+ */
 -->
 <resources>
 
@@ -326,7 +326,7 @@
     <string name="dummy_uploads_indicator">0 @ 0 KB/detik</string>
     <string name="seeding_has_been_turned_off">proses Seeding telah dimatikan</string>
     <string name="nickname_hint">Nama panggilan</string>
-    <string name="show_transers_on_download_start&lt;" Pada="" Permulaan="" Tampilkan="" Transfer="" Unduhan=""></string>
+    <string name="show_transers_on_download_start">Pada Permulaan Tampilkan Transfer Unduhan</string>
     <string name="dialog_new_transfer_title">Mulai Pengunduhan ini</string>
     <string name="dialog_new_transfer_text_text">Apakah Anda yakin ingin mengunduh %1$s (%2$s)</string>
     <string name="dialog_new_transfer_check_text">Tampilkan ini nanti</string>
