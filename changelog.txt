@@ -5,6 +5,7 @@ FrostWire 0.9.5:
    Polish, Portuguese, Russian, Spanish, Turkish, Vietnamese
  - Timeout adjustments for Wi-Fi browsing and compatibility enhancements
    for FrostWire for Desktop.
+ - Removed support to defunct BTJunkie.org search, added KAT.ph search engine.
 
 FrostWire 0.9.4:
  - Fixes Issue #1 reported by @untaimed18.
