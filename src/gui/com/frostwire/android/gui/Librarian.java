@@ -154,7 +154,7 @@ public final class Librarian {
         try {
             ContentResolver cr = context.getContentResolver();
             c = cr.query(fetcher.getContentUri(), new String[] { BaseColumns._ID }, null, null, null);
-            numFiles = c.getCount();
+            numFiles = c != null ? c.getCount() : 0;
         } catch (Exception e) {
             Log.e(TAG, "Failed to get num of files", e);
         } finally {
@@ -486,6 +486,9 @@ public final class Librarian {
             String[] whereArgs = new String[] { SystemUtils.getApplicationStorageDirectory().getAbsolutePath() + "%" };
 
             c = cr.query(fetcher.getContentUri(), new String[] { MediaColumns._ID, MediaColumns.DATA }, where, whereArgs, null);
+            if (c == null) {
+                return;
+            }
 
             int idCol = c.getColumnIndex(MediaColumns._ID);
             int pathCol = c.getColumnIndex(MediaColumns.DATA);
@@ -549,7 +552,7 @@ public final class Librarian {
 
             c = cr.query(fetcher.getContentUri(), columns, where, whereArgs, sort);
 
-            if (!c.moveToPosition(offset)) {
+            if (c == null || !c.moveToPosition(offset)) {
                 return result;
             }
 
@@ -593,11 +596,12 @@ public final class Librarian {
 
             c = cr.query(fetcher.getContentUri(), new String[] { BaseColumns._ID, MediaColumns.DATA }, null, null, BaseColumns._ID);
 
+            if (c != null) {
             while (c.moveToNext()) {
                 result.first.add(c.getInt(0));
                 result.second.add(c.getString(1));
             }
-
+            }
         } catch (Throwable e) {
             Log.e(TAG, "General failure getting all files", e);
         } finally {
@@ -620,7 +624,7 @@ public final class Librarian {
             String[] columns = new String[] { SharingColumns.FILE_ID, SharingColumns._ID };
             c = cr.query(Sharing.Media.CONTENT_URI, columns, SharingColumns.SHARED + "=1 AND " + SharingColumns.FILE_TYPE + "=?", new String[] { String.valueOf(fileType) }, null);
 
-            if (!c.moveToFirst()) {
+            if (c == null || !c.moveToFirst()) {
                 return result;
             }
 

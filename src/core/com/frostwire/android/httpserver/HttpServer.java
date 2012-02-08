@@ -567,8 +567,8 @@ public class HttpServer {
         if (text == null) {
             text = "";
         }
-        String message = requestStr + " [" + code + " " + Code.msg(code) + "] (" + text + ")";
-        Log.i(TAG, message);
+        //String message = requestStr + " [" + code + " " + Code.msg(code) + "] (" + text + ")";
+        //Log.i(TAG, message);
     }
 
     public long getTime() {
