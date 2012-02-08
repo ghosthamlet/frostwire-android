@@ -24,10 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.frostwire.android.bittorrent.websearch.WebSearchPerformer;
-import com.frostwire.android.bittorrent.websearch.btjunkie.BTJunkieWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.clearbits.ClearBitsWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.extratorrent.ExtratorrentWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.isohunt.ISOHuntWebSearchPerformer;
+import com.frostwire.android.bittorrent.websearch.kat.KATWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.mininova.MininovaWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.tpb.TPBWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.vertor.VertorWebSearchPerformer;
@@ -43,11 +43,12 @@ public final class SearchEngine {
     public static final int CLEARBITS_ID = 0;
     public static final int MININOVA_ID = 1;
     public static final int ISOHUNT_ID = 2;
-    public static final int BTJUNKIE_ID = 3;
+    //public static final int BTJUNKIE_ID = 3;
     public static final int EXTRATORRENT_ID = 4;
     public static final int VERTOR_ID = 5;
     public static final int TPB_ID = 6;
     public static final int MONOVA_ID = 7;
+    public static final int KAT_ID = 8;
 
     private final int id;
     private final String name;
@@ -56,13 +57,14 @@ public final class SearchEngine {
 
     private boolean active;
 
-    public static final SearchEngine BTJUNKIE = new SearchEngine(BTJUNKIE_ID, "BTJunkie", new BTJunkieWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_BTJUNKIE);
+    //public static final SearchEngine BTJUNKIE = new SearchEngine(BTJUNKIE_ID, "BTJunkie", new BTJunkieWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_BTJUNKIE);
     public static final SearchEngine CLEARBITS = new SearchEngine(CLEARBITS_ID, "ClearBits", new ClearBitsWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_CLEARBITS);
     public static final SearchEngine EXTRATORRENT = new SearchEngine(EXTRATORRENT_ID, "Extratorrent", new ExtratorrentWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_EXTRATORRENT);
     public static final SearchEngine ISOHUNT = new SearchEngine(ISOHUNT_ID, "ISOHunt", new ISOHuntWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_ISOHUNT);
     public static final SearchEngine MININOVA = new SearchEngine(MININOVA_ID, "Mininova", new MininovaWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_MININOVA);
     public static final SearchEngine TPB = new SearchEngine(TPB_ID, "TPB", new TPBWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_TPB);
     public static final SearchEngine VERTOR = new SearchEngine(VERTOR_ID, "Vertor", new VertorWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_VERTOR);
+    public static final SearchEngine KAT = new SearchEngine(KAT_ID, "KAT", new KATWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_KAT);
 
     private SearchEngine(int id, String name, WebSearchPerformer performer, String preferenceKey) {
         this.id = id;
@@ -111,7 +113,7 @@ public final class SearchEngine {
     }
 
     public static List<SearchEngine> getSearchEngines() {
-        return Arrays.asList(CLEARBITS, MININOVA, ISOHUNT, BTJUNKIE, EXTRATORRENT, VERTOR, TPB);
+        return Arrays.asList(CLEARBITS, MININOVA, ISOHUNT, EXTRATORRENT, VERTOR, TPB, KAT);
     }
 
     public static SearchEngine getSearchEngine(int id) {
