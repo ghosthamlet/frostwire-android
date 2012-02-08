@@ -1,3 +1,11 @@
+FrostWire 0.9.5:
+ - Search box provides hints for less touch typing (powered by Google)
+ - Application translated to 16 languages: Chinese, Czech, Danish
+   Dutch, French, German, Hindi, Indonesian, Italian, Japanese, Korean,
+   Polish, Portuguese, Russian, Spanish, Turkish, Vietnamese
+ - Timeout adjustments for Wi-Fi browsing and compatibility enhancements
+   for FrostWire for Desktop.
+
 FrostWire 0.9.4:
  - Fixes Issue #1 reported by @untaimed18.
  - Upgrades to system update mechanism. Keeps backwards compatibility
