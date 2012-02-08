@@ -16,36 +16,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.frostwire.android.bittorrent.websearch.isohunt;
+package com.frostwire.android.bittorrent.websearch.kat;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.frostwire.android.bittorrent.websearch.WebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.WebSearchResult;
 import com.frostwire.android.core.HttpFetcher;
 import com.frostwire.android.util.JsonUtils;
+import com.frostwire.android.util.StringUtils;
 
 /**
  * @author gubatron
  * @author aldenml
  *
  */
-public class ISOHuntWebSearchPerformer implements WebSearchPerformer {
+public class KATWebSearchPerformer implements WebSearchPerformer {
 
     public List<WebSearchResult> search(String keywords) {
         List<WebSearchResult> result = new ArrayList<WebSearchResult>();
 
-        ISOHuntResponse response = searchISOHunt(keywords);
+        KATResponse response = searchKAT(keywords);
 
-        if (response != null && response.items != null && response.items.list != null) {
-            for (ISOHuntItem item : response.items.list) {
+        if (response != null && response.list != null) {
+            for (KATItem bucket : response.list) {
 
-                WebSearchResult sr = new ISOHuntWebSearchResult(item);
+                WebSearchResult sr = new KATWebSearchResult(bucket);
 
                 result.add(sr);
             }
@@ -54,7 +56,7 @@ public class ISOHuntWebSearchPerformer implements WebSearchPerformer {
         return result;
     }
 
-    public static ISOHuntResponse searchISOHunt(String keywords) {
+    private KATResponse searchKAT(String keywords) {
         String iha = null;
         try {
             iha = URLEncoder.encode(keywords, "UTF-8");
@@ -63,10 +65,10 @@ public class ISOHuntWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://isohunt.com/js/json.php?ihq=" + iha + "&start=1&rows=100&sort=seeds"));
+            fetcher = new HttpFetcher(new URI("http://www.kat.ph/json.php?q=" + iha));
         } catch (URISyntaxException e) {
-        }
 
+        }
         byte[] jsonBytes = fetcher.fetch();
 
         if (jsonBytes == null) {
@@ -75,8 +77,30 @@ public class ISOHuntWebSearchPerformer implements WebSearchPerformer {
 
         String json = new String(jsonBytes);
 
-        ISOHuntResponse response = JsonUtils.toObject(json, ISOHuntResponse.class);
+        KATResponse response = JsonUtils.toObject(json, KATResponse.class);
+
+        if (response != null && response.list != null) {
+            fixItems(response.list);
+        }
 
         return response;
+    }
+
+    /*
+     * Include only verified results to keep users safe.
+     */
+    private void fixItems(List<KATItem> list) {
+        if (list != null && list.size() > 0) {
+            Iterator<KATItem> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                KATItem next = iterator.next();
+
+                //Take out non-verified results and
+                //elements missing mandatory data
+                if (next.verified == 0 || StringUtils.isNullOrEmpty(next.title) || StringUtils.isNullOrEmpty(next.hash) || StringUtils.isNullOrEmpty(next.torrentLink) || StringUtils.isNullOrEmpty(next.link) || next.size <= 0) {
+                    iterator.remove();
+                }
+            }
+        }
     }
 }

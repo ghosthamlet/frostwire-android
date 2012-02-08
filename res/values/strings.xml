@@ -369,4 +369,5 @@
     <string name="type_here_to_filter">Type here to filter</string>
     <string name="type_here_to_search">Type here to Search</string>
     <string name="hints_by_google">Hints by Google</string>
+    <string name="use_btjunkie">Use Kat.ph</string>
 </resources>

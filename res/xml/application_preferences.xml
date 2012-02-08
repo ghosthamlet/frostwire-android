@@ -67,10 +67,6 @@
         android:key="frostwire.prefs.search.preference_category"
         android:title="@string/search_settings" >
         <CheckBoxPreference
-            android:key="frostwire.prefs.search.use_btjunkie"
-            android:summary="@string/use_btjunkie"
-            android:title="@string/use_btjunkie" />
-        <CheckBoxPreference
             android:key="frostwire.prefs.search.use_clearbits"
             android:summary="@string/use_clearbits"
             android:title="@string/use_clearbits" />
@@ -94,6 +90,10 @@
             android:key="frostwire.prefs.search.use_vertor"
             android:summary="@string/use_vertor"
             android:title="@string/use_vertor" />
+        <CheckBoxPreference
+            android:key="frostwire.prefs.search.use_kat"
+            android:summary="@string/use_kat"
+            android:title="@string/use_kat" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/other_settings" >
         <CheckBoxPreference
