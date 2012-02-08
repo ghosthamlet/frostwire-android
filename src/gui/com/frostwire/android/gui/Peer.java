@@ -36,6 +36,8 @@ import com.frostwire.android.util.JsonUtils;
  */
 public final class Peer implements Cloneable {
 
+    private static final int BROWSE_HTTP_TIMEOUT = 10000;
+
     private InetAddress address;
     private int listeningPort;
 
@@ -132,7 +134,7 @@ public final class Peer implements Cloneable {
             return Librarian.instance().getFiles(fileType, 0, Integer.MAX_VALUE, false);
         } else {
             String uri = getBrowseUri(fileType);
-            byte[] data = new HttpFetcher(uri).fetchGzip();
+            byte[] data = new HttpFetcher(uri, BROWSE_HTTP_TIMEOUT).fetchGzip();
             String json = new String(data);
             return JsonUtils.toObject(json, FileDescriptorList.class).files;
         }

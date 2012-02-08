@@ -116,6 +116,10 @@ public class HttpFetcher {
         this(convert(uri));
     }
 
+    public HttpFetcher(String uri, int timeout) {
+        this(convert(uri));
+    }
+
     public Object[] fetch(boolean gzip) throws IOException {
         HttpHost httpHost = new HttpHost(uri.getHost(), uri.getPort());
         HttpGet httpGet = new HttpGet(uri);
