@@ -229,7 +229,7 @@
     <string name="media_player_failed">メディアプレイヤーに失敗しました</string>
     <string name="activity_media_player_name">メディアプレイヤー</string>
     <string name="search_settings">検索設定</string>
-    <string name="use_btjunkie">BTJunkie.orgを使用する</string>
+    <string name="use_kat">KAT.phを使用する</string>
     <string name="use_clearbits">ClearBits.netを使用する</string>
     <string name="use_extratorrent">ExtraTorrent.comを使用する</string>
     <string name="use_isohunt">ISOHunt.comを使用する</string>

@@ -229,7 +229,7 @@
     <string name="media_player_failed">Multimediální přehrávač selhal</string>
     <string name="activity_media_player_name">Multimediální Přehrávač</string>
     <string name="search_settings">Nastavení Vyhledávání</string>
-    <string name="use_btjunkie">Použít BTJunkie.org</string>
+    <string name="use_kat">Použít KAT.ph</string>
     <string name="use_clearbits">Použít ClearBits.net</string>
     <string name="use_extratorrent">Použít ExtraTorrent.com</string>
     <string name="use_isohunt">Použít ISOHunt.com</string>

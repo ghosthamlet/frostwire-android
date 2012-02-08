@@ -229,7 +229,7 @@
     <string name="media_player_failed">Не удалось запустить медиаплеер</string>
     <string name="activity_media_player_name">Медиаплеер</string>
     <string name="search_settings">Настройки поиска</string>
-    <string name="use_btjunkie">Использовать BTJunkie.org</string>
+    <string name="use_kat">Использовать KAT.ph</string>
     <string name="use_clearbits">Использовать ClearBits.net</string>
     <string name="use_extratorrent">Использовать ExtraTorrent.com</string>
     <string name="use_isohunt">Использовать ISOHunt.com</string>

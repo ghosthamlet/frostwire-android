@@ -209,7 +209,7 @@
 	<string name="media_player_failed">Impossibile avviare il riproduttore suoni</string>
 	<string name="activity_media_player_name">Riproduttore suoni</string>
 	<string name="search_settings">Impostazioni di ricerca</string>
-	<string name="use_btjunkie">Usa BTJunkie.org</string>
+	<string name="use_kat">Usa KAT.ph</string>
 	<string name="use_clearbits">Usa ClearBits.net</string>
 	<string name="use_extratorrent">Usa ExtraTorrent.com</string>
 	<string name="use_isohunt">Usa ISOHunt.com</string>

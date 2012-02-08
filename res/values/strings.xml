@@ -228,7 +228,7 @@
     <string name="media_player_failed">Media player failed</string>
     <string name="activity_media_player_name">Media Player</string>
     <string name="search_settings">Search Settings</string>
-    <string name="use_btjunkie">Use BTJunkie.org</string>
+    <string name="use_kat">Use KAT.ph</string>
     <string name="use_clearbits">Use ClearBits.net</string>
     <string name="use_extratorrent">Use ExtraTorrent.com</string>
     <string name="use_isohunt">Use ISOHunt.com</string>
@@ -369,5 +369,4 @@
     <string name="type_here_to_filter">Type here to filter</string>
     <string name="type_here_to_search">Type here to Search</string>
     <string name="hints_by_google">Hints by Google</string>
-    <string name="use_btjunkie">Use Kat.ph</string>
 </resources>

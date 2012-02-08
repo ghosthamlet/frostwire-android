@@ -229,7 +229,7 @@
     <string name="media_player_failed">Medya oynatıcı hata verdi</string>
     <string name="activity_media_player_name">Medya Oynatıcı</string>
     <string name="search_settings">Arama Ayarları</string>
-    <string name="use_btjunkie">BTJunkie.org\'u Kullan</string>
+    <string name="use_kat">KAT.ph\'u Kullan</string>
     <string name="use_clearbits">ClearBits.net\'u Kullan</string>
     <string name="use_extratorrent">ExtraTorrent.com\'u Kullan</string>
     <string name="use_isohunt">ISOHunt.com\'u Kullan</string>

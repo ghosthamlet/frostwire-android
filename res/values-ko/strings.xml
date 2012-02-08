@@ -228,7 +228,7 @@
     <string name="media_player_failed">미디어플레이어 실패</string>
     <string name="activity_media_player_name">미디어플레이어</string>
     <string name="search_settings">설정 검색</string>
-    <string name="use_btjunkie">BTJunkie.org 사용</string>
+    <string name="use_kat">KAT.ph 사용</string>
     <string name="use_clearbits">ClearBits.net 사용</string>
     <string name="use_extratorrent">ExtraTorrent.com사용</string>
     <string name="use_isohunt">ISOHunt.com사용</string>
