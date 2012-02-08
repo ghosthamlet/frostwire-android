@@ -108,9 +108,9 @@ final class UniversalScanner {
         try {
             ContentResolver cr = context.getContentResolver();
             c = cr.query(UniversalStore.Documents.Media.CONTENT_URI, new String[] { DocumentsColumns._ID }, DocumentsColumns.DATA + "=?" + " AND " + DocumentsColumns.SIZE + "=?", new String[] { filePath, String.valueOf(size) }, null);
-            result = c.getCount() != 0;
+            result = c != null && c.getCount() != 0;
         } catch (Throwable e) {
-            Log.e(TAG, e.getMessage());
+            Log.e(TAG, "Error detecting if file exists: " + filePath, e);
         } finally {
             if (c != null) {
                 c.close();
