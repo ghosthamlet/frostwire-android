@@ -69,6 +69,10 @@ public final class AzureusManager {
 
     private static AzureusManager instance;
 
+    public synchronized static boolean isCreated() {
+        return instance != null;
+    }
+
     public synchronized static void create(Context context) {
         if (instance != null) {
             return;

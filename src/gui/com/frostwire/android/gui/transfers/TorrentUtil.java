@@ -394,6 +394,10 @@ public class TorrentUtil {
     public static Set<File> getIncompleteFiles() {
         Set<File> set = new HashSet<File>();
 
+        if (!AzureusManager.isCreated()) {
+            return set;
+        }
+
         List<?> dms = AzureusManager.instance().getGlobalManager().getDownloadManagers();
         for (Object obj : dms) {
             DownloadManager dm = (DownloadManager) obj;
@@ -414,6 +418,10 @@ public class TorrentUtil {
 
     public static Set<File> getSkipedFiles() {
         Set<File> set = new HashSet<File>();
+
+        if (!AzureusManager.isCreated()) {
+            return set;
+        }
 
         List<?> dms = AzureusManager.instance().getGlobalManager().getDownloadManagers();
         for (Object obj : dms) {

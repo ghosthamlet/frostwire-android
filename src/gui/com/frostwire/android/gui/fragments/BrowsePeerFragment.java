@@ -105,8 +105,6 @@ public class BrowsePeerFragment extends AbstractListFragment implements LoaderCa
         }
 
         setRetainInstance(true);
-
-        getLoaderManager().restartLoader(LOADER_FINGER_ID, null, this);
     }
 
     @Override
@@ -158,6 +156,8 @@ public class BrowsePeerFragment extends AbstractListFragment implements LoaderCa
         if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
+
+        getLoaderManager().restartLoader(LOADER_FINGER_ID, null, this);
     }
 
     @Override
@@ -281,11 +281,19 @@ public class BrowsePeerFragment extends AbstractListFragment implements LoaderCa
         return loader;
     }
 
-    public void updateHeader() {
+    private void updateHeader() {
         if (finger == null) {
             Log.w(TAG, "Something wrong, finger is null");
             UIUtils.showShortMessage(getActivity(), R.string.is_not_responding, peer.getNickname());
             getActivity().finish();
+            return;
+        }
+
+        updateFileCounts(finger);
+    }
+
+    private void updateFileCounts(Finger finger) {
+        if (finger == null) {
             return;
         }
 

@@ -160,7 +160,7 @@ public final class TransferManager {
     }
 
     public long getDownloadsBandwidth() {
-        long torrenDownloadsBandwidth = AzureusManager.instance().getGlobalManager().getStats().getDataReceiveRate() / 1000;
+        long torrenDownloadsBandwidth = AzureusManager.isCreated() ? AzureusManager.instance().getGlobalManager().getStats().getDataReceiveRate() / 1000 : 0;
 
         long peerDownloadsBandwidth = 0;
         for (PeerHttpDownload d : peerDownloads) {
@@ -171,7 +171,7 @@ public final class TransferManager {
     }
 
     public double getUploadsBandwidth() {
-        long torrenUploadsBandwidth = AzureusManager.instance().getGlobalManager().getStats().getDataSendRate() / 1000;
+        long torrenUploadsBandwidth = AzureusManager.isCreated() ? AzureusManager.instance().getGlobalManager().getStats().getDataSendRate() / 1000 : 0;
 
         long peerUploadsBandwidth = 0;
         for (PeerHttpUpload u : peerUploads) {
@@ -201,21 +201,13 @@ public final class TransferManager {
         }
     }
 
-    List<BittorrentDownload> getBittorrentDownloads() {
-        return new LinkedList<BittorrentDownload>(bittorrenDownloads);
-    }
+    public void loadTorrents() {
+        bittorrenDownloads.clear();
 
-    void remove(Transfer transfer) {
-        if (transfer instanceof BittorrentDownload) {
-            bittorrenDownloads.remove(transfer);
-        } else if (transfer instanceof PeerHttpDownload) {
-            peerDownloads.remove(transfer);
-        } else if (transfer instanceof PeerHttpUpload) {
-            peerUploads.remove(transfer);
+        if (!AzureusManager.isCreated()) {
+            return;
         }
-    }
 
-    private void loadTorrents() {
         GlobalManager globalManager = AzureusManager.instance().getAzureusCore().getGlobalManager();
         List<?> downloadManagers = globalManager.getDownloadManagers();
 
@@ -223,7 +215,7 @@ public final class TransferManager {
         for (Object obj : downloadManagers) {
             if (obj instanceof DownloadManager) {
                 try {
-                    if (((DownloadManager) obj).getTorrent()!=null && ((DownloadManager) obj).getTorrent().getHash()!=null) {
+                    if (((DownloadManager) obj).getTorrent() != null && ((DownloadManager) obj).getTorrent().getHash() != null) {
                         Log.d(TAG, "Loading torrent with hash: " + ByteUtils.encodeHex(((DownloadManager) obj).getTorrent().getHash()));
                         downloads.add((DownloadManager) obj);
                     }
@@ -252,6 +244,20 @@ public final class TransferManager {
         }
     }
 
+    List<BittorrentDownload> getBittorrentDownloads() {
+        return new LinkedList<BittorrentDownload>(bittorrenDownloads);
+    }
+
+    void remove(Transfer transfer) {
+        if (transfer instanceof BittorrentDownload) {
+            bittorrenDownloads.remove(transfer);
+        } else if (transfer instanceof PeerHttpDownload) {
+            peerDownloads.remove(transfer);
+        } else if (transfer instanceof PeerHttpUpload) {
+            peerUploads.remove(transfer);
+        }
+    }
+
     private BittorrentDownload newBittorrentDownload(BittorrentSearchResult sr) throws Exception {
         BittorrentDownload download = BittorrentDownloadCreator.create(this, sr);
 
@@ -275,11 +281,9 @@ public final class TransferManager {
         boolean isFile = torrentURI.getScheme().equalsIgnoreCase("file");
 
         try {
-            TransferManager.instance().download(
-                    isFile ? new BittorrentIntentFileResult(intent)
-                            : new BittorrentIntentHttpResult(intent));
+            TransferManager.instance().download(isFile ? new BittorrentIntentFileResult(intent) : new BittorrentIntentHttpResult(intent));
         } catch (Throwable e) {
-            Log.e(TAG,e.getMessage(),e);
+            Log.e(TAG, e.getMessage(), e);
         }
     }
 }

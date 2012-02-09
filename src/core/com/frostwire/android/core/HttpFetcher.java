@@ -117,7 +117,7 @@ public class HttpFetcher {
     }
 
     public HttpFetcher(String uri, int timeout) {
-        this(convert(uri));
+        this(convert(uri), timeout);
     }
 
     public Object[] fetch(boolean gzip) throws IOException {

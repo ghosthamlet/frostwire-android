@@ -40,6 +40,7 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.util.DisplayMetrics;
@@ -341,6 +342,20 @@ public final class Librarian {
         t.start();
     }
 
+    public boolean isExternalStorageMounted() {
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
+    }
+
+    public void invalidateCountCache() {
+        for (FileCountCache c : cache) {
+            if (c != null) {
+                c.lastTimeCachedShared = 0;
+                c.lastTimeCachedOnDisk = 0;
+            }
+        }
+        context.sendBroadcast(new Intent(Constants.ACTION_REFRESH_FINGER));
+    }
+
     /**
      * @param fileType
      */
@@ -597,10 +612,10 @@ public final class Librarian {
             c = cr.query(fetcher.getContentUri(), new String[] { BaseColumns._ID, MediaColumns.DATA }, null, null, BaseColumns._ID);
 
             if (c != null) {
-            while (c.moveToNext()) {
-                result.first.add(c.getInt(0));
-                result.second.add(c.getString(1));
-            }
+                while (c.moveToNext()) {
+                    result.first.add(c.getInt(0));
+                    result.second.add(c.getString(1));
+                }
             }
         } catch (Throwable e) {
             Log.e(TAG, "General failure getting all files", e);
