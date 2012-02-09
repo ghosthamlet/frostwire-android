@@ -205,6 +205,8 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
         }
 
         state = STATE_STARTING;
+        
+        Librarian.instance().invalidateCountCache();
 
         AzureusManager.create(this);
         TransferManager.instance().loadTorrents();

@@ -322,6 +322,10 @@ public final class Librarian {
     }
 
     public void syncApplicationsProvider() {
+        if (!isExternalStorageMounted()) {
+            return;
+        }
+
         Thread t = new Thread(new Runnable() {
             public void run() {
                 syncApplicationsProviderSupport();
@@ -333,6 +337,10 @@ public final class Librarian {
     }
 
     public void syncMediaStore() {
+        if (!isExternalStorageMounted()) {
+            return;
+        }
+
         Thread t = new Thread(new Runnable() {
             public void run() {
                 syncMediaStoreSupport();
