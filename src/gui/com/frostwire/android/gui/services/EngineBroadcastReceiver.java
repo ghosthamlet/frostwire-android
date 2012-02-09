@@ -31,8 +31,8 @@ import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
 import com.frostwire.android.gui.Librarian;
 import com.frostwire.android.gui.NetworkManager;
+import com.frostwire.android.gui.transfers.AzureusManager;
 import com.frostwire.android.gui.transfers.TransferManager;
-import com.frostwire.android.gui.util.SystemUtils;
 
 /**
  * Receives and controls messages from the external world. Depending on the
@@ -55,7 +55,9 @@ public class EngineBroadcastReceiver extends BroadcastReceiver {
             String action = intent.getAction();
 
             if (action.equals(Intent.ACTION_MEDIA_MOUNTED)) {
-                Librarian.instance().scan(SystemUtils.getSaveDirectory(Constants.FILE_TYPE_DOCUMENTS));
+                if (Engine.instance().isDisconnected()) {
+                    Engine.instance().startServices();
+                }
             } else if (action.equals(Intent.ACTION_MEDIA_SCANNER_FINISHED)) {
                 Librarian.instance().syncMediaStore();
             } else if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
@@ -73,6 +75,11 @@ public class EngineBroadcastReceiver extends BroadcastReceiver {
                 Librarian.instance().syncApplicationsProvider();
             } else if (action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
                 // no sure about this case
+            }
+
+            if (!Librarian.instance().isExternalStorageMounted() && AzureusManager.isCreated()) {
+                Log.i(TAG, "Halting process due to lack of external storage");
+                Librarian.instance().halt();
             }
         } catch (Throwable e) {
             Log.e(TAG, "Error processing broadcast message", e);

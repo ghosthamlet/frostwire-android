@@ -22,7 +22,6 @@ import android.app.Application;
 
 import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.gui.services.Engine;
-import com.frostwire.android.gui.transfers.AzureusManager;
 
 /**
  * 
@@ -40,7 +39,6 @@ public class MainApplication extends Application {
         ConfigurationManager.create(this);
         NetworkManager.create(this);
         Librarian.create(this);
-        AzureusManager.create(this);
         Engine.create(this);
 
         Librarian.instance().syncMediaStore();

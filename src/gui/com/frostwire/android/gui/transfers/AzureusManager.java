@@ -42,6 +42,7 @@ import com.frostwire.android.R;
 import com.frostwire.android.core.ConfigurationManager;
 import com.frostwire.android.core.Constants;
 import com.frostwire.android.core.CoreRuntimeException;
+import com.frostwire.android.gui.Librarian;
 import com.frostwire.android.gui.NetworkManager;
 import com.frostwire.android.gui.util.SystemUtils;
 
@@ -74,7 +75,7 @@ public final class AzureusManager {
     }
 
     public synchronized static void create(Context context) {
-        if (instance != null) {
+        if (!Librarian.instance().isExternalStorageMounted() || instance != null) {
             return;
         }
         instance = new AzureusManager(context);

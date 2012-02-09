@@ -41,6 +41,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Process;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.util.DisplayMetrics;
@@ -346,6 +347,18 @@ public final class Librarian {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
+    /**
+     * This method is for kill the application process.
+     * 
+     * It's absolutely not recommended to use this method but in very special situations.
+     * The actual existence reason of this method it to handle the external storage shared state.
+     * Android kills the application in the same way if there is any handle open in the external
+     * storage.
+     */
+    public void halt() {
+        Process.killProcess(Process.myPid());
+    }
+
     public void invalidateCountCache() {
         for (FileCountCache c : cache) {
             if (c != null) {
@@ -487,6 +500,8 @@ public final class Librarian {
         syncMediaStore(Constants.FILE_TYPE_PICTURES, ignorableFiles);
         syncMediaStore(Constants.FILE_TYPE_VIDEOS, ignorableFiles);
         syncMediaStore(Constants.FILE_TYPE_RINGTONES, ignorableFiles);
+
+        scan(SystemUtils.getSaveDirectory(Constants.FILE_TYPE_DOCUMENTS));
     }
 
     private void syncMediaStore(byte fileType, Set<File> ignorableFiles) {
