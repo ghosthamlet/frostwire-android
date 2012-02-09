@@ -270,7 +270,9 @@ public final class SoftwareUpdater {
 
         for (String name : update.config.activeSearchEngines.keySet()) {
             SearchEngine engine = SearchEngine.getSearchEngine(name);
-            engine.setActive(update.config.activeSearchEngines.get(name));
+            if (engine != null) {
+                engine.setActive(update.config.activeSearchEngines.get(name));
+            }
         }
     }
 

@@ -40,6 +40,7 @@ import com.frostwire.android.core.Constants;
 import com.frostwire.android.core.FileDescriptor;
 import com.frostwire.android.core.messages.FrostWireMessage;
 import com.frostwire.android.core.messages.PingMessage;
+import com.frostwire.android.gui.Librarian;
 import com.frostwire.android.gui.NetworkManager;
 import com.frostwire.android.gui.PeerManager;
 import com.frostwire.android.gui.activities.MainActivity;
@@ -195,13 +196,24 @@ public class EngineService extends Service implements IEngineService, MediaPlaye
             return;
         }
 
+        if (!Librarian.instance().isExternalStorageMounted()) {
+            return;
+        }
+
         if (isStarted() || isStarting()) {
             return;
         }
 
         state = STATE_STARTING;
+        
+        Librarian.instance().invalidateCountCache();
 
-        AzureusManager.instance().resume();
+        AzureusManager.create(this);
+        TransferManager.instance().loadTorrents();
+
+        if (AzureusManager.isCreated()) { // safe move
+            AzureusManager.instance().resume();
+        }
 
         httpServerManager.start(NetworkManager.instance().getListeningPort());
 

@@ -40,6 +40,8 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.os.Process;
 import android.provider.BaseColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.util.DisplayMetrics;
@@ -320,6 +322,10 @@ public final class Librarian {
     }
 
     public void syncApplicationsProvider() {
+        if (!isExternalStorageMounted()) {
+            return;
+        }
+
         Thread t = new Thread(new Runnable() {
             public void run() {
                 syncApplicationsProviderSupport();
@@ -331,6 +337,10 @@ public final class Librarian {
     }
 
     public void syncMediaStore() {
+        if (!isExternalStorageMounted()) {
+            return;
+        }
+
         Thread t = new Thread(new Runnable() {
             public void run() {
                 syncMediaStoreSupport();
@@ -339,6 +349,32 @@ public final class Librarian {
         t.setName("syncMediaStore");
         t.setDaemon(true);
         t.start();
+    }
+
+    public boolean isExternalStorageMounted() {
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
+    }
+
+    /**
+     * This method is for kill the application process.
+     * 
+     * It's absolutely not recommended to use this method but in very special situations.
+     * The actual existence reason of this method it to handle the external storage shared state.
+     * Android kills the application in the same way if there is any handle open in the external
+     * storage.
+     */
+    public void halt() {
+        Process.killProcess(Process.myPid());
+    }
+
+    public void invalidateCountCache() {
+        for (FileCountCache c : cache) {
+            if (c != null) {
+                c.lastTimeCachedShared = 0;
+                c.lastTimeCachedOnDisk = 0;
+            }
+        }
+        context.sendBroadcast(new Intent(Constants.ACTION_REFRESH_FINGER));
     }
 
     /**
@@ -472,6 +508,8 @@ public final class Librarian {
         syncMediaStore(Constants.FILE_TYPE_PICTURES, ignorableFiles);
         syncMediaStore(Constants.FILE_TYPE_VIDEOS, ignorableFiles);
         syncMediaStore(Constants.FILE_TYPE_RINGTONES, ignorableFiles);
+
+        scan(SystemUtils.getSaveDirectory(Constants.FILE_TYPE_DOCUMENTS));
     }
 
     private void syncMediaStore(byte fileType, Set<File> ignorableFiles) {
@@ -597,10 +635,10 @@ public final class Librarian {
             c = cr.query(fetcher.getContentUri(), new String[] { BaseColumns._ID, MediaColumns.DATA }, null, null, BaseColumns._ID);
 
             if (c != null) {
-            while (c.moveToNext()) {
-                result.first.add(c.getInt(0));
-                result.second.add(c.getString(1));
-            }
+                while (c.moveToNext()) {
+                    result.first.add(c.getInt(0));
+                    result.second.add(c.getString(1));
+                }
             }
         } catch (Throwable e) {
             Log.e(TAG, "General failure getting all files", e);

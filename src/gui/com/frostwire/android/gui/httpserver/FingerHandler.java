@@ -44,7 +44,7 @@ class FingerHandler implements HttpHandler {
         OutputStream os = null;
 
         try {
-            Log.i(TAG, "Request from " + exchange.getRemoteAddress().getAddress().getHostAddress());
+            //Log.i(TAG, "Request from " + exchange.getRemoteAddress().getAddress().getHostAddress());
 
             String response = getResponse(exchange);
 

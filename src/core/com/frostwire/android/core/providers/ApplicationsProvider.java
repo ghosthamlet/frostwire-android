@@ -90,6 +90,9 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        if (!accept()) {
+            return null;
+        }
 
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
@@ -132,14 +135,11 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-
         switch (uriMatcher.match(uri)) {
         case APPLICATIONS_ALL:
             return Media.CONTENT_TYPE;
-
         case APPLICATIONS_ID:
             return Media.CONTENT_TYPE_ITEM;
-
         default:
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
@@ -147,6 +147,9 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues initialValues) {
+        if (!accept()) {
+            return null;
+        }
 
         if (uriMatcher.match(uri) != APPLICATIONS_ALL) {
             throw new IllegalArgumentException("Unknown URI " + uri);
@@ -214,6 +217,9 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
+        if (!accept()) {
+            return 0;
+        }
 
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
@@ -240,6 +246,9 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+        if (!accept()) {
+            return 0;
+        }
 
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
@@ -266,6 +275,9 @@ public class ApplicationsProvider extends ContentProvider {
 
     @Override
     public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
+        if (!accept()) {
+            return null;
+        }
 
         File root = new File(Environment.getExternalStorageDirectory(), "/Android/data/com.frostwire.android/cache");
         root.mkdirs();
@@ -290,6 +302,10 @@ public class ApplicationsProvider extends ContentProvider {
         }
 
         return ParcelFileDescriptor.open(path, imode);
+    }
+
+    private boolean accept() {
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /**

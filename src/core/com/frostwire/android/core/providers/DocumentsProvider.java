@@ -32,6 +32,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -87,6 +88,9 @@ public class DocumentsProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        if (!accept()) {
+            return null;
+        }
 
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
@@ -129,14 +133,11 @@ public class DocumentsProvider extends ContentProvider {
 
     @Override
     public String getType(Uri uri) {
-
         switch (uriMatcher.match(uri)) {
         case DOCUMENTS_ALL:
             return Media.CONTENT_TYPE;
-
         case DOCUMENTS_ID:
             return Media.CONTENT_TYPE_ITEM;
-
         default:
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
@@ -144,6 +145,9 @@ public class DocumentsProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues initialValues) {
+        if (!accept()) {
+            return null;
+        }
 
         // Validate the requested uri
         if (uriMatcher.match(uri) != DOCUMENTS_ALL) {
@@ -207,6 +211,9 @@ public class DocumentsProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String where, String[] whereArgs) {
+        if (!accept()) {
+            return 0;
+        }
 
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
@@ -233,6 +240,9 @@ public class DocumentsProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
+        if (!accept()) {
+            return 0;
+        }
 
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
@@ -255,6 +265,10 @@ public class DocumentsProvider extends ContentProvider {
         getContext().getContentResolver().notifyChange(uri, null);
 
         return count;
+    }
+
+    private boolean accept() {
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /**
