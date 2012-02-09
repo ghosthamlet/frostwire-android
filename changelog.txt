@@ -6,7 +6,9 @@ FrostWire 0.9.5:
  - Timeout adjustments for Wi-Fi browsing and compatibility enhancements
    for FrostWire for Desktop.
  - Removed support to defunct BTJunkie.org search, added KAT.ph search engine.
-
+ - When unmounting and mounting the SD card transfers work and shared states
+   are not reset.
+ 
 FrostWire 0.9.4:
  - Fixes Issue #1 reported by @untaimed18.
  - Upgrades to system update mechanism. Keeps backwards compatibility
