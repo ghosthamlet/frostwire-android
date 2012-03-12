@@ -60,7 +60,7 @@ final class ConfigurationDefaults {
         defaultValues.put(Constants.PREF_KEY_GUI_SHOW_TRANSFERS_ON_DOWNLOAD_START, true);
         defaultValues.put(Constants.PREF_KEY_GUI_SHOW_NEW_TRANSFER_DIALOG, true);
 
-        defaultValues.put(Constants.PREF_KEY_SEARCH_COUNT_DOWNLOAD_FOR_TORRENT_DEEP_SCAN, 5);
+        defaultValues.put(Constants.PREF_KEY_SEARCH_COUNT_DOWNLOAD_FOR_TORRENT_DEEP_SCAN, 10);
         defaultValues.put(Constants.PREF_KEY_SEARCH_COUNT_ROUNDS_FOR_TORRENT_DEEP_SCAN, 3);
         defaultValues.put(Constants.PREF_KEY_SEARCH_INTERVAL_MS_FOR_TORRENT_DEEP_SCAN, 1000);
         defaultValues.put(Constants.PREF_KEY_SEARCH_MIN_SEEDS_FOR_TORRENT_DEEP_SCAN, 5);
@@ -72,7 +72,7 @@ final class ConfigurationDefaults {
         defaultValues.put(Constants.PREF_KEY_SEARCH_USE_EXTRATORRENT, true);
         defaultValues.put(Constants.PREF_KEY_SEARCH_USE_ISOHUNT, true);
         defaultValues.put(Constants.PREF_KEY_SEARCH_USE_MININOVA, true);
-        defaultValues.put(Constants.PREF_KEY_SEARCH_USE_TPB, true);
+        //defaultValues.put(Constants.PREF_KEY_SEARCH_USE_TPB, true);
         defaultValues.put(Constants.PREF_KEY_SEARCH_USE_VERTOR, true);
         defaultValues.put(Constants.PREF_KEY_SEARCH_USE_KAT, true);
 
@@ -96,6 +96,7 @@ final class ConfigurationDefaults {
         defaultValues.put(Constants.PREF_KEY_TORRENT_MAX_TORRENT_CONNECTIONS, new Long(50));
 
         resetValue(Constants.PREF_KEY_NETWORK_PINGS_INTERVAL);
+        resetValue(Constants.PREF_KEY_SEARCH_COUNT_DOWNLOAD_FOR_TORRENT_DEEP_SCAN);
     }
 
     private byte[] convert(UUID uuid) {

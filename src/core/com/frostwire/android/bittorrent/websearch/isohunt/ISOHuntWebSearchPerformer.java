@@ -63,7 +63,7 @@ public class ISOHuntWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://isohunt.com/js/json.php?ihq=" + iha + "&start=1&rows=100&sort=seeds"));
+            fetcher = new HttpFetcher(new URI("http://isohunt.com/js/json.php?ihq=" + iha + "&start=1&rows=100&sort=seeds"), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
         }
 

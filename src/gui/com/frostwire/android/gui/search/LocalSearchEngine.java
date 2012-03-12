@@ -18,21 +18,16 @@
 
 package com.frostwire.android.gui.search;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.ExecutorService;
 
 import org.gudy.azureus2.core3.torrent.TOTorrent;
 import org.gudy.azureus2.core3.torrent.TOTorrentFile;
-import org.gudy.azureus2.core3.torrentdownloader.TorrentDownloader;
-import org.gudy.azureus2.core3.torrentdownloader.TorrentDownloaderCallBackInterface;
-import org.gudy.azureus2.core3.torrentdownloader.TorrentDownloaderFactory;
-import org.gudy.azureus2.core3.util.TorrentUtils;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -47,9 +42,9 @@ import com.frostwire.android.core.Constants;
 import com.frostwire.android.core.SearchEngine;
 import com.frostwire.android.core.providers.UniversalStore.Torrents;
 import com.frostwire.android.core.providers.UniversalStore.Torrents.TorrentFilesColumns;
-import com.frostwire.android.gui.util.SystemUtils;
 import com.frostwire.android.util.JsonUtils;
 import com.frostwire.android.util.StringUtils;
+import com.frostwire.android.util.concurrent.ExecutorsHelper;
 
 /**
  * @author gubatron
@@ -59,6 +54,9 @@ import com.frostwire.android.util.StringUtils;
 final class LocalSearchEngine {
 
     private static final String TAG = "FW.LocalSearchEngine";
+
+    private static final int MAX_TORRENT_DOWNLOADS = 1; // we are in a very constrained environment
+    private static final ExecutorService downloads_torrents_executor; // enqueue the downloads tasks here
 
     private final Context context;
     private final TorrentSearchTask task;
@@ -75,6 +73,10 @@ final class LocalSearchEngine {
     private final HashSet<String> knownInfoHashes;
 
     private int downloaded;
+
+    static {
+        downloads_torrents_executor = ExecutorsHelper.newFixedSizeThreadPool(MAX_TORRENT_DOWNLOADS, "DownloadTorrentsExecutor");
+    }
 
     public LocalSearchEngine(Context context, TorrentSearchTask task, SearchResultDisplayer displayer, String query) {
         this.context = context;
@@ -182,57 +184,15 @@ final class LocalSearchEngine {
         }
     }
 
-    private void scanDisplayer(int round) {
-        List<SearchResult> results = displayer.getResults();
-
-        for (int i = 0; i < results.size() && downloaded < count && !task.isCancelled(); i++) {
-            SearchResult sr = results.get(i);
-            if (sr instanceof BittorrentWebSearchResult) {
-                BittorrentWebSearchResult bsr = (BittorrentWebSearchResult) sr;
-
-                if (bsr.getHash() != null && (bsr.getSeeds() > seeds || isRare(round, results.size())) && !torrentIndexed(bsr)) {
-                    if (!knownInfoHashes.contains(bsr.getHash())) {
-                        knownInfoHashes.add(bsr.getHash());
-                        downloaded++;
-                        downloadAndScan(bsr);
-                    }
-                }
-            }
-        }
+    public void addResult(BittorrentDeepSearchResult result) {
+        displayer.addResult(result);
     }
 
     public boolean isRare(int round, int searchResultsCount) {
         return round == rounds - 1 && searchResultsCount < 50;
     }
 
-    private TorrentDownloader downloadAndScan(BittorrentWebSearchResult result) {
-        TorrentDownloader td = null;
-
-        String saveDir = SystemUtils.getDeepScanTorrentsDirectory().getAbsolutePath();
-        try {
-            td = TorrentDownloaderFactory.create(new LocalSearchTorrentDownloaderListener(query, result), result.getTorrentURI(), null, saveDir);
-            td.start();
-        } catch (Throwable e) {
-            Log.e(TAG, "Error creating a torrent downloader for result: " + result);
-        }
-
-        return td;
-    }
-
-    private boolean torrentIndexed(BittorrentWebSearchResult result) {
-        ContentResolver cr = context.getContentResolver();
-        Cursor c = null;
-        try {
-            c = cr.query(Torrents.Media.CONTENT_URI, new String[] { TorrentFilesColumns._ID }, "TORRENT_INFO_HASH LIKE ?", new String[] { result.getHash() }, null);
-            return c.getCount() > 0;
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-        }
-    }
-
-    private void indexTorrent(BittorrentWebSearchResult result, TOTorrent torrent) {
+    void indexTorrent(BittorrentWebSearchResult result, TOTorrent torrent) {
         TorrentDB tdb = new TorrentDB();
         tdb.creationTime = result.getCreationTime();
         tdb.fileName = result.getFileName();
@@ -260,6 +220,49 @@ final class LocalSearchEngine {
 
             insert(now, tdb.hash, tdb.fileName, tdb.seeds, tfdb.relativePath, keywords, json);
             Thread.yield(); // try to play nice with others
+        }
+    }
+
+    final static String sanitize(String str) {
+        str = Html.fromHtml(str).toString();
+        str = str.replaceAll("\\.torrent|www\\.|\\.com|[\\\\\\/%_;\\-\\.\\(\\)\\[\\]\\n\\r–]", " ");
+        return StringUtils.removeDoubleSpaces(str);
+    }
+
+    private void scanDisplayer(int round) {
+        List<SearchResult> results = displayer.getResults();
+
+        for (int i = 0; i < results.size() && downloaded < count && !task.isCancelled(); i++) {
+            SearchResult sr = results.get(i);
+            if (sr instanceof BittorrentWebSearchResult) {
+                BittorrentWebSearchResult bsr = (BittorrentWebSearchResult) sr;
+
+                if (bsr.getHash() != null && (bsr.getSeeds() > seeds || isRare(round, results.size())) && !torrentIndexed(bsr)) {
+                    if (!knownInfoHashes.contains(bsr.getHash())) {
+                        knownInfoHashes.add(bsr.getHash());
+                        downloaded++;
+                        downloadAndScan(bsr);
+                    }
+                }
+            }
+        }
+    }
+
+    private void downloadAndScan(BittorrentWebSearchResult result) {
+        DownloadTorrentTask downloadTask = new DownloadTorrentTask(query, result, task, this);
+        downloads_torrents_executor.execute(downloadTask);
+    }
+
+    private boolean torrentIndexed(BittorrentWebSearchResult result) {
+        ContentResolver cr = context.getContentResolver();
+        Cursor c = null;
+        try {
+            c = cr.query(Torrents.Media.CONTENT_URI, new String[] { TorrentFilesColumns._ID }, "TORRENT_INFO_HASH LIKE ?", new String[] { result.getHash() }, null);
+            return c.getCount() > 0;
+        } finally {
+            if (c != null) {
+                c.close();
+            }
         }
     }
 
@@ -291,78 +294,5 @@ final class LocalSearchEngine {
         }
 
         return fts.trim();
-    }
-
-    private final static String sanitize(String str) {
-        str = Html.fromHtml(str).toString();
-        str = str.replaceAll("\\.torrent|www\\.|\\.com|[\\\\\\/%_;\\-\\.\\(\\)\\[\\]\\n\\r–]", " ");
-        return StringUtils.removeDoubleSpaces(str);
-    }
-
-    private class LocalSearchTorrentDownloaderListener implements TorrentDownloaderCallBackInterface {
-
-        private final AtomicBoolean finished = new AtomicBoolean(false);
-
-        private final Set<String> tokens;
-        private final BittorrentWebSearchResult result;
-
-        public LocalSearchTorrentDownloaderListener(String query, BittorrentWebSearchResult result) {
-            this.tokens = new HashSet<String>(Arrays.asList(query.toLowerCase().split(" ")));
-            this.result = result;
-        }
-
-        @Override
-        public void TorrentDownloaderEvent(int state, TorrentDownloader inf) {
-            // index the torrent (insert it's structure in the local DB)
-            if (state == TorrentDownloader.STATE_FINISHED && finished.compareAndSet(false, true)) {
-                try {
-                    File torrentFile = inf.getFile();
-                    TOTorrent theTorrent = TorrentUtils.readFromFile(torrentFile, false);
-
-                    if (!task.isCancelled() && tokens.size() > 0) {
-                        // search right away on this torrent.
-                        matchResults(theTorrent);
-                    }
-
-                    indexTorrent(result, theTorrent);
-
-                    torrentFile.delete();
-                } catch (Throwable e) {
-                    Log.e(TAG, "Error indexing a torrent: " + result.getTorrentURI(), e);
-                }
-            }
-
-            switch (state) {
-            case TorrentDownloader.STATE_FINISHED:
-            case TorrentDownloader.STATE_ERROR:
-            case TorrentDownloader.STATE_DUPLICATE:
-            case TorrentDownloader.STATE_CANCELLED:
-                break;
-            }
-        }
-
-        private void matchResults(TOTorrent theTorrent) {
-            TOTorrentFile[] fs = theTorrent.getFiles();
-            for (int i = 0; i < fs.length && !task.isCancelled(); i++) {
-                try {
-                    String keywords = sanitize(result.getFileName() + " " + fs[i].getRelativePath()).toLowerCase();
-
-                    boolean foundMatch = true;
-
-                    for (String token : tokens) {
-                        if (!keywords.contains(token)) {
-                            foundMatch = false;
-                            break;
-                        }
-                    }
-
-                    if (foundMatch) {
-                        displayer.addResult(new BittorrentDeepSearchResult(result, fs[i]));
-                    }
-                } catch (Throwable e) {
-                    Log.e(TAG, "Error testing match for inner file of torrent", e);
-                }
-            }
-        }
     }
 }

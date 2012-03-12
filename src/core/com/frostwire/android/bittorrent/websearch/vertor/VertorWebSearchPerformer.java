@@ -63,7 +63,7 @@ public class VertorWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://www.vertor.com/index.php?mod=json&search=&words=" + iha));
+            fetcher = new HttpFetcher(new URI("http://www.vertor.com/index.php?mod=json&search=&words=" + iha), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
         }
 

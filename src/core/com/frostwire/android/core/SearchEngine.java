@@ -29,7 +29,6 @@ import com.frostwire.android.bittorrent.websearch.extratorrent.ExtratorrentWebSe
 import com.frostwire.android.bittorrent.websearch.isohunt.ISOHuntWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.kat.KATWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.mininova.MininovaWebSearchPerformer;
-import com.frostwire.android.bittorrent.websearch.tpb.TPBWebSearchPerformer;
 import com.frostwire.android.bittorrent.websearch.vertor.VertorWebSearchPerformer;
 
 /**
@@ -46,7 +45,7 @@ public final class SearchEngine {
     //public static final int BTJUNKIE_ID = 3;
     public static final int EXTRATORRENT_ID = 4;
     public static final int VERTOR_ID = 5;
-    public static final int TPB_ID = 6;
+    //public static final int TPB_ID = 6;
     public static final int MONOVA_ID = 7;
     public static final int KAT_ID = 8;
 
@@ -62,7 +61,7 @@ public final class SearchEngine {
     public static final SearchEngine EXTRATORRENT = new SearchEngine(EXTRATORRENT_ID, "Extratorrent", new ExtratorrentWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_EXTRATORRENT);
     public static final SearchEngine ISOHUNT = new SearchEngine(ISOHUNT_ID, "ISOHunt", new ISOHuntWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_ISOHUNT);
     public static final SearchEngine MININOVA = new SearchEngine(MININOVA_ID, "Mininova", new MininovaWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_MININOVA);
-    public static final SearchEngine TPB = new SearchEngine(TPB_ID, "TPB", new TPBWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_TPB);
+    //public static final SearchEngine TPB = new SearchEngine(TPB_ID, "TPB", new TPBWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_TPB);
     public static final SearchEngine VERTOR = new SearchEngine(VERTOR_ID, "Vertor", new VertorWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_VERTOR);
     public static final SearchEngine KAT = new SearchEngine(KAT_ID, "KAT", new KATWebSearchPerformer(), Constants.PREF_KEY_SEARCH_USE_KAT);
 
@@ -113,7 +112,7 @@ public final class SearchEngine {
     }
 
     public static List<SearchEngine> getSearchEngines() {
-        return Arrays.asList(CLEARBITS, MININOVA, ISOHUNT, EXTRATORRENT, VERTOR, TPB, KAT);
+        return Arrays.asList(CLEARBITS, MININOVA, ISOHUNT, EXTRATORRENT, VERTOR, /*TPB,*/ KAT);
     }
 
     public static SearchEngine getSearchEngine(int id) {

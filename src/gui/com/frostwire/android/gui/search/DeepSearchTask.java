@@ -41,6 +41,7 @@ class DeepSearchTask extends TorrentSearchTask {
         this.query = query;
     }
 
+    @Override
     public void run() {
         try {
             new LocalSearchEngine(context, this, displayer, query).deepSearch();

@@ -83,10 +83,6 @@
             android:summary="@string/use_mininova"
             android:title="@string/use_mininova" />
         <CheckBoxPreference
-            android:key="frostwire.prefs.search.use_tpb"
-            android:summary="@string/use_tpb"
-            android:title="@string/use_tpb" />
-        <CheckBoxPreference
             android:key="frostwire.prefs.search.use_vertor"
             android:summary="@string/use_vertor"
             android:title="@string/use_vertor" />

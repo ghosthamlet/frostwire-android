@@ -62,7 +62,7 @@ public class ClearBitsWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://www.clearbits.net/home/search/index.json?query=" + iha));
+            fetcher = new HttpFetcher(new URI("http://www.clearbits.net/home/search/index.json?query=" + iha), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
         }
 

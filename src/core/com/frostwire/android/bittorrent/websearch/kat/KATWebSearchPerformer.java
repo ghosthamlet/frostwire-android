@@ -65,7 +65,7 @@ public class KATWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://www.kat.ph/json.php?q=" + iha));
+            fetcher = new HttpFetcher(new URI("http://www.kat.ph/json.php?q=" + iha), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
 
         }
@@ -95,11 +95,14 @@ public class KATWebSearchPerformer implements WebSearchPerformer {
             while (iterator.hasNext()) {
                 KATItem next = iterator.next();
 
-                //Take out non-verified results and
-                //elements missing mandatory data
+                // Take out non-verified results and elements missing mandatory data
                 if (next.verified == 0 || StringUtils.isNullOrEmpty(next.title) || StringUtils.isNullOrEmpty(next.hash) || StringUtils.isNullOrEmpty(next.torrentLink) || StringUtils.isNullOrEmpty(next.link) || next.size <= 0) {
                     iterator.remove();
+                    continue;
                 }
+
+                // fix https to http
+                next.torrentLink = next.torrentLink.replace("https://", "http://");
             }
         }
     }

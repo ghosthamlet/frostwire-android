@@ -46,7 +46,7 @@ public abstract class HttpWebSearchPerformer implements WebSearchPerformer {
             // ignore
         }
 
-        HttpFetcher fetcher = new HttpFetcher(getURI(keywords));
+        HttpFetcher fetcher = new HttpFetcher(getURI(keywords), HTTP_TIMEOUT);
         byte[] htmlBytes = fetcher.fetch();
 
         if (htmlBytes == null) {

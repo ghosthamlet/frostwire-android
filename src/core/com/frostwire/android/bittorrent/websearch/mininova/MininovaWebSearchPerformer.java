@@ -63,7 +63,7 @@ public class MininovaWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://www.mininova.org/vuze.php?search=" + iha));
+            fetcher = new HttpFetcher(new URI("http://www.mininova.org/vuze.php?search=" + iha), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
         }
 

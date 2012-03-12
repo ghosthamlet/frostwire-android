@@ -63,7 +63,7 @@ public class BTJunkieWebSearchPerformer implements WebSearchPerformer {
 
         HttpFetcher fetcher = null;
         try {
-            fetcher = new HttpFetcher(new URI("http://btjunkie.org/json.php?q=" + iha));
+            fetcher = new HttpFetcher(new URI("http://btjunkie.org/json.php?q=" + iha), HTTP_TIMEOUT);
         } catch (URISyntaxException e) {
         }
         byte[] jsonBytes = fetcher.fetch();

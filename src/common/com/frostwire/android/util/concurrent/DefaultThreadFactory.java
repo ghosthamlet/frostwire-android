@@ -16,18 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.frostwire.android.bittorrent.websearch;
+package com.frostwire.android.util.concurrent;
 
-import java.util.List;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * @author gubatron
  * @author aldenml
  *
  */
-public interface WebSearchPerformer {
-    
-    public static final int HTTP_TIMEOUT = 5000; // 5 seconds
+final class DefaultThreadFactory implements ThreadFactory {
 
-    public List<WebSearchResult> search(String keywords);
+    private final String name;
+    private final boolean daemon;
+
+    public DefaultThreadFactory(String name, boolean daemon) {
+        this.name = name;
+        this.daemon = daemon;
+    }
+
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, name);
+
+        if (daemon) {
+            t.setDaemon(true);
+        }
+
+        return t;
+    }
 }
