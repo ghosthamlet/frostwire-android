@@ -304,36 +304,56 @@ TCPTransportHelper
 	
 	private static final Random rnd = new Random();
 	
-	private int channelWrite(ByteBuffer buf) throws IOException
+
+ 	private int channelWrite(ByteBuffer buf) throws IOException
 	{
-		int written = 0;
-		while(remainingBytesToScatter > 0 && buf.remaining() > 0)
-		{
-			int currentWritten = channel.write((ByteBuffer)(buf.slice().limit(Math.min(50+rnd.nextInt(100),buf.remaining()))));
-			if(currentWritten == 0)
-				break;
-			buf.position(buf.position()+currentWritten);
-			remainingBytesToScatter -= currentWritten;
-			if(remainingBytesToScatter <= 0)
-			{
-				remainingBytesToScatter = 0;
-				try
-				{
-					channel.socket().setTcpNoDelay(false);
-				} catch (SocketException e)
-				{
-					Debug.printStackTrace(e);
-				}
-			}
-			written += currentWritten;
-		}
+	    int written = 0;
+	    int arrlen = (int) Math.ceil(buf.remaining()/70);
+	    int lm = 0, i = 0;
+	    
+	    ByteBuffer[] bf = new ByteBuffer[arrlen + 1];
+
+	    while(remainingBytesToScatter > 0 && buf.remaining() > 0)
+	    {
+		lm = Math.min(70, buf.remaining());
 		
-		if(buf.remaining() > 0)
-			written += channel.write(buf);
-	
-		return written;		
+		bf[i] =(ByteBuffer)(buf.slice().limit(lm));
+
+		int currentWritten = lm;
+
+		if(currentWritten == 0)
+		    break;
+
+		buf.position(buf.position()+currentWritten);
+		remainingBytesToScatter -= currentWritten;
+
+		if(remainingBytesToScatter <= 0)
+		{
+		    remainingBytesToScatter = 0;
+		    try
+		    {
+			channel.socket().setTcpNoDelay(false);
+		    } catch (SocketException e)
+		    {
+			Debug.printStackTrace(e);
+		    }
+		}
+		written += currentWritten;
+		i++;
+	    }
+
+	    try{
+		channel.write(bf);
+	    }catch( Exception e ) {
+		Log.d("chanelWrite", "chanel write unknown " + e.getMessage());
+	    }
+
+	    if(buf.remaining() > 0)
+		written += channel.write(buf);
+
+	    return written;     
 	}
-	
+
 	public int 
 	read( 
 		ByteBuffer buffer ) 
