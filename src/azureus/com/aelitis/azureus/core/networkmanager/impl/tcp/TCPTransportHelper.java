@@ -307,15 +307,16 @@ TCPTransportHelper
 
  	private int channelWrite(ByteBuffer buf) throws IOException
 	{
-	    int written = 0;
-	    int arrlen = (int) Math.ceil(buf.remaining()/70);
-	    int lm = 0, i = 0;
+
+	    int lm = 0, i = 0, 
+	    	written = 0, piecelen = 70;
+	    int arrlen = (int) Math.ceil(buf.remaining()/piecelen);
 	    
 	    ByteBuffer[] bf = new ByteBuffer[arrlen + 1];
 
 	    while(remainingBytesToScatter > 0 && buf.remaining() > 0)
 	    {
-		lm = Math.min(70, buf.remaining());
+		lm = Math.min(piecelen, buf.remaining());
 		
 		bf[i] =(ByteBuffer)(buf.slice().limit(lm));
 
